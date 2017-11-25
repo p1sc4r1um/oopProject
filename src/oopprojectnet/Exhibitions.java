@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class Exhibitions extends Places {
     private String artisticForm, price;
 

@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class Student extends Person {
     private String studentCourse;
     public Student() {

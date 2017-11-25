@@ -1,3 +1,4 @@
+package oopprojectnet;
 import java.util.*;
 
 public class Pubs extends Places {

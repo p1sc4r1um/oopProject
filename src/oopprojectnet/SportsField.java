@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class SportsField extends Parks {
     private String sport;
     public SportsField() {

@@ -1,3 +1,4 @@
+package oopprojectnet;
 abstract class Parks extends Places {
     protected String coords, name;
     public Parks() {

@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class Gardens extends Parks {
     private String area;
     public Gardens() {

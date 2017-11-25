@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class Staff extends Person {
     private String employment;
     public Staff() {

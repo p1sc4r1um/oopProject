@@ -1,3 +1,4 @@
+package oopprojectnet;
 public class Places {
     protected String coords, name;
     public Places() {

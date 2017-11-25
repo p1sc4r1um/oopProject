@@ -27,34 +27,54 @@ public class PeopleMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        createPersonBtn = new javax.swing.JButton();
+        editPersonBtn = new javax.swing.JButton();
+        deletePersonBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
-        jButton1.setText("Create Person");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createPersonBtn.setText("Create Person");
+        createPersonBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createPersonBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
+        getContentPane().add(createPersonBtn);
 
-        jButton2.setText("Edit Person");
-        getContentPane().add(jButton2);
+        editPersonBtn.setText("Edit Person");
+        editPersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editPersonBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(editPersonBtn);
 
-        jButton3.setText("Delete Person");
-        getContentPane().add(jButton3);
+        deletePersonBtn.setText("Delete Person");
+        deletePersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePersonBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(deletePersonBtn);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPersonBtnActionPerformed
         setContentPane(new CreatePersonPanel());
         revalidate();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_createPersonBtnActionPerformed
+
+    private void editPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPersonBtnActionPerformed
+        setContentPane(new EditPersonPanel());
+        revalidate();
+    }//GEN-LAST:event_editPersonBtnActionPerformed
+
+    private void deletePersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePersonBtnActionPerformed
+        setContentPane(new DeletePersonPanel());
+        revalidate();
+    }//GEN-LAST:event_deletePersonBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -92,8 +112,8 @@ public class PeopleMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton createPersonBtn;
+    private javax.swing.JButton deletePersonBtn;
+    private javax.swing.JButton editPersonBtn;
     // End of variables declaration//GEN-END:variables
 }

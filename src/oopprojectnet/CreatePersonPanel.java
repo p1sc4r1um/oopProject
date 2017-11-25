@@ -39,6 +39,7 @@ public class CreatePersonPanel extends javax.swing.JPanel {
         personCreateBtn = new javax.swing.JButton();
         personClearBtn = new javax.swing.JButton();
         personBackBtn = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         labelPersonName.setText("Name:");
 
@@ -94,11 +95,17 @@ public class CreatePersonPanel extends javax.swing.JPanel {
                                     .addGap(44, 44, 44)
                                     .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(20, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addContainerGap()
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPersonName)
                     .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -126,6 +133,7 @@ public class CreatePersonPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel labelPersonName;
     private javax.swing.JLabel labelPersonPassword;
     private javax.swing.JLabel labelPersonProfile;

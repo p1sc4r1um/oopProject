@@ -5,6 +5,12 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author almof
@@ -29,39 +35,62 @@ public class CreatePersonPanel extends javax.swing.JPanel {
 
         labelPersonName = new javax.swing.JLabel();
         personName = new javax.swing.JTextField();
-        personType = new javax.swing.JComboBox<>();
-        labelPersonType = new javax.swing.JLabel();
+        String chosenType;
         personEach = new javax.swing.JComboBox<>();
-        labelPersonProfile = new javax.swing.JLabel();
+        labelPersonType = new javax.swing.JLabel();
         personProfile = new javax.swing.JComboBox<>();
+        labelPersonProfile = new javax.swing.JLabel();
+        personType = new javax.swing.JComboBox<>();
         labelPersonPassword = new javax.swing.JLabel();
         personPassword = new javax.swing.JPasswordField();
         personCreateBtn = new javax.swing.JButton();
         personClearBtn = new javax.swing.JButton();
         personBackBtn = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
 
         labelPersonName.setText("Name:");
 
-        personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        personEach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Student", "Teacher", "Staff"}));
+        personEach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personEachActionPerformed(evt);
+            }
+        });
 
-        labelPersonType.setText("Type:");
+        labelPersonType.setText("Course:");
 
-        personEach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        personProfile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bohemian", "Cultured", "Sporty", "Spared" }));
+        personProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personProfileActionPerformed(evt);
+            }
+        });
 
         labelPersonProfile.setText("Profile:");
 
-        personProfile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
 
         labelPersonPassword.setText("Password:");
 
-        personPassword.setText("jPasswordField1");
-
         personCreateBtn.setText("Create");
+        personCreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personCreateBtnActionPerformed(evt);
+            }
+        });
 
         personClearBtn.setText("Clear");
+        personClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personClearBtnActionPerformed(evt);
+            }
+        });
 
         personBackBtn.setText("Back");
+        personBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personBackBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,49 +100,53 @@ public class CreatePersonPanel extends javax.swing.JPanel {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelPersonName)
-                        .addGap(18, 18, 18)
-                        .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(personCreateBtn)
-                            .addGap(48, 48, 48)
-                            .addComponent(personClearBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(personBackBtn))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelPersonProfile)
-                                .addComponent(labelPersonPassword))
-                            .addGap(48, 48, 48)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(labelPersonType)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(personCreateBtn)
+                                .addGap(48, 48, 48)
+                                .addComponent(personClearBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(personBackBtn)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(labelPersonName)
+                                .addGap(18, 18, 18)
+                                .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelPersonProfile)
+                            .addComponent(labelPersonPassword))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(48, 48, 48)
+                                        .addComponent(labelPersonType)
+                                        .addGap(49, 49, 49)
+                                        .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(75, 75, 75))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPersonName)
                     .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelPersonType)
-                    .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelPersonProfile)
@@ -131,9 +164,92 @@ public class CreatePersonPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void personClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personClearBtnActionPerformed
+        personName.setText("");
+        personPassword.setText("");
+    }//GEN-LAST:event_personClearBtnActionPerformed
+
+    private void personBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personBackBtnActionPerformed
+            /////////////////
+    }//GEN-LAST:event_personBackBtnActionPerformed
+
+    private void personEachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personEachActionPerformed
+        String chosenType = personEach.getSelectedItem().toString().toLowerCase();
+        if(chosenType.equals("student")) {
+            labelPersonType.setText("Course:");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
+        }
+        else if(chosenType.equals("teacher")) {
+            labelPersonType.setText("Type:");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated"}));
+
+        }
+        else {
+            labelPersonType.setText("Type:");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
+
+        }
+        
+        
+    }//GEN-LAST:event_personEachActionPerformed
+
+    private void personProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personProfileActionPerformed
+
+    private void personCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personCreateBtnActionPerformed
+         try {
+            if("".equals(personName.getText()) || "".equals(new String(personPassword.getPassword()))) {
+                JOptionPane.showMessageDialog(null, "you need to input the person's info", "error", JOptionPane.ERROR_MESSAGE);
+ 
+            }
+            else {
+                String name = personName.getText();
+                String profile = (String) personProfile.getSelectedItem();
+                String pass = new String(personPassword.getPassword());
+                String type = (String) personType.getSelectedItem();
+                String each = (String) personEach.getSelectedItem();
+                //System.out.println(name+profile+pass+type+each);
+                Person newPerson;
+                switch (each.toLowerCase()) {
+                        case "teacher":
+                            newPerson = new Teacher(name, profile, pass, type);
+                            System.out.println(newPerson);
+                            Database.listPeople.add(newPerson);
+                            break;
+                        case "student":
+                            newPerson = new Student(name, profile, pass, type);
+                            Database.listPeople.add(newPerson);
+                            break;
+                        case "staff":
+                            newPerson = new Staff(name, profile, pass, type);
+                            Database.listPeople.add(newPerson);
+                            break;
+                }
+                Object[] options = {
+                    "OK",
+                    "CANCEL"
+                };
+                Object optionSelected = JOptionPane.showOptionDialog(null, each + " created, Click OK to add person to event and cancel to create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (optionSelected.toString()) {
+                    case "0":
+                        Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
+                        break;
+                    case "1":
+                        personName.setText(null);
+                        personPassword.setText(null);
+                        break;
+                }    
+            }
+         }
+         catch(NumberFormatException e) {
+            personName.setText(null);
+            personPassword.setText(null);
+        }
+    }//GEN-LAST:event_personCreateBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel labelPersonName;
     private javax.swing.JLabel labelPersonPassword;
     private javax.swing.JLabel labelPersonProfile;

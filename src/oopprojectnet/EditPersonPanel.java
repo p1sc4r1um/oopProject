@@ -5,6 +5,12 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author zmcdo
@@ -27,171 +33,367 @@ public class EditPersonPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listPeople = new javax.swing.JComboBox<>();
-        personSelectBtn = new javax.swing.JButton();
-        personClearBtn = new javax.swing.JButton();
-        personBackBtn = new javax.swing.JButton();
-        personToEdit = new javax.swing.JTextField();
-        labelName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        personEach = new javax.swing.JComboBox<>();
+        personType = new javax.swing.JComboBox<>();
         labelPersonProfile = new javax.swing.JLabel();
         personProfile = new javax.swing.JComboBox<>();
         labelPersonPassword = new javax.swing.JLabel();
         personPassword = new javax.swing.JPasswordField();
         labelPersonName = new javax.swing.JLabel();
         personName = new javax.swing.JTextField();
-        personType = new javax.swing.JComboBox<>();
         labelPersonType = new javax.swing.JLabel();
+        personToEdit = new javax.swing.JTextField();
+        labelName = new javax.swing.JLabel();
+        personBackBtn = new javax.swing.JButton();
+        personClearBtn = new javax.swing.JButton();
         personEditBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        peopleList = new javax.swing.JList<>();
 
-        listPeople.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        personSelectBtn.setText("Select");
-
-        personClearBtn.setText("Clear");
-
-        personBackBtn.setText("Back");
-
-        personToEdit.setText("NaNam");
-
-        labelName.setText("Name:");
-
-        personEach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        personType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personTypeActionPerformed(evt);
+            }
+        });
 
         labelPersonProfile.setText("Profile:");
 
-        personProfile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        personProfile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Bohemian", "Cultured", "Sporty", "Spared" }));
+        personProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personProfileActionPerformed(evt);
+            }
+        });
 
-        labelPersonPassword.setText("Password:");
+        labelPersonPassword.setText("New Password:");
 
-        personPassword.setText("jPasswordField1");
+        personPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personPasswordActionPerformed(evt);
+            }
+        });
 
         labelPersonName.setText("Name:");
 
-        personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         labelPersonType.setText("Type:");
+
+        personToEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personToEditActionPerformed(evt);
+            }
+        });
+        personToEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                personToEditKeyReleased(evt);
+            }
+        });
+
+        labelName.setText("Search:");
+
+        personBackBtn.setText("Back");
+        personBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personBackBtnActionPerformed(evt);
+            }
+        });
+
+        personClearBtn.setText("Reset");
+        personClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personClearBtnActionPerformed(evt);
+            }
+        });
+
+        personEditBtn.setText("Edit");
+        personEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personEditBtnActionPerformed(evt);
+            }
+        });
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToEdit.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        peopleList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                peopleListMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(peopleList);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(51, 51, 51)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(labelPersonName)
-                            .addGap(18, 18, 18)
-                            .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelPersonProfile)
-                                .addComponent(labelPersonPassword))
-                            .addGap(48, 48, 48)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(labelPersonType)
-                                    .addGap(44, 44, 44)
-                                    .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addContainerGap(51, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(personEditBtn)
+                                .addGap(34, 34, 34)
+                                .addComponent(personClearBtn)
+                                .addGap(31, 31, 31)
+                                .addComponent(personBackBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelPersonProfile)
+                                    .addComponent(labelPersonPassword)
+                                    .addComponent(labelPersonType))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(95, 95, 95)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(labelPersonName)
+                        .addGap(33, 33, 33)
+                        .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelName)
+                        .addGap(36, 36, 36)
+                        .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 424, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(115, 115, 115)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelPersonName)
-                        .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelPersonType)
-                        .addComponent(personEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(33, 33, 33)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelPersonProfile)
-                        .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(39, 39, 39)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelPersonPassword)
-                        .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(115, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelName)
+                            .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(personName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelPersonName))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPersonType)
+                    .addComponent(personType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPersonProfile)
+                    .addComponent(personProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPersonPassword)
+                    .addComponent(personPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(personBackBtn)
+                    .addComponent(personClearBtn)
+                    .addComponent(personEditBtn))
+                .addGap(42, 42, 42))
         );
-
-        personEditBtn.setText("Edit");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(labelName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(personSelectBtn))
-                .addContainerGap(215, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(personEditBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(personClearBtn)
-                .addGap(69, 69, 69)
-                .addComponent(personBackBtn)
-                .addGap(65, 65, 65))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
-                    .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(personSelectBtn)
-                .addGap(31, 31, 31)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personClearBtn)
-                    .addComponent(personBackBtn)
-                    .addComponent(personEditBtn)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void personPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personPasswordActionPerformed
+
+    private void personToEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personToEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personToEditActionPerformed
+
+    private void personToEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToEditKeyReleased
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToEdit.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(peopleList);        // TODO add your handling code here:
+    }//GEN-LAST:event_personToEditKeyReleased
+
+    private void personBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personBackBtnActionPerformed
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_personBackBtnActionPerformed
+
+    private void personClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personClearBtnActionPerformed
+        personName.setText(Database.listPeople.get(peopleList.getSelectedIndex()).name);
+        if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+            labelPersonType.setText("Course");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
+            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getStudentCourse());
+            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+        }
+        else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+            labelPersonType.setText("Type");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
+            personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getTeacherType());
+            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+        }
+        else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
+            labelPersonType.setText("Type");
+            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
+            personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getEmployment());
+            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+        }
+    }//GEN-LAST:event_personClearBtnActionPerformed
+
+    private void personEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personEditBtnActionPerformed
+        if(peopleList.getSelectedIndex() != -1) {
+            if(personName.getText().length() > 0) {
+
+                Database.listPeople.get(peopleList.getSelectedIndex()).setName(personName.getText());
+            }
+            if(personPassword.getPassword().length != 0) {
+                Database.listPeople.get(peopleList.getSelectedIndex()).setPassword(new String(personPassword.getPassword()));
+            }
+            Database.listPeople.get(peopleList.getSelectedIndex()).setProfile((String)personProfile.getSelectedItem());
+            if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+                ((Student)Database.listPeople.get(peopleList.getSelectedIndex())).setStudentCourse((String)personType.getSelectedItem());
+            }
+            else if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+                ((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).setTeacherType((String)personType.getSelectedItem());
+            }
+            else {
+                ((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).setEmployment((String)personType.getSelectedItem());
+            }
+        }
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToEdit.getText());
+            public int getSize() {
+                return strings.length;
+            }
+            public String getElementAt(int i) {
+                return strings[i];
+            }
+        });
+        jScrollPane2.setViewportView(peopleList);
+        
+        
+        Object[] options = {
+                    "OK",
+                    "Continue Editing"
+                };
+                Object optionSelected = JOptionPane.showOptionDialog(null,"Person edited, Click 'OK' to quit to Main Menu and 'Continune Editing' to edit People", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (optionSelected.toString()) {
+                    case "0":
+                        Component comp = SwingUtilities.getRoot(this);
+                        ((Window) comp).dispose();
+                        break;
+                    case "1":
+                        break;
+                }  
+    }//GEN-LAST:event_personEditBtnActionPerformed
+
+    private void personTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personTypeActionPerformed
+
+    private void personProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_personProfileActionPerformed
+
+    private void peopleListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleListMouseClicked
+        if(peopleList.getSelectedIndex() != -1) {
+            personName.setText(Database.listPeople.get(peopleList.getSelectedIndex()).name);
+            if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+                labelPersonType.setText("Course");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
+                personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getStudentCourse());
+                personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+            }
+            else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+                labelPersonType.setText("Type");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
+                personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getTeacherType());
+                personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+            }
+            else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
+                labelPersonType.setText("Type");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
+                personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getEmployment());
+                personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+            }
+        }
+    }//GEN-LAST:event_peopleListMouseClicked
+
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
+    
+    private String[] getListNamePeople(String search) {
+        ArrayList < String > list;
+        list = new ArrayList <> ();
+        for (Person p: Database.listPeople) {
+            if(search.length() != 0){
+                if(search.length() <= p.getName().length() && stringSlice(0, search.length()-1, p.getName()).equals(search)) {
+                    list.add(p.getName());
+                }
+            }
+            else {
+                list.add(p.getName());
+            }
+        }
+        String[] temp = new String[list.size()];
+        temp = list.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPersonName;
     private javax.swing.JLabel labelPersonPassword;
     private javax.swing.JLabel labelPersonProfile;
     private javax.swing.JLabel labelPersonType;
-    private javax.swing.JComboBox<String> listPeople;
+    private javax.swing.JList<String> peopleList;
     private javax.swing.JButton personBackBtn;
     private javax.swing.JButton personClearBtn;
-    private javax.swing.JComboBox<String> personEach;
     private javax.swing.JButton personEditBtn;
     private javax.swing.JTextField personName;
     private javax.swing.JPasswordField personPassword;
     private javax.swing.JComboBox<String> personProfile;
-    private javax.swing.JButton personSelectBtn;
     private javax.swing.JTextField personToEdit;
     private javax.swing.JComboBox<String> personType;
     // End of variables declaration//GEN-END:variables

@@ -16,6 +16,36 @@ public class Staff extends Person {
         this.employment = employment;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String getProfile() {
+        return profile;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
     public String getEmployment() {
         return employment;
     }

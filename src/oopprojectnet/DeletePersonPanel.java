@@ -5,6 +5,11 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.util.ArrayList;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author zmcdo
@@ -28,23 +33,54 @@ public class DeletePersonPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         labelName = new javax.swing.JLabel();
-        listPeople = new javax.swing.JComboBox<>();
         personDeleteBtn = new javax.swing.JButton();
         personClearBtn = new javax.swing.JButton();
         personBackBtn = new javax.swing.JButton();
         personToDelete = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         labelName.setText("Name:");
 
-        listPeople.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         personDeleteBtn.setText("Delete");
+        personDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personDeleteBtnActionPerformed(evt);
+            }
+        });
 
         personClearBtn.setText("Clear");
+        personClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personClearBtnActionPerformed(evt);
+            }
+        });
 
         personBackBtn.setText("Back");
+        personBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                personBackBtnActionPerformed(evt);
+            }
+        });
 
-        personToDelete.setText("NaNam");
+        personToDelete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                personToDeleteKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                personToDeleteKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                personToDeleteKeyReleased(evt);
+            }
+        });
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -56,41 +92,118 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(personDeleteBtn)
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(personClearBtn)
-                                .addGap(31, 31, 31)
-                                .addComponent(personBackBtn)))
-                        .addContainerGap(103, Short.MAX_VALUE))
+                        .addComponent(personClearBtn)
+                        .addGap(31, 31, 31)
+                        .addComponent(personBackBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119))))
+                        .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
-                    .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personDeleteBtn)
-                    .addComponent(personClearBtn)
-                    .addComponent(personBackBtn))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelName)
+                            .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(personDeleteBtn)
+                            .addComponent(personClearBtn)
+                            .addComponent(personBackBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void personToDeleteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToDeleteKeyTyped
+        /*jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(personToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);*/
+    }//GEN-LAST:event_personToDeleteKeyTyped
+
+    private void personToDeleteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToDeleteKeyPressed
+
+    }//GEN-LAST:event_personToDeleteKeyPressed
+
+    private void personToDeleteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToDeleteKeyReleased
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);        // TODO add your handling code here:
+    }//GEN-LAST:event_personToDeleteKeyReleased
+
+    private void personClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personClearBtnActionPerformed
+        personToDelete.setText("");
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+    }//GEN-LAST:event_personClearBtnActionPerformed
+
+    private void personDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personDeleteBtnActionPerformed
+        if(jList1.getSelectedIndex() >=0){
+            Database.listPeople.remove(jList1.getSelectedIndex());
+            jList1.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getListNamePeople(personToDelete.getText());
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane1.setViewportView(jList1);
+        }
+    }//GEN-LAST:event_personDeleteBtnActionPerformed
+
+    private void personBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personBackBtnActionPerformed
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_personBackBtnActionPerformed
+    
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
+    
+    private String[] getListNamePeople(String search) {
+        ArrayList < String > list;
+        list = new ArrayList <> ();
+        for (Person p: Database.listPeople) {
+            if(search.length() != 0){
+                if(search.length() <= p.getName().length() && stringSlice(0, search.length()-1, p.getName()).equals(search)) {
+                    list.add(p.getName());
+                }
+            }
+            else {
+                list.add(p.getName());
+            }
+        }
+        String[] temp = new String[list.size()];
+        temp = list.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelName;
-    private javax.swing.JComboBox<String> listPeople;
     private javax.swing.JButton personBackBtn;
     private javax.swing.JButton personClearBtn;
     private javax.swing.JButton personDeleteBtn;

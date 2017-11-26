@@ -19,6 +19,45 @@ public class Student extends Person {
         return studentCourse;
     }
 
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+
+    public String getProfile() {
+        return profile;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    /**
+     *
+     * @param password
+     */
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
+
     public void setStudentCourse(String studentCourse) {
         this.studentCourse = studentCourse;
     }

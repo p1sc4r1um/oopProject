@@ -233,7 +233,8 @@ public class CreatePersonPanel extends javax.swing.JPanel {
                 Object optionSelected = JOptionPane.showOptionDialog(null, each + " created, Click OK to add person to event and cancel to create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 switch (optionSelected.toString()) {
                     case "0":
-                        Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
+                        Component comp = SwingUtilities.getRoot(this);
+                        ((Window) comp).dispose();
                         break;
                     case "1":
                         personName.setText(null);

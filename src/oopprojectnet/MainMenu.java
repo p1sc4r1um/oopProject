@@ -32,6 +32,7 @@ public class MainMenu extends javax.swing.JFrame {
         eventsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(300, 300));
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         peopleBtn.setText("People");

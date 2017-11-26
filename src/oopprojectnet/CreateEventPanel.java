@@ -5,6 +5,12 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author zmcdo
@@ -27,76 +33,309 @@ public class CreateEventPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         labelPlace = new javax.swing.JLabel();
         eventName = new javax.swing.JTextField();
         eventCreateBtn = new javax.swing.JButton();
         eventClearBtn = new javax.swing.JButton();
         eventBackBtn = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        availablePlaces = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        chosenPlacesList = new javax.swing.JList<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         labelPlace.setText("Name:");
 
         eventName.setText("eventName");
 
         eventCreateBtn.setText("Create");
+        eventCreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventCreateBtnActionPerformed(evt);
+            }
+        });
 
         eventClearBtn.setText("Clear");
+        eventClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventClearBtnActionPerformed(evt);
+            }
+        });
 
         eventBackBtn.setText("Back");
+        eventBackBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eventBackBtnActionPerformed(evt);
+            }
+        });
+
+        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getAvailablePlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(availablePlaces);
+
+        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getChosenPlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(chosenPlacesList);
+
+        jLabel1.setText("Available Places:");
+
+        jLabel2.setText("Choosen Places:");
+
+        jButton1.setText("Add >>");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("<< Remove");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(239, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(eventCreateBtn)
+                .addGap(48, 48, 48)
+                .addComponent(eventClearBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(eventBackBtn)
+                .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(24, 24, 24))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(31, 31, 31)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelPlace)
-                            .addGap(119, 119, 119)
-                            .addComponent(eventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(eventCreateBtn)
-                            .addGap(48, 48, 48)
-                            .addComponent(eventClearBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(eventBackBtn)))
-                    .addGap(31, 31, 31)))
+                    .addComponent(labelPlace)
+                    .addGap(119, 119, 119)
+                    .addComponent(eventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(527, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton2)))
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(eventCreateBtn)
+                    .addComponent(eventClearBtn)
+                    .addComponent(eventBackBtn))
+                .addGap(44, 44, 44))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(36, 36, 36)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelPlace)
                         .addComponent(eventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(172, 172, 172)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(eventCreateBtn)
-                        .addComponent(eventClearBtn)
-                        .addComponent(eventBackBtn))
-                    .addContainerGap(37, Short.MAX_VALUE)))
+                    .addContainerGap(338, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+    ArrayList<Places> chosenPlaces = new ArrayList<>();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(availablePlaces.getSelectedIndex() != -1) {
+            chosenPlaces.add(Database.listPlaces.get(getIndexOfName(availablePlaces.getSelectedValue())));
+            
+        chosenPlacesList = new javax.swing.JList<>();
 
+        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getChosenPlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane3.setViewportView(chosenPlacesList);
+
+        availablePlaces = new javax.swing.JList<>();
+
+        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getAvailablePlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane2.setViewportView(availablePlaces);
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                if(chosenPlacesList.getSelectedIndex() != -1) {
+            chosenPlaces.remove(Database.listPlaces.get(getIndexOfName(chosenPlacesList.getSelectedValue())));
+            
+        chosenPlacesList = new javax.swing.JList<>();
+
+        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getChosenPlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane3.setViewportView(chosenPlacesList);
+
+        availablePlaces = new javax.swing.JList<>();
+
+        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getAvailablePlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane2.setViewportView(availablePlaces);
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void eventCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventCreateBtnActionPerformed
+        Event newEvent = new Event(new ArrayList<PersonPlaces>(), chosenPlaces);
+        Database.listEvents.add(newEvent);
+        
+        Object[] options = {
+            "OK",
+            "CREATE ANOTHER"
+        };
+        Object optionSelected = JOptionPane.showOptionDialog(null, "event created, Click OK to come back to menu or create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        switch (optionSelected.toString()) {
+            case "0":
+                Component comp = SwingUtilities.getRoot(this);
+                ((Window) comp).dispose();
+                break;
+            case "1":
+                break;
+        }  
+    }//GEN-LAST:event_eventCreateBtnActionPerformed
+
+    private void eventClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventClearBtnActionPerformed
+        chosenPlaces = new ArrayList<Places>();
+        chosenPlacesList = new javax.swing.JList<>();
+
+        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getChosenPlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane3.setViewportView(chosenPlacesList);
+
+        availablePlaces = new javax.swing.JList<>();
+
+        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getAvailablePlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+
+        jScrollPane2.setViewportView(availablePlaces);
+        
+    }//GEN-LAST:event_eventClearBtnActionPerformed
+
+    private void eventBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventBackBtnActionPerformed
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_eventBackBtnActionPerformed
+    private int getIndexOfName (String name) {
+        for(Places p:Database.listPlaces) {
+            if(p.getName().equals(name)) {
+                return Database.listPlaces.indexOf(p);
+            }
+        }
+        return -1;
+    } 
+        private String[] getChosenPlaces() {
+        ArrayList<String> places = new ArrayList<>();
+        for(Places p : chosenPlaces) {
+            places.add(p.getName());
+        }
+        String[] temp = new String[places.size()];
+        temp = places.toArray(temp);
+        return temp;
+    }
+    private String[] getAvailablePlaces() {
+        ArrayList<String> places = new ArrayList<>();
+        for(Places p : Database.listPlaces) {
+            if(!chosenPlaces.contains(p)) {
+                places.add(p.getName());
+            }
+        }
+        String[] temp = new String[places.size()];
+        temp = places.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> availablePlaces;
+    private javax.swing.JList<String> chosenPlacesList;
     private javax.swing.JButton eventBackBtn;
     private javax.swing.JButton eventClearBtn;
     private javax.swing.JButton eventCreateBtn;
     private javax.swing.JTextField eventName;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel labelPlace;
     // End of variables declaration//GEN-END:variables
 }

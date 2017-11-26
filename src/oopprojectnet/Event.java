@@ -40,8 +40,7 @@ public class Event {
      * @return the person in success and null otherwise
      */
 
-    public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces, String password) {
-        newP.setPassword(password);
+    public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces) {
         PersonPlaces newPerson = new PersonPlaces(newP,wantedPlaces);
         for (PersonPlaces currentPerson : invitedList) {
             if (currentPerson.getPerson().equals(newPerson.getPerson())) {

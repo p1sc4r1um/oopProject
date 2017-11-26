@@ -37,10 +37,21 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listPeopleList = new javax.swing.JList<>();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        availablePlaces = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        chosenPlacesList = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        addButton = new javax.swing.JButton();
+        removeButton = new javax.swing.JButton();
 
         AddPersonBtn.setText("Add");
+        AddPersonBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddPersonBtnActionPerformed(evt);
+            }
+        });
 
         personToAdd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -54,7 +65,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
 
         personAddBackBtn.setText("Back");
 
-        jLabel1.setText("Select 5 places:");
+        jLabel1.setText("Select a maximum of 5 places:");
 
         listPeopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToAdd.getText());
@@ -63,29 +74,48 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(listPeopleList);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getEventPlaces();
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList1);
+        jScrollPane3.setViewportView(availablePlaces);
+
+        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getChosenPlaces();
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane4.setViewportView(chosenPlacesList);
+
+        jLabel2.setText("Available Places:");
+
+        jLabel3.setText("Choosen Places:");
+
+        addButton.setText("Add >>");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        removeButton.setText("<< Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)))
+                .addGap(49, 49, 49)
+                .addComponent(labelName)
+                .addGap(63, 63, 63)
+                .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -94,45 +124,97 @@ public class AddPersonToEvent extends javax.swing.JPanel {
                         .addComponent(personAddClearBtn)
                         .addGap(38, 38, 38)
                         .addComponent(personAddBackBtn)
-                        .addGap(36, 36, 36)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(36, 36, 36))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addComponent(labelName)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(346, 346, 346)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(45, 45, 45)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(removeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(34, 34, 34)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 509, Short.MAX_VALUE)
+                            .addComponent(jLabel3)))
+                    .addGap(119, 119, 119))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(395, 395, 395)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(personAddClearBtn)
-                            .addComponent(personAddBackBtn)
-                            .addComponent(AddPersonBtn))
-                        .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 71, Short.MAX_VALUE)
-                        .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addComponent(jLabel1)
-                                .addGap(31, 31, 31))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(98, 98, 98)
-                    .addComponent(labelName)
-                    .addContainerGap(182, Short.MAX_VALUE)))
+                            .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelName)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(addButton)
+                        .addGap(58, 58, 58)
+                        .addComponent(removeButton)))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(personAddClearBtn)
+                    .addComponent(personAddBackBtn)
+                    .addComponent(AddPersonBtn))
+                .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
+    ArrayList<Places> chosenPlaces = new ArrayList<>();
+    
+    private String[] getChosenPlaces() {
+        ArrayList<String> places = new ArrayList<>();
+        for(Places p : chosenPlaces) {
+            places.add(p.getName());
+        }
+        String[] temp = new String[places.size()];
+        temp = places.toArray(temp);
+        return temp;
+    }
+    private String[] getAvailablePlaces() {
+        ArrayList<String> places = new ArrayList<>();
+        for(Places p : Database.listPlaces) {
+            if(!chosenPlaces.contains(p)) {
+                places.add(p.getName());
+            }
+        }
+        String[] temp = new String[places.size()];
+        temp = places.toArray(temp);
+        return temp;
+    }
+    private int getIndexOfName (String name) {
+        for(Places p:Database.listPlaces) {
+            if(p.getName().equals(name)) {
+                return Database.listPlaces.indexOf(p);
+            }
+        }
+        return -1;
+    } 
 
     private void personToAddKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToAddKeyReleased
         listPeopleList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -142,6 +224,52 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(listPeopleList); 
     }//GEN-LAST:event_personToAddKeyReleased
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        if(availablePlaces.getSelectedIndex() != -1) {
+            chosenPlaces.add(Database.listPlaces.get(getIndexOfName(availablePlaces.getSelectedValue())));
+            chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getChosenPlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+
+            jScrollPane4.setViewportView(chosenPlacesList);
+            availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getAvailablePlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+
+            jScrollPane3.setViewportView(availablePlaces);
+
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        if(chosenPlacesList.getSelectedIndex() != -1) {
+            chosenPlaces.remove(Database.listPlaces.get(getIndexOfName(chosenPlacesList.getSelectedValue())));
+            chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getChosenPlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+
+            jScrollPane4.setViewportView(chosenPlacesList);
+            availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getAvailablePlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+
+            jScrollPane3.setViewportView(availablePlaces);
+
+        }
+    }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
+        Database.listEvents.get(0).addPerson(selectedPerson, chosenPlaces);
+    }//GEN-LAST:event_AddPersonBtnActionPerformed
 
     private String stringSlice(int a, int b, String s) {
         String res= "";
@@ -168,17 +296,33 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         temp = list.toArray(temp);
         return temp;
     }
+    
+    private String[] getEventPlaces() {
+        ArrayList<String> t = new ArrayList<String>();
+        for(Places p : Database.listEvents.get(0).getPlacesList()) {
+            t.add(p.getName());
+        }
+        String[] temp = new String[t.size()];
+        temp = t.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPersonBtn;
+    private javax.swing.JButton addButton;
+    private javax.swing.JList<String> availablePlaces;
+    private javax.swing.JList<String> chosenPlacesList;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelName;
     private javax.swing.JList<String> listPeopleList;
     private javax.swing.JButton personAddBackBtn;
     private javax.swing.JButton personAddClearBtn;
     private javax.swing.JTextField personToAdd;
+    private javax.swing.JButton removeButton;
     // End of variables declaration//GEN-END:variables
 }

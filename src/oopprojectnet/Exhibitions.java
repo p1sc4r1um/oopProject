@@ -23,19 +23,19 @@ public class Exhibitions extends Places {
         this.artisticForm = artisticForm;
         this.price = price;
     }
-
+    @Override
     public String getArtisticForm() {
         return artisticForm;
     }
-
+    @Override
     public void setArtisticForm(String artisticForm) {
         this.artisticForm = artisticForm;
     }
-
+    @Override
     public String getPrice() {
         return price;
     }
-
+    @Override
     public void setPrice(String price) {
         this.price = price;
     }

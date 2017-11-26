@@ -15,15 +15,23 @@ public class Gardens extends Parks {
         super(coords,name);
         this.area = area;
     }
-
+    @Override
     public String getArea() {
         return area;
     }
-
+    @Override
     public void setArea(String area) {
         this.area = area;
     }
 
+    @Override
+    public String getCoords() {
+        return coords;
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
     @Override
     public String toString() {
         return "Gardens{" +

@@ -73,16 +73,16 @@ public class Event {
         int receipt = 0;
         for(PersonPlaces currentPerson: invitedList) {
             for(Places currentPlace : currentPerson.getListPlaces()) {
-                if(currentPlace.getClass().toString().toLowerCase().equals("class com.company.exhibitions")) {
+                if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.exhibitions")) {
                     Exhibitions temp = (Exhibitions) currentPlace;
-                    if(currentPerson.getClass().toString().toLowerCase().equals("class com.company.student")) {
+                    if(currentPerson.getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
                         receipt += Integer.parseInt(((Exhibitions) currentPlace).getPrice())*.10;
                     }
                     else {
                         receipt += Integer.parseInt(((Exhibitions) currentPlace).getPrice());
                     }
                 }
-                else if(currentPlace.getClass().toString().toLowerCase().equals("class com.company.pubs")) {
+                else if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
                     Pubs temp = (Pubs) currentPlace;
                     receipt +=  Integer.parseInt(((Pubs) currentPlace).getMinimumInput());
                 }

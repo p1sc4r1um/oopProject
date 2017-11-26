@@ -12,6 +12,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 import java.io.*;
+import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 /**
@@ -85,6 +86,11 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         placeClearBtn.setText("Clear");
 
         placeBackBtn.setText("Back");
+        placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeBackBtnMouseClicked(evt);
+            }
+        });
 
         additional1.setText("Garden Area:");
 
@@ -190,15 +196,15 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                     additional1.setText("Garden Area: ");
                     break;
                     case "sportsfield":
-                    additional1.setText("SportsField type of sport: ");
+                    additional1.setText("Sports' type: ");
                     break;
                     case "exhibitions":
-                    additional1.setText("Exhibition's art's type: ");
-                    additional2.setText("Exhibition's price: ");
+                    additional1.setText("Art's type: ");
+                    additional2.setText("Price: ");
                     break;
                     case "pubs":
-                    additional1.setText("Pub's capacity: ");
-                    additional2.setText("Pub's minimum input: ");
+                    additional1.setText("Capacity: ");
+                    additional2.setText("Minimum Input: ");
                     break;
                 }
             }
@@ -224,7 +230,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_additionalText1ActionPerformed
 
     private void placeCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCreateBtnActionPerformed
-try {
+        try {
             if("".equals(placeName.getText()) || "".equals(new String(additionalText1.getText())) || "".equals(new String(placeCoords.getText()))) {
                 JOptionPane.showMessageDialog(null, "you need to input the place's info", "error", JOptionPane.ERROR_MESSAGE);
 
@@ -252,12 +258,12 @@ try {
                     case "pubs":
                         additional1 = additionalText1.getText();
                         additional2 = additionalText2.getText();
-                        newPlace = new Pubs(coords, name, additional1, additional2, null);
+                        newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<Person>());
                         break;
                 }
                 if(newPlace != null) {
-                    System.out.println(newPlace);
                     Database.listPlaces.add(newPlace);
+                    System.out.println(Database.listPlaces.get(0));
                 }
                 Object[] options = { "OK", "CANCEL" };
                 Object optionSelected = JOptionPane.showOptionDialog(null, type + " created, Click OK to go back to program's menu and CANCEL to create another", "success",
@@ -291,6 +297,11 @@ try {
     private void placeCoordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCoordsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_placeCoordsActionPerformed
+
+    private void placeBackBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeBackBtnMouseClicked
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_placeBackBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

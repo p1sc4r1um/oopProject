@@ -5,6 +5,8 @@
  */
 package oopprojectnet;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author zmcdo
@@ -27,20 +29,24 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listPeople = new javax.swing.JComboBox<>();
         AddPersonBtn = new javax.swing.JButton();
         personToAdd = new javax.swing.JTextField();
         labelName = new javax.swing.JLabel();
         personAddClearBtn = new javax.swing.JButton();
         personAddBackBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-
-        listPeople.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listPeopleList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         AddPersonBtn.setText("Add");
 
-        personToAdd.setText("NaNam");
+        personToAdd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                personToAddKeyReleased(evt);
+            }
+        });
 
         labelName.setText("Name:");
 
@@ -50,72 +56,127 @@ public class AddPersonToEvent extends javax.swing.JPanel {
 
         jLabel1.setText("Select 5 places:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listPeopleList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToAdd.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPeopleList);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(AddPersonBtn)
-                .addGap(41, 41, 41)
-                .addComponent(personAddClearBtn)
-                .addGap(38, 38, 38)
-                .addComponent(personAddBackBtn)
-                .addGap(51, 51, 51))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(97, 97, 97)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(AddPersonBtn)
+                        .addGap(41, 41, 41)
+                        .addComponent(personAddClearBtn)
+                        .addGap(38, 38, 38)
+                        .addComponent(personAddBackBtn)
+                        .addGap(36, 36, 36)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(38, 38, 38)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
-                            .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(122, 122, 122)
-                            .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(39, 39, 39)))
+                    .addComponent(labelName)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(184, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personAddClearBtn)
-                    .addComponent(personAddBackBtn)
-                    .addComponent(AddPersonBtn))
-                .addGap(33, 33, 33))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(personAddClearBtn)
+                            .addComponent(personAddBackBtn)
+                            .addComponent(AddPersonBtn))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 71, Short.MAX_VALUE)
+                        .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel1)
+                                .addGap(31, 31, 31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(95, 95, 95)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelName)
-                        .addComponent(personToAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(10, 10, 10)
-                    .addComponent(listPeople, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(143, Short.MAX_VALUE)))
+                    .addGap(98, 98, 98)
+                    .addComponent(labelName)
+                    .addContainerGap(182, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void personToAddKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToAddKeyReleased
+        listPeopleList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePeople(personToAdd.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPeopleList); 
+    }//GEN-LAST:event_personToAddKeyReleased
+
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
+   
+    private String[] getListNamePeople(String search) {
+        ArrayList < String > list;
+        list = new ArrayList <> ();
+        for (Person p: Database.listPeople) {
+            if(search.length() != 0){
+                if(search.length() <= p.getName().length() && stringSlice(0, search.length()-1, p.getName()).equals(search)) {
+                    list.add(p.getName());
+                }
+            }
+            else {
+                list.add(p.getName());
+            }
+        }
+        String[] temp = new String[list.size()];
+        temp = list.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPersonBtn;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelName;
-    private javax.swing.JComboBox<String> listPeople;
+    private javax.swing.JList<String> listPeopleList;
     private javax.swing.JButton personAddBackBtn;
     private javax.swing.JButton personAddClearBtn;
     private javax.swing.JTextField personToAdd;

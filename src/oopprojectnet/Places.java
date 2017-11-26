@@ -33,6 +33,42 @@ public class Places {
     public void setName(String name) {
         this.name = name;
     }
+    
+    public String getArea() {
+        return null;
+    }
+    
+    public String getSport() {
+        return null;
+    }
+    
+    public String getPrice() {
+        return null;
+    }
+        
+    public String getArtisticForm() {
+        return null;
+    }
+    public String getMinimumInput() {
+        return null;
+    }
+    public String getCapacity() {
+        return null;
+    }
+    
+    public void setArea(String a) {
+    }
+    public void setSport(String a) {
+    }
+    public void setPrice(String a) {
+    }   
+    public void setArtisticForm(String a) {
+    }
+    public void setMinimumInput(String a) {
+    }
+    public void setCapacity(String a) {
+        
+    }
 
 
     @Override

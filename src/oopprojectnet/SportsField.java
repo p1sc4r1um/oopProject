@@ -17,13 +17,24 @@ public class SportsField extends Parks {
         super(coords,name);
         this.sport = sport;
     }
-
+    
+    
+    @Override
     public String getSport() {
         return sport;
     }
-
+    @Override
     public void setSport(String sport) {
         this.sport = sport;
+    }
+    
+    @Override
+    public String getCoords() {
+        return coords;
+    }
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

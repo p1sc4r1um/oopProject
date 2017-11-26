@@ -5,6 +5,12 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author zmcdo
@@ -27,24 +33,57 @@ public class DeletePlacePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listPlace = new javax.swing.JComboBox<>();
         placeDeleteBtn = new javax.swing.JButton();
         placeClearBtn = new javax.swing.JButton();
         placeBackBtn = new javax.swing.JButton();
         placeToDelete = new javax.swing.JTextField();
         labelName = new javax.swing.JLabel();
-
-        listPlace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listPlacesList = new javax.swing.JList<>();
 
         placeDeleteBtn.setText("Delete");
+        placeDeleteBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeDeleteBtnMouseClicked(evt);
+            }
+        });
+        placeDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeDeleteBtnActionPerformed(evt);
+            }
+        });
 
         placeClearBtn.setText("Clear");
+        placeClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeClearBtnActionPerformed(evt);
+            }
+        });
 
         placeBackBtn.setText("Back");
+        placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeBackBtnMouseClicked(evt);
+            }
+        });
 
-        placeToDelete.setText("NaNam");
+        placeToDelete.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                placeToDeleteKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                placeToDeleteKeyTyped(evt);
+            }
+        });
 
         labelName.setText("Name:");
+
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -52,22 +91,20 @@ public class DeletePlacePanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(placeDeleteBtn)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(placeClearBtn)
-                                .addGap(31, 31, 31)
-                                .addComponent(placeBackBtn)))
-                        .addContainerGap(103, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(placeToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119))))
+                .addComponent(labelName)
+                .addGap(77, 77, 77)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(placeToDelete)
+                    .addComponent(placeClearBtn))
+                .addGap(31, 31, 31)
+                .addComponent(placeBackBtn)
+                .addGap(84, 84, 84))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(placeDeleteBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,21 +113,110 @@ public class DeletePlacePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
                     .addComponent(placeToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(listPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(placeDeleteBtn)
+                        .addGap(82, 82, 82))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeDeleteBtn)
                     .addComponent(placeClearBtn)
                     .addComponent(placeBackBtn))
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void placeToDeleteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeToDeleteKeyTyped
+        
+    }//GEN-LAST:event_placeToDeleteKeyTyped
+
+    private void placeToDeleteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeToDeleteKeyReleased
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList); 
+    }//GEN-LAST:event_placeToDeleteKeyReleased
+
+    private void placeDeleteBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeDeleteBtnMouseClicked
+        if(listPlacesList.getSelectedIndex() != -1){
+            Database.listPlaces.remove(listPlacesList.getSelectedIndex());
+        }
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList); 
+        
+        Object[] options = {
+            "OK",
+            "CREATE ANOTHER"
+        };
+        Object optionSelected = JOptionPane.showOptionDialog(null, "place deleted, Click OK to come back to menu or delete another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        switch (optionSelected.toString()) {
+            case "0":
+                Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
+                break;
+            case "1":
+                placeToDelete.setText("");
+                break;
+        }    
+    }//GEN-LAST:event_placeDeleteBtnMouseClicked
+
+    private void placeClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeClearBtnActionPerformed
+        placeToDelete.setText("");
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToDelete.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList); 
+    }//GEN-LAST:event_placeClearBtnActionPerformed
+
+    private void placeBackBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeBackBtnMouseClicked
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_placeBackBtnMouseClicked
+
+    private void placeDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeDeleteBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeDeleteBtnActionPerformed
+    
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
+   
+    private String[] getListNamePlaces(String search) {
+        ArrayList < String > list;
+        list = new ArrayList <> ();
+        for (Places p: Database.listPlaces) {
+            if(search.length() != 0){
+                if(search.length() <= p.getName().length() && stringSlice(0, search.length()-1, p.getName()).equals(search)) {
+                    list.add(p.getName());
+                }
+            }
+            else {
+                list.add(p.getName());
+            }
+        }
+        String[] temp = new String[list.size()];
+        temp = list.toArray(temp);
+        return temp;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelName;
-    private javax.swing.JComboBox<String> listPlace;
+    private javax.swing.JList<String> listPlacesList;
     private javax.swing.JButton placeBackBtn;
     private javax.swing.JButton placeClearBtn;
     private javax.swing.JButton placeDeleteBtn;

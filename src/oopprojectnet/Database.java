@@ -164,6 +164,7 @@ public class Database {
             return 0;
         }
     }
+    
 
     public ArrayList<Person> getListPeople() {
         return listPeople;
@@ -178,39 +179,3 @@ public class Database {
     }
 
 }
-/**
- * Method to write the information to the text file (append), receives a parameter with the type of information you want to read
- * @param type the type of the info (events, places, people)
- * @return 1 in success, 0 otherwise
- */
-    /*
-    public int writeInfo(String type) {
-        String path = "D:\\Documents\\OneDrive - Universidade de Coimbra\\oopProject\\poo\\src\\com\\company\\info"+type+".txt";
-        try
-        {
-            FileWriter fw = new FileWriter(path,true); //the true will append the new data
-            if(type.equals("People")) {
-                String buffer = String.format("%s,%s,%s,%s");
-                fw.write(buffer);//appends the string to the file
- 
-            }
-            else if(type.equals("Places")) {
-                String buffer = String.format("%s,%s,%s,%s");
-                fw.write(buffer);//appends the string to the file
- 
- 
-            }
-            else if(type.equals("Events")) {
-                String buffer = String.format("%s,%s,%s,%s");
-                fw.write(buffer);//appends the string to the file
-            }
-            fw.close();
-        }
-        catch(IOException ioe)
-        {
-            System.err.println("IOException: " + ioe.getMessage());
-        }
-        return 1;
-    }
-}
-*/

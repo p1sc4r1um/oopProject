@@ -137,7 +137,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeTypeActionPerformed"/>
       </Events>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ItemListener itemListenerPlaceType = new ItemListener() {&#xa;            @Override&#xa;            public void itemStateChanged(ItemEvent evt) {&#xa;                String item = (String) evt.getItem();&#xa;                switch (item) {&#xa;                    case &quot;garden&quot;:&#xa;                        additional1.setText(&quot;Garden Area: &quot;);&#xa;                        break;&#xa;                    case &quot;sportsfield&quot;:&#xa;                        additional1.setText(&quot;SportsField type of sport: &quot;);&#xa;                        break;&#xa;                    case &quot;exhibitions&quot;:&#xa;                        additional1.setText(&quot;Exhibition&apos;s art&apos;s type: &quot;);&#xa;                        additional2.setText(&quot;Exhibition&apos;s price: &quot;);&#xa;                        break;&#xa;                    case &quot;pubs&quot;:&#xa;                        additional1.setText(&quot;Pub&apos;s capacity: &quot;);&#xa;                        additional2.setText(&quot;Pub&apos;s minimum input: &quot;);&#xa;                        break;&#xa;                }&#xa;            }&#xa;        };&#xa;        placeType.addItemListener(itemListenerPlaceType);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ItemListener itemListenerPlaceType = new ItemListener() {&#xa;            @Override&#xa;            public void itemStateChanged(ItemEvent evt) {&#xa;                String item = (String) evt.getItem();&#xa;                switch (item) {&#xa;                    case &quot;garden&quot;:&#xa;                        additional1.setText(&quot;Garden Area: &quot;);&#xa;                        break;&#xa;                    case &quot;sportsfield&quot;:&#xa;                        additional1.setText(&quot;Sports&apos; type: &quot;);&#xa;                        break;&#xa;                    case &quot;exhibitions&quot;:&#xa;                        additional1.setText(&quot;Art&apos;s type: &quot;);&#xa;                        additional2.setText(&quot;Price: &quot;);&#xa;                        break;&#xa;                    case &quot;pubs&quot;:&#xa;                        additional1.setText(&quot;Capacity: &quot;);&#xa;                        additional2.setText(&quot;Minimum Input: &quot;);&#xa;                        break;&#xa;                }&#xa;            }&#xa;        };&#xa;        placeType.addItemListener(itemListenerPlaceType);"/>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;(placesType)"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -164,6 +164,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="placeBackBtnMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JProgressBar" name="jProgressBar1">
     </Component>

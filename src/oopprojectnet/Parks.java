@@ -10,4 +10,16 @@ abstract class Parks extends Places {
         this.coords = coords;
         this.name = name;
     }
+
+
+    @Override
+    public String getCoords() {
+        return coords;
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
+    
+    
 }

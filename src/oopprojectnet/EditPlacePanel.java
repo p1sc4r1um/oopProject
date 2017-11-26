@@ -5,6 +5,12 @@
  */
 package oopprojectnet;
 
+import java.awt.Component;
+import java.awt.Window;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author zmcdo
@@ -27,127 +33,195 @@ public class EditPlacePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        listPlaces = new javax.swing.JComboBox<>();
-        placeSelectBtn = new javax.swing.JButton();
-        personToEdit = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        placeToEdit = new javax.swing.JTextField();
         labelName = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        placeType = new javax.swing.JComboBox<>();
-        labelPlaceType = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        additional1 = new javax.swing.JLabel();
         placeEach = new javax.swing.JTextField();
         labelPlace = new javax.swing.JLabel();
         placeName = new javax.swing.JTextField();
+        additional2 = new javax.swing.JLabel();
+        placeEach2 = new javax.swing.JTextField();
+        labelCoords = new javax.swing.JLabel();
+        placeCoords = new javax.swing.JTextField();
         placeClearBtn = new javax.swing.JButton();
         placeEditBtn = new javax.swing.JButton();
         placeBackBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listPlacesList = new javax.swing.JList<>();
 
-        listPlaces.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        placeSelectBtn.setText("Select");
-
-        personToEdit.setText("NaNam");
+        placeToEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeToEditActionPerformed(evt);
+            }
+        });
+        placeToEdit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                placeToEditKeyReleased(evt);
+            }
+        });
 
         labelName.setText("Name:");
 
-        placeType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        labelPlaceType.setText("Type:");
-
-        jLabel1.setText("Additional:");
-
-        placeEach.setText("To Edit");
+        additional1.setText("Garden's Area:");
 
         labelPlace.setText("Name:");
 
-        placeName.setText("placeName");
+        placeName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeNameActionPerformed(evt);
+            }
+        });
+
+        placeEach2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeEach2ActionPerformed(evt);
+            }
+        });
+
+        labelCoords.setText("Coords:");
+
+        placeCoords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeCoordsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(additional2)
+                        .addGap(109, 109, 109)
+                        .addComponent(placeEach2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(labelCoords)
+                        .addGap(111, 111, 111)
+                        .addComponent(placeCoords, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(82, 82, 82)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addComponent(additional1)
+                            .addGap(36, 36, 36)
+                            .addComponent(placeEach, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(82, 82, 82)
                             .addComponent(labelPlace)
                             .addGap(119, 119, 119)
-                            .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addComponent(labelPlaceType)
-                            .addGap(30, 30, 30)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(36, 36, 36)
-                                    .addComponent(placeEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(placeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(83, Short.MAX_VALUE)))
+                            .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addContainerGap(233, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 273, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCoords)
+                    .addComponent(placeCoords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addComponent(additional2)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(placeEach2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(58, 58, 58)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(labelPlace)
                         .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(32, 32, 32)
+                    .addGap(104, 104, 104)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(placeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(labelPlaceType))
-                    .addGap(46, 46, 46)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
+                        .addComponent(additional1)
                         .addComponent(placeEach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(59, Short.MAX_VALUE)))
         );
 
         placeClearBtn.setText("Clear");
+        placeClearBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeClearBtnMouseClicked(evt);
+            }
+        });
 
         placeEditBtn.setText("Edit");
+        placeEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeEditBtnMouseClicked(evt);
+            }
+        });
 
         placeBackBtn.setText("Back");
+        placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeBackBtnMouseClicked(evt);
+            }
+        });
+
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToEdit.getText());    public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listPlacesList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listPlacesListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(listPlacesList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(placeEditBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 249, Short.MAX_VALUE)
                 .addComponent(placeClearBtn)
                 .addGap(69, 69, 69)
                 .addComponent(placeBackBtn)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(placeToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(52, 52, 52)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(labelName)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
-                            .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(122, 122, 122)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(listPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(placeSelectBtn))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(52, 52, 52)))
+                    .addComponent(labelName)
+                    .addContainerGap(478, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(235, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(placeToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(56, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(37, 37, 37)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(placeClearBtn)
                     .addComponent(placeBackBtn)
@@ -155,33 +229,208 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 .addGap(25, 25, 25))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(95, 95, 95)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelName)
-                        .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(10, 10, 10)
-                    .addComponent(listPlaces, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(placeSelectBtn)
-                    .addContainerGap(408, Short.MAX_VALUE)))
+                    .addGap(98, 98, 98)
+                    .addComponent(labelName)
+                    .addContainerGap(494, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void placeToEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeToEditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeToEditActionPerformed
 
+    private void placeToEditKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_placeToEditKeyReleased
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToEdit.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList); 
+    }//GEN-LAST:event_placeToEditKeyReleased
+
+    private void placeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeNameActionPerformed
+
+    private void placeEach2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeEach2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeEach2ActionPerformed
+
+    private void placeEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeEditBtnMouseClicked
+        if(listPlacesList.getSelectedIndex() != -1){
+            if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.gardens")){
+                if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getArea())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setArea(placeEach.getText());
+                }
+                if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
+                }
+                if(!placeCoords.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCoords(placeCoords.getText());
+                }
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.sportsfield")){
+                if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getSport())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setSport(placeEach.getText());
+                }
+                if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
+                }
+                if(!placeCoords.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCoords(placeCoords.getText());
+                }
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.exhibitions")){
+                if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getArtisticForm())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setArtisticForm(placeEach.getText());
+                }
+                if(!placeEach2.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getPrice())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setPrice(placeEach2.getText());
+                }
+                if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
+                }
+                if(!placeCoords.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCoords(placeCoords.getText());
+                }
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")){
+                if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getMinimumInput())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setMinimumInput(placeEach.getText());
+                }
+                if(!placeEach2.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCapacity())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCapacity(placeEach2.getText());
+                }
+                if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
+                }
+                if(!placeCoords.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords())) {
+                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCoords(placeCoords.getText());
+                }
+            }
+            System.out.println(Database.listPlaces.get(listPlacesList.getSelectedIndex()));
+        }
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToEdit.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList);
+        
+        Object[] options = {
+                    "OK",
+                    "CREATE ANOTHER"
+                };
+                Object optionSelected = JOptionPane.showOptionDialog(null, "place edited, Click OK to come back to menu or edit another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (optionSelected.toString()) {
+                    case "0":
+                        Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
+                        break;
+                    case "1":
+                        placeEach.setText("");
+                        placeCoords.setText("");
+                        placeName.setText("");
+                        placeEach2.setText("");
+                        placeToEdit.setText("");
+                        break;
+                }    
+    }//GEN-LAST:event_placeEditBtnMouseClicked
+
+    private void listPlacesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listPlacesListMouseClicked
+        if(listPlacesList.getSelectedIndex() != -1){
+            placeName.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName());
+            if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.gardens")){
+                placeCoords.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords());
+                additional1.setText("Garden Area: ");
+                placeEach.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getArea());
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.sportsfield")){
+                placeCoords.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords());
+                additional1.setText("Sports Type: ");
+                placeEach.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getSport());
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.exhibitions")){
+                placeCoords.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords());
+                additional1.setText("Art type:");
+                placeEach.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getArtisticForm());
+                additional2.setText("Price:");
+                placeEach2.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getPrice());
+            }
+            else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")){
+                placeCoords.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCoords());
+                additional1.setText("Minimum input:");
+                placeEach.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getMinimumInput());
+                additional2.setText("Capacity:");
+                placeEach2.setText(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCapacity());
+            }
+        }
+    }//GEN-LAST:event_listPlacesListMouseClicked
+
+    private void placeCoordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeCoordsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeCoordsActionPerformed
+
+    private void placeClearBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeClearBtnMouseClicked
+        placeEach.setText("");
+        placeCoords.setText("");
+        placeName.setText("");
+        placeEach2.setText("");
+        placeToEdit.setText("");
+        listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = getListNamePlaces(placeToEdit.getText());
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(listPlacesList);
+    }//GEN-LAST:event_placeClearBtnMouseClicked
+
+    private void placeBackBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeBackBtnMouseClicked
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();
+    }//GEN-LAST:event_placeBackBtnMouseClicked
+
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
+   
+    private String[] getListNamePlaces(String search) {
+        ArrayList < String > list;
+        list = new ArrayList <> ();
+        for (Places p: Database.listPlaces) {
+            if(search.length() != 0){
+                if(search.length() <= p.getName().length() && stringSlice(0, search.length()-1, p.getName()).equals(search)) {
+                    list.add(p.getName());
+                }
+            }
+            else {
+                list.add(p.getName());
+            }
+        }
+        String[] temp = new String[list.size()];
+        temp = list.toArray(temp);
+        return temp;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel additional1;
+    private javax.swing.JLabel additional2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelCoords;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPlace;
-    private javax.swing.JLabel labelPlaceType;
-    private javax.swing.JComboBox<String> listPlaces;
-    private javax.swing.JTextField personToEdit;
+    private javax.swing.JList<String> listPlacesList;
     private javax.swing.JButton placeBackBtn;
     private javax.swing.JButton placeClearBtn;
+    private javax.swing.JTextField placeCoords;
     private javax.swing.JTextField placeEach;
+    private javax.swing.JTextField placeEach2;
     private javax.swing.JButton placeEditBtn;
     private javax.swing.JTextField placeName;
-    private javax.swing.JButton placeSelectBtn;
-    private javax.swing.JComboBox<String> placeType;
+    private javax.swing.JTextField placeToEdit;
     // End of variables declaration//GEN-END:variables
 }

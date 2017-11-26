@@ -84,7 +84,7 @@ public class Pubs extends Places {
     public String printGuestList() {
         String s = "";
         for (Person i : guestList) {
-            if(i.getClass().toString().equals("class com.company.Student")) {
+            if(i.getClass().toString().equals("class oopprojectnet.Student")) {
                 Student j = (Student) i;
                 s = s + "-> " + i.getName() + ", " + i.getProfile() + ", " + j.getStudentCourse() + "\n";
             }
@@ -94,19 +94,28 @@ public class Pubs extends Places {
         }
         return s;
     }
-
+    
+    @Override
+    public String getCoords() {
+        return coords;
+    }
+    @Override
+    public String getName() {
+        return name;
+    }
+    @Override
     public String getCapacity() {
         return capacity;
     }
-
+    @Override
     public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
-
+    @Override
     public String getMinimumInput() {
         return minimumInput;
     }
-
+    @Override
     public void setMinimumInput(String minimumInput) {
         this.minimumInput = minimumInput;
     }

@@ -319,7 +319,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
         
         Object[] options = {
                     "OK",
-                    "CREATE ANOTHER"
+                    "EDIT ANOTHER"
                 };
                 Object optionSelected = JOptionPane.showOptionDialog(null, "place edited, Click OK to come back to menu or edit another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 switch (optionSelected.toString()) {

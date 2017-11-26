@@ -265,8 +265,8 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                     Database.listPlaces.add(newPlace);
                     System.out.println(Database.listPlaces.get(0));
                 }
-                Object[] options = { "OK", "CANCEL" };
-                Object optionSelected = JOptionPane.showOptionDialog(null, type + " created, Click OK to go back to program's menu and CANCEL to create another", "success",
+                Object[] options = { "OK", "CREATE ANOTHER" };
+                Object optionSelected = JOptionPane.showOptionDialog(null, type + " created, Click OK to go back to program's menu or create another", "success",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
                         null, options, options[0]);
 

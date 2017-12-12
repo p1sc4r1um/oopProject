@@ -5,6 +5,7 @@ import java.util.*;
 public class Event {
     private ArrayList<PersonPlaces> invitedList;
     private ArrayList<Places> placesList;
+    private String name;
 
 
     /**
@@ -12,7 +13,8 @@ public class Event {
      * @param invitedList
      * @param placesList
      */
-    public Event(ArrayList<PersonPlaces> invitedList, ArrayList<Places> placesList) {
+    public Event(String name, ArrayList<PersonPlaces> invitedList, ArrayList<Places> placesList) {
+        this.name = name;
         this.invitedList = invitedList;
         this.placesList = placesList;
 

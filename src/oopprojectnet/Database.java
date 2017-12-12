@@ -58,7 +58,7 @@ public class Database {
         String[] parts;
         while ((strLine = br.readLine()) != null) {
             parts = strLine.split(":");
-            if (type.equals("People")) {
+            if (type.toLowerCase().equals("People")) {
                 //Jose:Campos:Student:Profile:Password:StudentCourse
                 //Luis:Cordeiro:Teacher:Profile:Password:TeacherType
                 switch (parts[2].toLowerCase()) {
@@ -76,7 +76,7 @@ public class Database {
                         break;
                 }
             }
-            else if (type.equals("Places")) {
+            else if (type.toLowerCase().equals("Places")) {
                 //Jose:Campos:Student:Profile:Password:StudentCourse
                 //Luis:Cordeiro:Teacher:Profile:Password:TeacherType
                 switch (parts[2].toLowerCase()) {
@@ -101,7 +101,7 @@ public class Database {
                         break;*/
                 }
             }
-            else if (type.equals("Events")) {
+            else if (type.toLowerCase().equals("Events")) {
 
             }
         }

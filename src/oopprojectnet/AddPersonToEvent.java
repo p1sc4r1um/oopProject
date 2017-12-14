@@ -346,6 +346,8 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         jScrollPane3.setViewportView(availablePlaces);
     }//GEN-LAST:event_eventListMouseClicked
 
+    
+    
     private String stringSlice(int a, int b, String s) {
         String res= "";
         for (int i=a; i<=b; i++) {

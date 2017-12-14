@@ -189,7 +189,13 @@ public class InfoEventPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private String stringSlice(int a, int b, String s) {
+        String res= "";
+        for (int i=a; i<=b; i++) {
+            res = res + s.charAt(i);
+        }
+        return res;
+    }
     private String[] getListNameEvents(String search) {
         ArrayList < String > list;
         list = new ArrayList <> ();
@@ -207,7 +213,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         temp = list.toArray(temp);
         return temp;
     }
-    private String[] getPeopleFromEvent(String event) {
+    /*private String[] getPeopleFromEvent(String event) {
         ArrayList<String> t = new ArrayList<String>();
         for(Event e : Database.listEvents) {
             if(e.getName().equals(event)) {
@@ -217,7 +223,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
             }
         }
 
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel eventNameLabel;

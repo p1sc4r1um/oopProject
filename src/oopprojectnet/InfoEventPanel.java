@@ -36,7 +36,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         infoEventBackBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        eventList = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -64,12 +64,17 @@ public class InfoEventPanel extends javax.swing.JPanel {
 
         infoEventBackBtn.setText("Back");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        eventList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNameEvents("");
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        eventList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eventListMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(eventList);
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -189,6 +194,10 @@ public class InfoEventPanel extends javax.swing.JPanel {
                 .addGap(33, 33, 33))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void eventListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventListMouseClicked
+        profit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculateReceipt() + "");
+    }//GEN-LAST:event_eventListMouseClicked
     private String stringSlice(int a, int b, String s) {
         String res= "";
         for (int i=a; i<=b; i++) {
@@ -226,6 +235,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
     }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList<String> eventList;
     private javax.swing.JLabel eventNameLabel;
     private javax.swing.JButton infoEventBackBtn;
     private javax.swing.JLabel jLabel1;
@@ -233,7 +243,6 @@ public class InfoEventPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
     private javax.swing.JList<String> jList4;

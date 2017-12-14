@@ -7,6 +7,14 @@ public class Event {
     private ArrayList<Places> placesList;
     private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 
     /**
      * Constructor to create the invited list for the event

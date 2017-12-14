@@ -38,7 +38,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
         personBackBtn = new javax.swing.JButton();
         personToDelete = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        peopleList = new javax.swing.JList<>();
 
         labelName.setText("Name:");
 
@@ -75,12 +75,12 @@ public class DeletePersonPanel extends javax.swing.JPanel {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(peopleList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -138,33 +138,33 @@ public class DeletePersonPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_personToDeleteKeyPressed
 
     private void personToDeleteKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToDeleteKeyReleased
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);        // TODO add your handling code here:
+        jScrollPane1.setViewportView(peopleList);        // TODO add your handling code here:
     }//GEN-LAST:event_personToDeleteKeyReleased
 
     private void personClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personClearBtnActionPerformed
         personToDelete.setText("");
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(peopleList);
     }//GEN-LAST:event_personClearBtnActionPerformed
 
     private void personDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personDeleteBtnActionPerformed
-        if(jList1.getSelectedIndex() >=0){
-            Database.listPeople.remove(jList1.getSelectedIndex());
-            jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        if(peopleList.getSelectedIndex() >=0){
+            Database.listPeople.remove(Database.getPersonFromName(peopleList.getSelectedValue()));
+            peopleList.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = getListNamePeople(personToDelete.getText());
                 public int getSize() { return strings.length; }
                 public String getElementAt(int i) { return strings[i]; }
             });
-            jScrollPane1.setViewportView(jList1);
+            jScrollPane1.setViewportView(peopleList);
         }
     }//GEN-LAST:event_personDeleteBtnActionPerformed
 
@@ -200,9 +200,9 @@ public class DeletePersonPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelName;
+    private javax.swing.JList<String> peopleList;
     private javax.swing.JButton personBackBtn;
     private javax.swing.JButton personClearBtn;
     private javax.swing.JButton personDeleteBtn;

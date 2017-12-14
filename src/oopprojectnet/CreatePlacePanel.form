@@ -159,6 +159,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Clear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeClearBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="placeBackBtn">
       <Properties>
@@ -183,6 +186,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="additionalText2">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="additionalText2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="coordsLabel">
       <Properties>

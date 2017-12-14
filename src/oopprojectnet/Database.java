@@ -41,6 +41,14 @@ public class Database {
      * @return 1 in success, 0 otherwise
      * @throws IOException
      */
+    public static Person getPersonFromName(String name) {
+        for(Person current:Database.listPeople) {
+            if(name.equals(current.getName())) {
+                return current;
+            }
+        }
+        return null;
+    }
 
 
     public int readTxt(String type) throws IOException {

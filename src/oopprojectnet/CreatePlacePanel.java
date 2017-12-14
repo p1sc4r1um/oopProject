@@ -84,6 +84,11 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         });
 
         placeClearBtn.setText("Clear");
+        placeClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeClearBtnActionPerformed(evt);
+            }
+        });
 
         placeBackBtn.setText("Back");
         placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,6 +102,12 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         additionalText1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 additionalText1ActionPerformed(evt);
+            }
+        });
+
+        additionalText2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                additionalText2ActionPerformed(evt);
             }
         });
 
@@ -222,7 +233,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_placeTypeActionPerformed
 
     private void placeTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeTypeMouseClicked
-
+        
     }//GEN-LAST:event_placeTypeMouseClicked
 
     private void additionalText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additionalText1ActionPerformed
@@ -302,6 +313,14 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         Component comp = SwingUtilities.getRoot(this);
         ((Window) comp).dispose();
     }//GEN-LAST:event_placeBackBtnMouseClicked
+
+    private void placeClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeClearBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeClearBtnActionPerformed
+
+    private void additionalText2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_additionalText2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_additionalText2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

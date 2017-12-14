@@ -5,6 +5,9 @@
  */
 package oopprojectnet;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author zmcdo
@@ -86,8 +89,15 @@ public class EventsMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addPersonToEventBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPersonToEventBtnActionPerformed
-        setContentPane(new AddPersonToEvent());
-        revalidate();
+        if(Database.listEvents.size() > 0 && Database.listPeople.size() > 0) {
+            setContentPane(new AddPersonToEvent());
+            revalidate();
+        }
+        else {
+            String message = "program has no events or people, create";
+            JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_addPersonToEventBtnActionPerformed
 
     private void createEventBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventBtnActionPerformed

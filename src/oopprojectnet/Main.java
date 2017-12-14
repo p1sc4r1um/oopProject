@@ -18,11 +18,11 @@ public class Main {
      */
     public static void main(String[] args) {
         Pubs novo = new Pubs("ola","ola","ola","paa",new ArrayList<Person>());
-        Pubs adeus = new Pubs("adeus","adeus","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus2 = new Pubs("adeus","adeus","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus3 = new Pubs("adeus","adeus","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus4 = new Pubs("adeus","adeus","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus5 = new Pubs("adeus","adeus","adeus","aaaapaa",new ArrayList<Person>());
+        Pubs adeus = new Pubs("adeus","re","adeus","aaaapaa",new ArrayList<Person>());
+        Pubs adeus2 = new Pubs("adeus","bar","adeus","aaaapaa",new ArrayList<Person>());
+        Pubs adeus3 = new Pubs("adeus","bado","adeus","aaaapaa",new ArrayList<Person>());
+        Pubs adeus4 = new Pubs("adeus","tass","adeus","aaaapaa",new ArrayList<Person>());
+        Pubs adeus5 = new Pubs("adeus","bem","adeus","aaaapaa",new ArrayList<Person>());
         new Database();
         Database.listPlaces.add(novo);
         Database.listPlaces.add(adeus);

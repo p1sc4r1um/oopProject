@@ -8,6 +8,8 @@ package oopprojectnet;
 import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.WindowEvent;
+import java.util.Iterator;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -170,7 +172,8 @@ public class CreatePersonPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_personClearBtnActionPerformed
 
     private void personBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personBackBtnActionPerformed
-            /////////////////
+        Component comp = SwingUtilities.getRoot(this);
+        ((Window) comp).dispose();    
     }//GEN-LAST:event_personBackBtnActionPerformed
 
     private void personEachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personEachActionPerformed
@@ -197,6 +200,15 @@ public class CreatePersonPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_personProfileActionPerformed
 
+    
+    private boolean checkPersonName(String name) {
+        for (Person current : Database.listPeople) {
+            if (current.getName().toLowerCase().equals(name.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void personCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personCreateBtnActionPerformed
          try {
             if("".equals(personName.getText()) || "".equals(new String(personPassword.getPassword()))) {
@@ -205,42 +217,50 @@ public class CreatePersonPanel extends javax.swing.JPanel {
             }
             else {
                 String name = personName.getText();
-                String profile = (String) personProfile.getSelectedItem();
-                String pass = new String(personPassword.getPassword());
-                String type = (String) personType.getSelectedItem();
-                String each = (String) personEach.getSelectedItem();
-                //System.out.println(name+profile+pass+type+each);
-                Person newPerson;
-                switch (each.toLowerCase()) {
-                        case "teacher":
-                            newPerson = new Teacher(name, profile, pass, type);
-                            System.out.println(newPerson);
-                            Database.listPeople.add(newPerson);
+                if(!checkPersonName(name)) {
+                    String profile = (String) personProfile.getSelectedItem();
+                    String pass = new String(personPassword.getPassword());
+                    String type = (String) personType.getSelectedItem();
+                    String each = (String) personEach.getSelectedItem();
+                    //System.out.println(name+profile+pass+type+each);
+                    Person newPerson;
+                    switch (each.toLowerCase()) {
+                            case "teacher":
+                                newPerson = new Teacher(name, profile, pass, type);
+                                System.out.println(newPerson);
+                                Database.listPeople.add(newPerson);
+                                break;
+                            case "student":
+                                newPerson = new Student(name, profile, pass, type);
+                                Database.listPeople.add(newPerson);
+                                break;
+                            case "staff":
+                                newPerson = new Staff(name, profile, pass, type);
+                                Database.listPeople.add(newPerson);
+                                break;
+                    }
+                    Object[] options = {
+                        "BACK TO MENU",
+                        "NEW PERSON"
+                    };
+                    Object optionSelected = JOptionPane.showOptionDialog(null, each + " created, Click 'BACK TO MENU' to close panel and 'NEW PERSON' to create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    switch (optionSelected.toString()) {
+                        case "0":
+                            Component comp = SwingUtilities.getRoot(this);
+                            ((Window) comp).dispose();
                             break;
-                        case "student":
-                            newPerson = new Student(name, profile, pass, type);
-                            Database.listPeople.add(newPerson);
+                        case "1":
+                            personName.setText(null);
+                            personPassword.setText(null);
                             break;
-                        case "staff":
-                            newPerson = new Staff(name, profile, pass, type);
-                            Database.listPeople.add(newPerson);
-                            break;
+                    }    
                 }
-                Object[] options = {
-                    "OK",
-                    "CANCEL"
-                };
-                Object optionSelected = JOptionPane.showOptionDialog(null, each + " created, Click OK to add person to event and cancel to create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                switch (optionSelected.toString()) {
-                    case "0":
-                        Component comp = SwingUtilities.getRoot(this);
-                        ((Window) comp).dispose();
-                        break;
-                    case "1":
-                        personName.setText(null);
-                        personPassword.setText(null);
-                        break;
-                }    
+                else {
+                    String message = "name already exists, please change name";
+                    JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
+                    JOptionPane.WARNING_MESSAGE);
+                    personName.setText("");
+                }
             }
          }
          catch(NumberFormatException e) {

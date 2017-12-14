@@ -8,6 +8,7 @@ package oopprojectnet;
 import java.awt.Component;
 import java.awt.Window;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -47,7 +48,7 @@ public class CreateEventPanel extends javax.swing.JPanel {
         chosenPlacesList = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AddButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -58,13 +59,17 @@ public class CreateEventPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jList1);
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelPlace.setText("Name:");
+        add(labelPlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 39, -1, -1));
 
         eventName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eventNameActionPerformed(evt);
             }
         });
+        add(eventName, new org.netbeans.lib.awtextra.AbsoluteConstraints(197, 36, 138, -1));
 
         eventCreateBtn.setText("Create");
         eventCreateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +77,7 @@ public class CreateEventPanel extends javax.swing.JPanel {
                 eventCreateBtnActionPerformed(evt);
             }
         });
+        add(eventCreateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 335, -1, -1));
 
         eventClearBtn.setText("Clear");
         eventClearBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +85,7 @@ public class CreateEventPanel extends javax.swing.JPanel {
                 eventClearBtnActionPerformed(evt);
             }
         });
+        add(eventClearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 335, -1, -1));
 
         eventBackBtn.setText("Back");
         eventBackBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +93,8 @@ public class CreateEventPanel extends javax.swing.JPanel {
                 eventBackBtnActionPerformed(evt);
             }
         });
+        add(eventBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(386, 335, -1, -1));
+        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 16, -1, -1));
 
         availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getAvailablePlaces();
@@ -94,6 +103,8 @@ public class CreateEventPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(availablePlaces);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 166, 180, -1));
+
         chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getChosenPlaces();
             public int getSize() { return strings.length; }
@@ -101,16 +112,21 @@ public class CreateEventPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(chosenPlacesList);
 
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 166, 185, -1));
+
         jLabel1.setText("Available Places:");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 128, -1, -1));
 
         jLabel2.setText("Choosen Places:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(383, 128, -1, -1));
 
-        jButton1.setText("Add >>");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddButton.setText("Add >>");
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddButtonActionPerformed(evt);
             }
         });
+        add(AddButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 176, 119, -1));
 
         jButton2.setText("<< Remove");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -118,93 +134,15 @@ public class CreateEventPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 254, -1, -1));
 
         jButton3.setText("Add All");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addComponent(eventCreateBtn)
-                        .addGap(48, 48, 48)
-                        .addComponent(eventClearBtn)
-                        .addGap(67, 67, 67)
-                        .addComponent(eventBackBtn))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(37, 37, 37)
-                                    .addComponent(jLabel1)))
-                            .addGap(27, 27, 27)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(15, 15, 15)
-                                    .addComponent(jLabel2))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(labelPlace)
-                    .addGap(119, 119, 119)
-                    .addComponent(eventName, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(233, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
-                        .addGap(11, 11, 11)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(52, 52, 52))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eventCreateBtn)
-                    .addComponent(eventClearBtn)
-                    .addComponent(eventBackBtn))
-                .addGap(36, 36, 36))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(36, 36, 36)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(labelPlace)
-                        .addComponent(eventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(338, Short.MAX_VALUE)))
-        );
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 216, 119, -1));
     }// </editor-fold>//GEN-END:initComponents
     ArrayList<Places> chosenPlaces = new ArrayList<>();
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
         if(availablePlaces.getSelectedIndex() != -1) {
+            
             chosenPlaces.add(Database.listPlaces.get(getIndexOfName(availablePlaces.getSelectedValue())));
             
         chosenPlacesList = new javax.swing.JList<>();
@@ -228,7 +166,7 @@ public class CreateEventPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(availablePlaces);
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AddButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 if(chosenPlacesList.getSelectedIndex() != -1) {
@@ -256,24 +194,61 @@ public class CreateEventPanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    private boolean checkEventName(String name) {
+        for (Event current : Database.listEvents) {
+            if (current.getName().toLowerCase().equals(name.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void eventCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventCreateBtnActionPerformed
-        Event newEvent = new Event(eventName.getText(), new ArrayList<PersonPlaces>(), chosenPlaces);
-        Database.listEvents.add(newEvent);
-        
-        Object[] options = {
-            "OK",
-            "CREATE ANOTHER"
-        };
-        Object optionSelected = JOptionPane.showOptionDialog(null, "event created, Click OK to come back to menu or create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        switch (optionSelected.toString()) {
-            case "0":
-                Component comp = SwingUtilities.getRoot(this);
-                ((Window) comp).dispose();
-                break;
-            case "1":
-                break;
-        }  
+        String name = eventName.getText();
+        if(!checkEventName(name)) {
+            Event newEvent = new Event(eventName.getText(), new ArrayList<PersonPlaces>(), chosenPlaces);
+            Database.listEvents.add(newEvent);
+
+            Object[] options = {
+                "OK",
+                "CREATE ANOTHER"
+            };
+            Object optionSelected = JOptionPane.showOptionDialog(null, "event created, Click OK to come back to menu or create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            switch (optionSelected.toString()) {
+                case "0":
+                    Component comp = SwingUtilities.getRoot(this);
+                    ((Window) comp).dispose();
+                    break;
+                case "1":
+                    eventName.setText("");
+                    chosenPlaces = new ArrayList<Places>();
+                    chosenPlacesList = new javax.swing.JList<>();
+
+                    chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getChosenPlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+
+                    jScrollPane3.setViewportView(chosenPlacesList);
+
+                    availablePlaces = new javax.swing.JList<>();
+
+                    availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getAvailablePlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+
+                    jScrollPane2.setViewportView(availablePlaces);
+                    break;
+            }  
+       }
+       else {
+            String message = "name already exists, please change name";
+            JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
+            JOptionPane.WARNING_MESSAGE);
+            eventName.setText("");
+        }
     }//GEN-LAST:event_eventCreateBtnActionPerformed
 
     private void eventClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventClearBtnActionPerformed
@@ -335,17 +310,18 @@ public class CreateEventPanel extends javax.swing.JPanel {
         }
         String[] temp = new String[places.size()];
         temp = places.toArray(temp);
+        System.out.println(places);
         return temp;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddButton;
     private javax.swing.JList<String> availablePlaces;
     private javax.swing.JList<String> chosenPlacesList;
     private javax.swing.JButton eventBackBtn;
     private javax.swing.JButton eventClearBtn;
     private javax.swing.JButton eventCreateBtn;
     private javax.swing.JTextField eventName;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

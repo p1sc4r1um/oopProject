@@ -184,7 +184,7 @@ public class EditPersonPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelName)
                             .addComponent(personToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
+                        .addGap(68, 68, 68)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
@@ -252,45 +252,49 @@ public class EditPersonPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_personBackBtnActionPerformed
 
     private void personClearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personClearBtnActionPerformed
-        personName.setText(Database.listPeople.get(peopleList.getSelectedIndex()).name);
-        if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
-            labelPersonType.setText("Course");
-            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
-            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getStudentCourse());
-            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
-        }
-        else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
-            labelPersonType.setText("Type");
-            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
-            personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getTeacherType());
-            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
-        }
-        else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
-            labelPersonType.setText("Type");
-            personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
-            personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getEmployment());
-            personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
-        }
+        if(peopleList.getSelectedIndex() != -1) {
+            Person current = Database.getPersonFromName(peopleList.getSelectedValue());
+            personName.setText(current.name);
+            if(current.getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+                labelPersonType.setText("Course");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
+                personType.setSelectedItem(((Student)current).getStudentCourse());
+                personType.setSelectedItem(((Student)current).getProfile());
+            }
+            else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+                labelPersonType.setText("Type");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
+                personType.setSelectedItem(((Teacher)current).getTeacherType());
+                personType.setSelectedItem(((Student)current).getProfile());
+            }
+            else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
+                labelPersonType.setText("Type");
+                personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
+                personType.setSelectedItem(((Staff)current).getEmployment());
+                personType.setSelectedItem(((Student)current).getProfile());
+            }
+        }  
     }//GEN-LAST:event_personClearBtnActionPerformed
+
 
     private void personEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personEditBtnActionPerformed
         if(peopleList.getSelectedIndex() != -1) {
+            Person current = Database.getPersonFromName(peopleList.getSelectedValue());
             if(personName.getText().length() > 0) {
-
-                Database.listPeople.get(peopleList.getSelectedIndex()).setName(personName.getText());
+                current.setName(personName.getText());
             }
             if(personPassword.getPassword().length != 0) {
-                Database.listPeople.get(peopleList.getSelectedIndex()).setPassword(new String(personPassword.getPassword()));
+                current.setPassword(new String(personPassword.getPassword()));
             }
-            Database.listPeople.get(peopleList.getSelectedIndex()).setProfile((String)personProfile.getSelectedItem());
-            if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
-                ((Student)Database.listPeople.get(peopleList.getSelectedIndex())).setStudentCourse((String)personType.getSelectedItem());
+            current.setProfile((String)personProfile.getSelectedItem());
+            if(current.getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+                ((Student)current).setStudentCourse((String)personType.getSelectedItem());
             }
-            else if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
-                ((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).setTeacherType((String)personType.getSelectedItem());
+            else if(current.getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+                ((Teacher)current).setTeacherType((String)personType.getSelectedItem());
             }
             else {
-                ((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).setEmployment((String)personType.getSelectedItem());
+                ((Staff)current).setEmployment((String)personType.getSelectedItem());
             }
         }
         peopleList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -306,16 +310,19 @@ public class EditPersonPanel extends javax.swing.JPanel {
         
         
         Object[] options = {
-                    "OK",
+                    "BACK TO MAIN MENU",
                     "Continue Editing"
                 };
-                Object optionSelected = JOptionPane.showOptionDialog(null,"Person edited, Click 'OK' to quit to Main Menu and 'Continune Editing' to edit People", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                Object optionSelected = JOptionPane.showOptionDialog(null,"Person edited, Click 'BACK TO MAIN MENU' to quit to Main Menu and 'Continune Editing' to edit People", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                 switch (optionSelected.toString()) {
                     case "0":
                         Component comp = SwingUtilities.getRoot(this);
                         ((Window) comp).dispose();
                         break;
                     case "1":
+                        personName.setText("");
+                        personToEdit.setText("");
+                        personPassword.setText("");
                         break;
                 }  
     }//GEN-LAST:event_personEditBtnActionPerformed
@@ -330,24 +337,25 @@ public class EditPersonPanel extends javax.swing.JPanel {
 
     private void peopleListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleListMouseClicked
         if(peopleList.getSelectedIndex() != -1) {
-            personName.setText(Database.listPeople.get(peopleList.getSelectedIndex()).name);
-            if(Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+            Person current = Database.getPersonFromName(peopleList.getSelectedValue());
+            personName.setText(current.getName());
+            if(current.getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
                 labelPersonType.setText("Course");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
-                personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getStudentCourse());
-                personType.setSelectedItem(((Student)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+                personType.setSelectedItem(((Student)current).getStudentCourse());
+                personType.setSelectedItem(((Student)current).getProfile());
             }
-            else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+            else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
                 labelPersonType.setText("Type");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
-                personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getTeacherType());
-                personType.setSelectedItem(((Teacher)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+                personType.setSelectedItem(((Teacher)current).getTeacherType());
+                personType.setSelectedItem(((Teacher)current).getProfile());
             }
-            else if (Database.listPeople.get(peopleList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
+            else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
                 labelPersonType.setText("Type");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
-                personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getEmployment());
-                personType.setSelectedItem(((Staff)Database.listPeople.get(peopleList.getSelectedIndex())).getProfile());
+                personType.setSelectedItem(((Staff)current).getEmployment());
+                personType.setSelectedItem(((Staff)current).getProfile());
             }
         }
     }//GEN-LAST:event_peopleListMouseClicked

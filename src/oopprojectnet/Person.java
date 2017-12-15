@@ -13,13 +13,18 @@ public class Person implements Serializable {
     /**
      * Class to create a member of DEI, receives the name, profile
      * @param name of the person, for example "Prof Luis Cordeiro"
-     * @param profile of the person, it could be ""
+     * @param profile of the person, it could be "Sporty"
+     * @param password of the person, it could be "12345"
      */
     public Person(String name, String profile, String password) {
         this.name = name;
         this.profile = profile;
         this.password = password;
     }
+    
+    /**
+     * Getters and setters of Person class
+     */
 
     public String getName() {
         return name;

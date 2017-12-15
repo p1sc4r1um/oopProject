@@ -10,19 +10,21 @@ public class Exhibitions extends Places {
     }
 
     /**
-     * Class to create an exhibition which is a place that receives 4 Strings as parameters
-     *
+     * Class to create an exhibition which is a place that receives 4 Strings as arguments
      * @param coords GPS coordinates of the specific exhibition, for example "40.208995, -8.425555"
      * @param name Exhibition name, for example "Museu Machado de Castro"
      * @param artisticForm Artistic type of that exhibition, for example "history"
-     * @param price Price to enter the museum, in euros, for example "10 euros"
-     * @return nothing
+     * @param price Price to enter the museum, in euros, for example "10 euros" [must be an integer]
      */
     public Exhibitions(String coords,String name, String artisticForm, String price) {
         super(coords, name);
         this.artisticForm = artisticForm;
         this.price = price;
     }
+    
+    /**
+     * Getters and setters of Exhibitions (places' subclass)
+     */
     @Override
     public String getArtisticForm() {
         return artisticForm;

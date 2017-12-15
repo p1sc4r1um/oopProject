@@ -10,14 +10,17 @@ public class Places {
     /**
      * Superclass of Exhibitions, SportsField, Gardens and Pubs that receives two strings as parameters
      * @param coords GPS coordinates of the specific exhibition, for example "40.208995, -8.425555"
-     * @param name Name of place
+     * @param name Name of place, for example "Museu Machado de Castro"
      */
     public Places(String coords, String name) {
         this.coords = coords;
         this.name = name;
     }
 
-
+    /**
+     * Getters and setters of Places 
+     * @return 
+     */
     public String getCoords() {
         return coords;
     }

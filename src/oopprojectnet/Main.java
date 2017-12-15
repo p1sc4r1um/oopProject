@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+TODO: files, back button, places print ordenated mtuuer, gui places
+*/
 package oopprojectnet;
 
 import java.util.ArrayList;
@@ -17,19 +20,20 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pubs novo = new Pubs("ola","ola","ola","paa",new ArrayList<Person>());
-        Pubs adeus = new Pubs("adeus","re","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus2 = new Pubs("adeus","bar","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus3 = new Pubs("adeus","bado","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus4 = new Pubs("adeus","tass","adeus","aaaapaa",new ArrayList<Person>());
-        Pubs adeus5 = new Pubs("adeus","bem","adeus","aaaapaa",new ArrayList<Person>());
-        Student ola1 = new Student("ola1", "ola2", "sporty", "ola3");
-        Teacher ola2 = new Teacher("ola1", "ola2", "sporty", "ola3");
-        Staff ola3 = new Staff("ola1", "ola2", "sporty", "ola3");
-        Student ola4 = new Student("ola1", "ola2", "sporty", "ola3");
-        Student ola5 = new Student("ola1", "ola2", "sporty", "ola3");
-        Student ola6 = new Student("ola1", "ola2", "sporty", "ola3");
-        new Database();
+        Pubs novo = new Pubs("ola","ola","30","5",new ArrayList<>(), new ArrayList<>());
+        Pubs adeus = new Pubs("adeus","re","30","10",new ArrayList<>(), new ArrayList<>());
+        Pubs adeus2 = new Pubs("adeus","NB","30","1",new ArrayList<>(), new ArrayList<>());
+        Pubs adeus3 = new Pubs("adeus","moelas","5","1",new ArrayList<>(), new ArrayList<>());
+        Pubs adeus4 = new Pubs("adeus","insonias","30","3",new ArrayList<>(), new ArrayList<>());
+        Pubs adeus5 = new Pubs("adeus","mandarim","30","0",new ArrayList<>(), new ArrayList<>());
+        Student ola1 = new Student("ze", "Sporty", "sporty", "LEI");
+        Teacher ola2 = new Teacher("Cordeiro", "Cultured", "sporty", "Assitant");
+        Student ola3 = new Student("madalena", "bohemian", "sporty", "LEI");
+        Student ola4 = new Student("ferreiro", "ola2", "sporty", "ola3");
+        Student ola5 = new Student("cesario", "ola2", "sporty", "ola3");
+        Student ola6 = new Student("jonas", "ola2", "sporty", "ola3");
+
+        Database database = new Database();
         Database.listPeople.add(ola1);
         Database.listPeople.add(ola2);
         Database.listPeople.add(ola3);

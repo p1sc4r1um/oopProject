@@ -18,6 +18,10 @@ public class SportsField extends Parks {
         this.sport = sport;
     }
     
+    /**
+     * Getters and setters for SportsField class (places' subclass)
+     * @return 
+     */
     
     @Override
     public String getSport() {

@@ -15,6 +15,10 @@ public class Gardens extends Parks {
         super(coords,name);
         this.area = area;
     }
+    
+    /**
+     * Getters and setters of Garden (parks' subclass)
+     */
     @Override
     public String getArea() {
         return area;

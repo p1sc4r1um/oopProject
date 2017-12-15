@@ -7,20 +7,17 @@ public class Event {
     private ArrayList<Places> placesList;
     private String name;
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
 
     /**
-     * Constructor to create the invited list for the event
-     * @param invitedList
-     * @param placesList
+     * Constructor to create the invited list for the event, receives one string and two arraylist as arguments
+     * @param name the name of event, could be "Festa da Cidade"
+     * @param invitedList the people signed up for the event, arraylist 
+     * @param placesList the places that event will have
      */
+    
+    
     public Event(String name, ArrayList<PersonPlaces> invitedList, ArrayList<Places> placesList) {
         this.name = name;
         this.invitedList = invitedList;
@@ -29,32 +26,23 @@ public class Event {
     }
 
     /**
-     public Event(ArrayList<Places> placesList) {
-     invitedList = new ArrayList<Person>();
-     this.placesList = new places
-     }**/
- 
-   /* public Event()
-    {
-        invitedList = new ArrayList<PersonPlaces>();
-        placesList = new ArrayList<Places>();
- 
-    }*/
-
-
-    /**
      * Method to add person to the event
      * @param newP the person to add
      * @param wantedPlaces the places the person chose
      * @param password password to register in the event
-     * @return the person in success and null otherwise
+     * @return the person in success, null otherwise
      */
-
+    
     public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces) {
         PersonPlaces newPerson = new PersonPlaces(newP,wantedPlaces);
         for (PersonPlaces currentPerson : invitedList) {
             if (currentPerson.getPerson().equals(newPerson.getPerson())) {
                 return null;
+            }
+        }
+        for(Places currentPlace:wantedPlaces) {
+            if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+                ((Pubs)currentPlace).addPersonGuestList(newP);
             }
         }
         invitedList.add(newPerson);
@@ -68,16 +56,22 @@ public class Event {
      * @param personToRemove person to remove
      * @return return person in success, null otherwise
      */
-    public PersonPlaces removePerson(PersonPlaces personToRemove) {
+    public Person removePerson(Person personToRemove) {
         for (PersonPlaces currentPerson : invitedList) {
             if (currentPerson.getPerson().equals(personToRemove)) {
-                invitedList.remove(personToRemove);
+                invitedList.remove(currentPerson);
                 return personToRemove;
             }
         }
         return null;
     }
 
+    
+    /**
+     * Method to calculate an event receipt, receives no arguments
+     * @return the receipt calculated as integer
+     */
+    
     public int calculateReceipt() {
         int receipt = 0;
         for(PersonPlaces currentPerson: invitedList) {
@@ -100,6 +94,11 @@ public class Event {
         return receipt;
     }
 
+    /**
+     * Method to count how many people signed in one local, receives a string as argument
+     * @param place the name of place you want to count
+     * @return the num of people signed in the local (integer)
+     */
 
     public int countLocal(String place) {
         int num = 0;
@@ -107,7 +106,7 @@ public class Event {
             if(p.getName().equals(place)) {
                 for(PersonPlaces currentPerson : invitedList) {
                     for(Places currentPlace : currentPerson.getListPlaces()) {
-                        if(place.equals(currentPlace)) {
+                        if(place.equals(currentPlace.getName())) {
                             num++;
                         }
                     }
@@ -117,6 +116,11 @@ public class Event {
         return num;
 
     }
+    
+    /**
+     * Method to sort places by number of people signed, receives no arguments
+     * @return the places array correctly sorted
+     */
     public ArrayList<Places> sortByBooked() {
         ArrayList<Places> sortedPlaces = (ArrayList<Places>)placesList.clone();
         Places temp;
@@ -135,7 +139,7 @@ public class Event {
 
 
     /**
-     * Method to print all places that one person can choose in event
+     * Method to print all places that one person can choose in event with number of people signed
      */
     public void printAvailablePlaces() {
         int j = 1;
@@ -143,6 +147,18 @@ public class Event {
             System.out.println(j + " - " + currentPlace + "[Registed People: "+ countLocal(currentPlace.getName()) +"]");
             j++;
         }
+    }
+    
+    /**
+     * Getters and setters of Event
+     */
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public ArrayList<PersonPlaces> getInvitedList() {

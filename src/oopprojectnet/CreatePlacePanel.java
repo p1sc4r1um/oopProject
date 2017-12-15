@@ -269,7 +269,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                     case "pubs":
                         additional1 = additionalText1.getText();
                         additional2 = additionalText2.getText();
-                        newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<Person>());
+                        newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<>(), new ArrayList<>());
                         break;
                 }
                 if(newPlace != null) {

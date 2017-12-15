@@ -50,7 +50,6 @@ public class CreateEventPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         AddButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -135,9 +134,6 @@ public class CreateEventPanel extends javax.swing.JPanel {
             }
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 254, -1, -1));
-
-        jButton3.setText("Add All");
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 216, 119, -1));
     }// </editor-fold>//GEN-END:initComponents
     ArrayList<Places> chosenPlaces = new ArrayList<>();
     private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
@@ -310,7 +306,6 @@ public class CreateEventPanel extends javax.swing.JPanel {
         }
         String[] temp = new String[places.size()];
         temp = places.toArray(temp);
-        System.out.println(places);
         return temp;
     }
 
@@ -323,7 +318,6 @@ public class CreateEventPanel extends javax.swing.JPanel {
     private javax.swing.JButton eventCreateBtn;
     private javax.swing.JTextField eventName;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;

@@ -150,7 +150,9 @@ public class DeletePersonPanel extends javax.swing.JPanel {
         personToDelete.setText("");
         peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());
+            @Override
             public int getSize() { return strings.length; }
+            @Override
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(peopleList);
@@ -158,10 +160,20 @@ public class DeletePersonPanel extends javax.swing.JPanel {
 
     private void personDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personDeleteBtnActionPerformed
         if(peopleList.getSelectedIndex() >=0){
+            for(Places i:Database.listPlaces) {
+                if(i.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+                    ((Pubs)i).removePerson(Database.getPersonFromName(peopleList.getSelectedValue()));
+                }
+            }
+            for(Event e:Database.listEvents) {
+                e.removePerson(Database.getPersonFromName(peopleList.getSelectedValue()));
+            }
             Database.listPeople.remove(Database.getPersonFromName(peopleList.getSelectedValue()));
             peopleList.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = getListNamePeople(personToDelete.getText());
+                @Override
                 public int getSize() { return strings.length; }
+                @Override
                 public String getElementAt(int i) { return strings[i]; }
             });
             jScrollPane1.setViewportView(peopleList);

@@ -21,7 +21,7 @@ public class Student extends Person {
     }
     
     /**
-     * Getters and setters for Student class
+     * Getters and setters for Student class (person's subclass)
      */
 
     @Override

@@ -328,6 +328,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
+
         Database.listEvents.get(eventList.getSelectedIndex()).addPerson(Database.getPersonFromName(listPeopleList.getSelectedValue()), chosenPlaces);
         Object[] options = {
             "OK",
@@ -340,7 +341,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
                 ((Window) comp).dispose();
                 break;
             case "1":
-                if(chosenPlacesList.getSelectedIndex() != -1) {
+                if(chosenPlacesList.getSelectedIndex() != -1) { 
                     chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
                         String[] strings = getChosenPlaces();
                         public int getSize() { return strings.length; }
@@ -357,6 +358,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
                 }
                 break; 
        }
+
     }//GEN-LAST:event_AddPersonBtnActionPerformed
 
     private void personAddBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personAddBackBtnActionPerformed

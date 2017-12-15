@@ -6,13 +6,19 @@ public class PersonPlaces {
     private ArrayList<Places> listPlaces;
 
     /**
-     * Constructor to add picked places for each person
+     * Constructor to add picked places for each person, receives two parameters
+     * @param person the object person you want to add a places' list
+     * @param listPlaces the array with picked places by person
      */
     public PersonPlaces(Person person, ArrayList<Places> listPlaces) {
         this.person = person;
         this.listPlaces = listPlaces;
     }
-
+    /**
+     * Method to add one place to listPlaces, receives one place as argument
+     * @param placeToAdd the place you want to add
+     * @return return the place in success, null otherwise
+     */
     public Places addPlaces(Places placeToAdd) {
         for(Places place : listPlaces) {
             if(place.equals(placeToAdd)) {
@@ -25,6 +31,12 @@ public class PersonPlaces {
         }
         return null;
     }
+    
+    /**
+     * Method to remove one place from listPlaces, receives one place as argument
+     * @param placeToRemove the place you want to remove
+     * @return return the place removed in success, null otherwise
+     */
 
     public Places removePlaces(Places placeToRemove) {
         for(Places place : listPlaces) {
@@ -35,6 +47,10 @@ public class PersonPlaces {
         }
         return null;
     }
+    
+    /**
+     * Getters and setters of PersonPlaces class
+     */
 
     public Person getPerson() {
         return person;

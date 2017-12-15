@@ -17,7 +17,7 @@ public class Teacher extends Person {
     }
     
         /**
-     * Getters and setters to Teacher class 
+     * Getters and setters to Teacher class (person's subclass)
      */
     @Override
     public String getName() {

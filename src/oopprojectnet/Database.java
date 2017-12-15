@@ -17,7 +17,11 @@ public class Database {
         listEvents = new ArrayList<Event>();
     }
 
-
+    /**
+     * Method do get the name readed in txt file, receives an array as parameter
+     * @param parts elements of one line separated by commas
+     * @return the name
+     */
     private String getName(String parts[]) {
         String res = "";
         if(parts[2].toLowerCase().equals("sportsfield") || parts[2].toLowerCase().equals("garden")) {
@@ -34,23 +38,13 @@ public class Database {
         return res.substring(0, res.length() - 1);
     }
 
+
     /**
      * Method to read the info receives a parameter with the type of information you want to read
-     *
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
      * @throws IOException
      */
-    public static Person getPersonFromName(String name) {
-        for(Person current:Database.listPeople) {
-            if(name.equals(current.getName())) {
-                return current;
-            }
-        }
-        return null;
-    }
-
-
     public int readTxt(String type) throws IOException {
         String path;
         Student newStudent = null;
@@ -119,7 +113,12 @@ public class Database {
 
 
 
-
+    /**
+     * Method to read object file and insert in database 
+     * @param type the type of the info (events, places, people)
+     * @return 1 in success, 0 otherwise
+     * @throws IOException 
+     */
     public int readObj(String type) throws IOException {
         String path = "/home/jmartinhoj/Documents/lei/poo/project/oopProject/src/com/company/info" + type + ".ser";
         try {
@@ -147,6 +146,12 @@ public class Database {
             return 0;
         }
     }
+    /**
+     * Method to write objects to file
+     * @param type the type of the info (events, places, people)
+     * @return 1 in success, 0 otherwise
+     * @throws IOException 
+     */
     public int writeObj(String type) throws IOException {
         String path = "/home/jmartinhoj/Documents/lei/poo/project/oopProject/src/com/company/info" + type + ".ser";
         try {
@@ -173,7 +178,40 @@ public class Database {
         }
     }
     
-
+    
+    /**
+     * Method to get one person with String name
+     * @param name the name of the person
+     * @return the person in success, null if doesn't exist
+     */
+    public static Person getPersonFromName(String name) {
+        for(Person current:Database.listPeople) {
+            if(name.equals(current.getName())) {
+                return current;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * Method to get one place with String name
+     * @param name name of the place
+     * @return the place in success, null if doesn't exist
+     */
+    
+    public static Places getPlaceFromName(String name) {
+    for(Places current:Database.listPlaces) {
+        if(name.equals(current.getName())) {
+            return current;
+        }
+    }
+    return null;
+    }
+    
+    /**
+     * Getters and setters of Database class
+     * @return 
+     */
     public ArrayList<Person> getListPeople() {
         return listPeople;
     }

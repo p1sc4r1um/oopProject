@@ -18,7 +18,7 @@ public class Staff extends Person {
     }
     
     /**
-     * Getters and setters for Staff class 
+     * Getters and setters for Staff class (person's subclass)
      */
     @Override
     public String getName() {

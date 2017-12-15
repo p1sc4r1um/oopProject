@@ -12,7 +12,7 @@ package oopprojectnet;
 public class PlacesMenu extends javax.swing.JFrame {
 
     /**
-     * Creates new form PlacesMenu
+     * Constructor with Places Menu
      */
     public PlacesMenu() {
         initComponents();

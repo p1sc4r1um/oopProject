@@ -4,37 +4,46 @@ import java.util.*;
 public class Pubs extends Places {
     private String capacity, minimumInput;
     private ArrayList<Person> guestList; //% of capacity
+    private ArrayList<Person> customersList;
 
     public Pubs() {
         this.name = "Moelas";
         this.coords = "40.209188, -8.427604";
         capacity = "99999";
         minimumInput = "1"; // in €
-        guestList = new ArrayList<Person>();
+        guestList = new ArrayList<>();
+        customersList = new ArrayList<>();
+
     }
 
     /**
      * Class to create a pub which is a place that receives 4 strings as parameters
      * @param coords GPS coordinates of the specific exhibition, for example "40.208995, -8.425555"
      * @param name Pub's name, for example "Moelas"
-     * @param capacity Pub's maximum capacity, for example "50 people"
-     * @param minimumInput Price that you have to consume to enter in the pub
+     * @param capacity Pub's maximum capacity, for example "50 people" [must be an integer]
+     * @param minimumInput Price that you have to consume to enter in the pub [must be an integer]
+     * @param guestList
+     * @param customersList
      */
-    public Pubs(String coords,String name, String capacity, String minimumInput, ArrayList<Person> guestList) {
+    public Pubs(String coords,String name, String capacity, String minimumInput, ArrayList<Person> guestList, ArrayList<Person> customersList) {
         super(coords, name);
         this.capacity = capacity;
         this.minimumInput = minimumInput;
         this.guestList = guestList;
+        this.customersList = customersList;
     }
 
     /**
-     * Method to add people to the guest list, in case of the limit is reached or person is actually in guest list the person isn't added to the guest list
+     * Method to add people to the guest list and customersList, in case of the limit is reached or person is actually in guest list the person isn't added to the guest list
      *
      * @param personToAdd the person you want to add to guest list
      * @return the person in success and null otherwise
      */
 
     public Person addPersonGuestList (Person personToAdd) {
+        if(this.customersList.size() < Integer.parseInt(this.capacity)) {
+            customersList.add(personToAdd);
+        }
         int limit = (int) (0.5 * Integer.parseInt(this.capacity));
         for(Person person : guestList) {
             if(person.equals(personToAdd)) {
@@ -53,19 +62,47 @@ public class Pubs extends Places {
     }
 
     /**
-     * Method to remove people from the guest list
-     * @param personToRemove the person you want to remove from guest list
+     * Method to remove one person from the list
+     * @param personToRemove the person you want to remove from list and if he/she is in guest list add another to the guest list
      * @return the person in success, null otherwise
      */
-    public Person removePersonGuestList (Person personToRemove) {
+    public Person removePerson (Person personToRemove) {
+        int check = 0;
         for(Person person : guestList) {
             if(person.equals(personToRemove)) {
                 guestList.remove(personToRemove);
+                for(Person a:customersList) {
+                    if(!guestList.contains(a) && a.profile.toLowerCase().equals("bohemian") && !a.equals(personToRemove)) {
+                        check = 1;
+                        guestList.add(a);
+                        break;
+                    }
+                }
+                if(check == 0) {
+                    for(Person a:customersList) {
+                        if(!guestList.contains(a) && !a.equals(personToRemove)) {
+                            guestList.add(a); 
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        for(Person person : customersList) {
+            if(person.equals(personToRemove)) {
+                customersList.remove(personToRemove);
                 return personToRemove;
             }
         }
         return null;
     }
+    
+    
+    
+    /**
+     * Method to search one person to remove from guest list if neccessary, receives nothing
+     * @return the person's index in success, -1 otherwise
+     */
 
     private int checkPersonToRemove() {
         for(int i = guestList.size()-1; i>=0; i--) {
@@ -95,6 +132,10 @@ public class Pubs extends Places {
         return s;
     }
     
+    /**
+     * Getters and setters for Pubs class (places' subclass)
+     */
+    
     @Override
     public String getCoords() {
         return coords;
@@ -119,6 +160,11 @@ public class Pubs extends Places {
     public void setMinimumInput(String minimumInput) {
         this.minimumInput = minimumInput;
     }
+
+    public ArrayList<Person> getGuestList() {
+        return guestList;
+    }
+    
 
 
     @Override

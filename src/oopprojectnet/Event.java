@@ -101,24 +101,28 @@ public class Event {
     }
 
 
-    public int countLocal(Places place) {
+    public int countLocal(String place) {
         int num = 0;
-        for(PersonPlaces currentPerson : invitedList) {
-
-            for(Places currentPlace : currentPerson.getListPlaces()) {
-                if(place.equals(currentPlace)) {
-                    num++;
+        for(Places p : placesList) {
+            if(p.getName().equals(place)) {
+                for(PersonPlaces currentPerson : invitedList) {
+                    for(Places currentPlace : currentPerson.getListPlaces()) {
+                        if(place.equals(currentPlace)) {
+                            num++;
+                        }
+                    }
                 }
             }
         }
         return num;
+
     }
     public ArrayList<Places> sortByBooked() {
         ArrayList<Places> sortedPlaces = (ArrayList<Places>)placesList.clone();
         Places temp;
         for(int i = 0; i < sortedPlaces.size(); i++) {
             for(int j = 1; j < sortedPlaces.size() - i; j++) {
-                if (countLocal(sortedPlaces.get(j-1)) < countLocal(sortedPlaces.get(j))) {
+                if (countLocal(sortedPlaces.get(j-1).getName()) < countLocal(sortedPlaces.get(j).getName())) {
                     temp = sortedPlaces.get(j - 1);
                     sortedPlaces.set(j - 1, sortedPlaces.get(j));
                     sortedPlaces.set(j, temp);
@@ -136,7 +140,7 @@ public class Event {
     public void printAvailablePlaces() {
         int j = 1;
         for (Places currentPlace : placesList) {
-            System.out.println(j + " - " + currentPlace + "[Registed People: "+ countLocal(currentPlace) +"]");
+            System.out.println(j + " - " + currentPlace + "[Registed People: "+ countLocal(currentPlace.getName()) +"]");
             j++;
         }
     }

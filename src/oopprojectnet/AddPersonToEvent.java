@@ -328,7 +328,35 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
-     Database.listEvents.get(eventList.getSelectedIndex()).addPerson(Database.getPersonFromName(listPeopleList.getSelectedValue()), chosenPlaces);
+        Database.listEvents.get(eventList.getSelectedIndex()).addPerson(Database.getPersonFromName(listPeopleList.getSelectedValue()), chosenPlaces);
+        Object[] options = {
+            "OK",
+            "ADD ANOTHER"
+        };
+        Object optionSelected = JOptionPane.showOptionDialog(null, "person added, Click OK to come back to menu or add another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        switch (optionSelected.toString()) {
+            case "0":
+                Component comp = SwingUtilities.getRoot(this);
+                ((Window) comp).dispose();
+                break;
+            case "1":
+                if(chosenPlacesList.getSelectedIndex() != -1) {
+                    chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getChosenPlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+
+                    jScrollPane4.setViewportView(chosenPlacesList);
+                    availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getAvailablePlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+                    jScrollPane3.setViewportView(availablePlaces);
+                }
+                break; 
+       }
     }//GEN-LAST:event_AddPersonBtnActionPerformed
 
     private void personAddBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personAddBackBtnActionPerformed

@@ -6,16 +6,20 @@ public class Staff extends Person {
     }
 
     /**
-     * Class to create a member of the staff, we receives the name, profile and the type of employment as parameters
-     * @param name of the member of the staff, for example "Dona Joca"
+     * Class to create a member of the staff, we receives the name, profile, password and the type of employment as parameters
+     * @param name of the member of the staff, for example "Dona Antonia"
      * @param profile of the member of staff, it could be ""
+     * @param password of the member of staff, for example "12345"
      * @param employment it could be full-time of partial-time
      */
     public Staff(String name, String profile, String password, String employment) {
         super(name,profile, password);
         this.employment = employment;
     }
-
+    
+    /**
+     * Getters and setters for Staff class 
+     */
     @Override
     public String getName() {
         return name;

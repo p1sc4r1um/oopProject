@@ -5,9 +5,10 @@ public class Student extends Person {
         this.studentCourse = "LEI";
     }
     /**
-     * Class to create a member of the student, we receives the name, profile and the type of employment as parameters
-     * @param name of the student, for example "José Henrique"
-     * @param profile of the student, it could be ""
+     * Class to create a member of the student, we receives the name, profile, password and the type of employment as parameters
+     * @param name of the student, for example "José Martinho"
+     * @param profile of the student, it could be "Sporty"
+     * @param password of the student, for example, "12345"
      * @param studentCourse course of the student, for example "LEI"
      */
     public Student(String name, String profile, String password, String studentCourse) {
@@ -18,6 +19,10 @@ public class Student extends Person {
     public String getStudentCourse() {
         return studentCourse;
     }
+    
+    /**
+     * Getters and setters for Student class
+     */
 
     @Override
     public String getName() {
@@ -47,10 +52,6 @@ public class Student extends Person {
         this.profile = profile;
     }
 
-    /**
-     *
-     * @param password
-     */
     @Override
     public void setPassword(String password) {
         this.password = password;

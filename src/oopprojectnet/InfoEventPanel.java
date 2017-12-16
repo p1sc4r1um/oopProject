@@ -50,9 +50,11 @@ public class InfoEventPanel extends javax.swing.JPanel {
         numberOfPeople = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         profit = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        placesProfitLabel = new javax.swing.JLabel();
+        placesProfit = new javax.swing.JLabel();
+        showGuestListBtn = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList<>();
+        guestListJList = new javax.swing.JList<>();
 
         jList4.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -114,18 +116,27 @@ public class InfoEventPanel extends javax.swing.JPanel {
 
         numberOfPeople.setText("0");
 
-        jLabel5.setText("Profit:");
+        jLabel5.setText("Event's Profit:");
 
         profit.setText("0");
 
-        jLabel4.setText("Guest List:");
+        placesProfitLabel.setText("Place's profit in this event:");
 
-        jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "" };
+        placesProfit.setText("0");
+
+        showGuestListBtn.setText("Press to see pub's Guest List!");
+        showGuestListBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showGuestListBtnActionPerformed(evt);
+            }
+        });
+
+        guestListJList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = null;
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane5.setViewportView(jList5);
+        jScrollPane5.setViewportView(guestListJList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -134,16 +145,12 @@ public class InfoEventPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addComponent(infoEventBackBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(83, 83, 83)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel1)
-                                    .addComponent(eventNameLabel)
-                                    .addComponent(jLabel4))
+                                    .addComponent(eventNameLabel))
                                 .addGap(65, 65, 65))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
@@ -151,65 +158,83 @@ public class InfoEventPanel extends javax.swing.JPanel {
                                 .addGap(57, 57, 57)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(numberOfPeople)
-                                        .addGap(112, 112, 112))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(profit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(173, 173, 173))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(115, 115, 115)
-                                                .addComponent(jLabel5))
+                                                .addGap(26, 26, 26)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(placesProfitLabel)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(placesProfit, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jLabel3)))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(128, 128, 128)
-                                                .addComponent(profit, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                                .addGap(151, 151, 151)
+                                                .addComponent(numberOfPeople, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(showGuestListBtn)
+                            .addComponent(infoEventBackBtn))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(eventNameLabel)
-                .addGap(125, 125, 125)
-                .addComponent(jLabel1)
-                .addGap(128, 128, 128)
-                .addComponent(jLabel2)
-                .addGap(141, 141, 141)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75)
+                        .addComponent(eventNameLabel)
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel1)
+                        .addGap(108, 108, 108)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel5)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5)
+                                    .addComponent(profit))))
                         .addGap(18, 18, 18)
-                        .addComponent(profit)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(placesProfitLabel)
+                                    .addComponent(placesProfit))
+                                .addGap(33, 33, 33)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(numberOfPeople))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel3)
-                        .addGap(39, 39, 39)
-                        .addComponent(numberOfPeople))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(showGuestListBtn)
+                        .addGap(114, 114, 114))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)))
                 .addComponent(infoEventBackBtn)
                 .addGap(33, 33, 33))
         );
@@ -224,13 +249,13 @@ public class InfoEventPanel extends javax.swing.JPanel {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(peopleList); 
-        profit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculateReceipt() + "");
+        profit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculateEventReceipt() + " euros");
     }//GEN-LAST:event_eventListMouseClicked
 
     private void placesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placesListMouseClicked
-        System.out.println(Database.getPlaceFromName(placesList.getSelectedValue()));
         numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(placesList.getSelectedValue()) +"");
-        if(Database.getPlaceFromName(placesList.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+        placesProfit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculatePlaceReceipt(placesList.getSelectedValue()) +" euros");
+       /* if(Database.getPlaceFromName(placesList.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
             jList5.setModel(new javax.swing.AbstractListModel<String>() {
                 String[] strings = personToString(((Pubs)Database.getPlaceFromName(placesList.getSelectedValue())).getGuestList());
                 @Override
@@ -240,7 +265,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
             });
 
             jScrollPane5.setViewportView(jList5);
-        }
+        }*/
     }//GEN-LAST:event_placesListMouseClicked
 
     private void peopleListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleListMouseClicked
@@ -252,11 +277,37 @@ public class InfoEventPanel extends javax.swing.JPanel {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane2.setViewportView(placesList); 
+            guestListJList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = null;
+                @Override
+                public int getSize() { return strings.length; }
+                @Override
+                public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(guestListJList); 
     }//GEN-LAST:event_peopleListMouseClicked
 
     private void infoEventBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoEventBackBtnActionPerformed
         Component comp = SwingUtilities.getRoot(this);
         ((Window) comp).dispose();    }//GEN-LAST:event_infoEventBackBtnActionPerformed
+
+    private void showGuestListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGuestListBtnActionPerformed
+        if(!Database.getPlaceFromName(placesList.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+                String message = "Place selected isn't a pub!";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            guestListJList.setModel(new javax.swing.AbstractListModel<String>() {
+                Pubs temp = (Pubs) Database.getPlaceFromName(placesList.getSelectedValue());
+                String[] strings = temp.showGuestList();
+                @Override
+                public int getSize() { return strings.length; }
+                @Override
+                public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(guestListJList); 
+        }
+    }//GEN-LAST:event_showGuestListBtnActionPerformed
     private String stringSlice(int a, int b, String s) {
         String res= "";
         for (int i=a; i<=b; i++) {
@@ -338,14 +389,13 @@ public class InfoEventPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> eventList;
     private javax.swing.JLabel eventNameLabel;
+    private javax.swing.JList<String> guestListJList;
     private javax.swing.JButton infoEventBackBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList4;
-    private javax.swing.JList<String> jList5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -354,6 +404,9 @@ public class InfoEventPanel extends javax.swing.JPanel {
     private javax.swing.JLabel numberOfPeople;
     private javax.swing.JList<String> peopleList;
     private javax.swing.JList<String> placesList;
+    private javax.swing.JLabel placesProfit;
+    private javax.swing.JLabel placesProfitLabel;
     private javax.swing.JLabel profit;
+    private javax.swing.JButton showGuestListBtn;
     // End of variables declaration//GEN-END:variables
 }

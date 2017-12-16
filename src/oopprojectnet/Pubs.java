@@ -131,6 +131,29 @@ public class Pubs extends Places {
         }
         return s;
     }
+    /**
+     * Method to calculate the guestList in one Pub, receives no argument
+     * @return an array of Strings containing the name of each person in guest list
+     */
+    
+    public String[] showGuestList() {
+        ArrayList<String> guestListPrint = new ArrayList<>();
+        for(Person p : customersList) {
+            if((guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity))) && p.getProfile().toLowerCase().equals("bohemian")) {
+                guestListPrint.add(p.getName());
+            }
+        }
+        int i = 0;
+        while(guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity))) {
+            if(!guestListPrint.contains(customersList.get(i).getName())) {
+                guestListPrint.add(customersList.get(i++).getName());
+            }
+        }
+        String[] temp = new String[guestListPrint.size()];
+        temp = guestListPrint.toArray(temp);
+        return temp;
+    }
+   
     
     /**
      * Getters and setters for Pubs class (places' subclass)

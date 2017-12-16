@@ -15,8 +15,19 @@ public class Database {
         listPeople = new ArrayList<Person>();
         listPlaces = new ArrayList<Places>();
         listEvents = new ArrayList<Event>();
+        
     }
 
+    
+    private int startDatabase() {
+        File f = new File("Parks.java");
+        if(f.exists() && !f.isDirectory()) { 
+            
+        }
+        
+        
+        return 1;
+    }
     /**
      * Method do get the name readed in txt file, receives an array as parameter
      * @param parts elements of one line separated by commas

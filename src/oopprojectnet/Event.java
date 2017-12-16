@@ -72,7 +72,7 @@ public class Event {
      * @return the receipt calculated as integer
      */
     
-    public int calculateReceipt() {
+    public int calculateEventReceipt() {
         int receipt = 0;
         for(PersonPlaces currentPerson: invitedList) {
             for(Places currentPlace : currentPerson.getListPlaces()) {
@@ -114,7 +114,38 @@ public class Event {
             }
         }
         return num;
-
+    }
+    
+    
+    /**
+     * Method to calculate specific place receipt, receives a string as argument
+     * @param place name of place you want to calculate the receipt
+     * @return an integer, the receipt calculated in euros
+     */
+    public int calculatePlaceReceipt(String place) {
+        int receipt=0;
+        for(Places p : placesList) {
+            if(p.getName().equals(place)) {
+                for(PersonPlaces c : invitedList) {
+                    for(Places currentPlace : c.getListPlaces()) {
+                        if(place.equals(currentPlace.getName())) {
+                            if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.exhibitions")) {
+                                if(c.getPerson().getClass().toString().toLowerCase().equals("class oopprojectnet.student")) {
+                                    receipt += Integer.parseInt(((Exhibitions) currentPlace).getPrice())*.10;
+                                }
+                                else {
+                                    receipt += Integer.parseInt(((Exhibitions) currentPlace).getPrice());
+                                }
+                            }
+                            else if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+                                receipt +=  Integer.parseInt(((Pubs) currentPlace).getMinimumInput());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return receipt;
     }
     
     /**

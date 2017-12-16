@@ -31,8 +31,13 @@ public class MainMenu extends javax.swing.JFrame {
         placesBtn = new javax.swing.JButton();
         eventsBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(300, 300));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         peopleBtn.setText("People");
@@ -74,6 +79,17 @@ public class MainMenu extends javax.swing.JFrame {
         new EventsMenu().setVisible(true);
     }//GEN-LAST:event_eventsBtnActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.out.println("Exiting");
+        /**Write to file..............*/
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
+
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -108,7 +124,8 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton eventsBtn;
     private javax.swing.JButton peopleBtn;

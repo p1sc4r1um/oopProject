@@ -34,8 +34,6 @@ public class EventsMenu extends javax.swing.JFrame {
         createEventBtn = new javax.swing.JButton();
         infoEventBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         addPersonToEventBtn.setText("Add Person to Event");
         addPersonToEventBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

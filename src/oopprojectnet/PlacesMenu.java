@@ -5,6 +5,7 @@
  */
 package oopprojectnet;
 
+
 /**
  *
  * @author zmcdo
@@ -30,8 +31,6 @@ public class PlacesMenu extends javax.swing.JFrame {
         createPlaceBtn = new javax.swing.JButton();
         editPlaceBtn = new javax.swing.JButton();
         deletePlaceBtn = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         createPlaceBtn.setText("Create Place");
         createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +99,7 @@ public class PlacesMenu extends javax.swing.JFrame {
         revalidate();
     }//GEN-LAST:event_deletePlaceBtnActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -140,4 +140,5 @@ public class PlacesMenu extends javax.swing.JFrame {
     private javax.swing.JButton deletePlaceBtn;
     private javax.swing.JButton editPlaceBtn;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -16,6 +16,7 @@ public class Places {
         this.coords = coords;
         this.name = name;
     }
+   
 
     /**
      * Getters and setters of Places 

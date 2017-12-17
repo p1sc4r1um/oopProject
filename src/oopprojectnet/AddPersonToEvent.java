@@ -52,6 +52,10 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         eventList = new javax.swing.JList<>();
         eventName = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        numberOfPeople = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        capacity = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -102,6 +106,11 @@ public class AddPersonToEvent extends javax.swing.JPanel {
             String[] strings = getEventPlaces();
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        availablePlaces.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                availablePlacesMouseClicked(evt);
+            }
         });
         jScrollPane3.setViewportView(availablePlaces);
 
@@ -157,6 +166,18 @@ public class AddPersonToEvent extends javax.swing.JPanel {
 
         eventName.setText("Event name:");
         add(eventName, new org.netbeans.lib.awtextra.AbsoluteConstraints(95, 243, -1, -1));
+
+        jLabel4.setText("Number of people:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, -1, -1));
+
+        numberOfPeople.setText("0");
+        add(numberOfPeople, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 490, 110, -1));
+
+        jLabel6.setText("Capacity:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 530, -1, -1));
+
+        capacity.setText("no limit");
+        add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 560, 110, 20));
     }// </editor-fold>//GEN-END:initComponents
     ArrayList<Places> chosenPlaces = new ArrayList<>();
     
@@ -266,33 +287,51 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void AddPersonBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPersonBtnActionPerformed
-        Database.listEvents.get(eventList.getSelectedIndex()).addPerson(Database.getPersonFromName(listPeopleList.getSelectedValue()), chosenPlaces);
-        Object[] options = {
-            "OK",
-            "ADD ANOTHER"
-        };
-        Object optionSelected = JOptionPane.showOptionDialog(null, "person added, Click OK to come back to menu or add another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        switch (optionSelected.toString()) {
-            case "0":
-                Component comp = SwingUtilities.getRoot(this);
-                ((Window) comp).dispose();
-                break;
-            case "1":
-                chosenPlaces = new ArrayList<>();
-                chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
-                    String[] strings = getChosenPlaces();
-                    public int getSize() { return strings.length; }
-                    public String getElementAt(int i) { return strings[i]; }
-                });
-                jScrollPane4.setViewportView(chosenPlacesList);
-                availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
-                    String[] strings = getAvailablePlaces();
-                    public int getSize() { return strings.length; }
-                    public String getElementAt(int i) { return strings[i]; }
-                });
-                jScrollPane3.setViewportView(availablePlaces);
-                break; 
-       }
+        PersonPlaces a = Database.listEvents.get(eventList.getSelectedIndex()).addPerson(Database.getPersonFromName(listPeopleList.getSelectedValue()), chosenPlaces);
+        if(a == null) {
+            JOptionPane.showMessageDialog(null, "Error adding person!", "Warning", JOptionPane.WARNING_MESSAGE);
+            chosenPlaces = new ArrayList<>();
+            chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getChosenPlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane4.setViewportView(chosenPlacesList);
+            availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                String[] strings = getAvailablePlaces();
+                public int getSize() { return strings.length; }
+                public String getElementAt(int i) { return strings[i]; }
+            });
+            jScrollPane3.setViewportView(availablePlaces);
+        }
+        else {   
+            Object[] options = {
+                "OK",
+                "ADD ANOTHER"
+            };
+            Object optionSelected = JOptionPane.showOptionDialog(null, "person added, Click OK to come back to menu or add another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            switch (optionSelected.toString()) {
+                case "0":
+                    Component comp = SwingUtilities.getRoot(this);
+                    ((Window) comp).dispose();
+                    break;
+                case "1":
+                    chosenPlaces = new ArrayList<>();
+                    chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getChosenPlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+                    jScrollPane4.setViewportView(chosenPlacesList);
+                    availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                        String[] strings = getAvailablePlaces();
+                        public int getSize() { return strings.length; }
+                        public String getElementAt(int i) { return strings[i]; }
+                    });
+                    jScrollPane3.setViewportView(availablePlaces);
+                    break; 
+           }
+        }
 
     }//GEN-LAST:event_AddPersonBtnActionPerformed
 
@@ -329,6 +368,13 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     private void eventListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventListMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_eventListMouseEntered
+
+    private void availablePlacesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_availablePlacesMouseClicked
+        numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(availablePlaces.getSelectedValue()) +"");
+        if(Database.getPlaceFromName(availablePlaces.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+            capacity.setText(Database.getPlaceFromName(availablePlaces.getSelectedValue()).getCapacity() + "");
+        }
+    }//GEN-LAST:event_availablePlacesMouseClicked
 
     
     
@@ -376,18 +422,22 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     private javax.swing.JButton AddPersonBtn;
     private javax.swing.JButton addButton;
     private javax.swing.JList<String> availablePlaces;
+    private javax.swing.JLabel capacity;
     private javax.swing.JList<String> chosenPlacesList;
     private javax.swing.JList<String> eventList;
     private javax.swing.JLabel eventName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelName;
     private javax.swing.JList<String> listPeopleList;
+    private javax.swing.JLabel numberOfPeople;
     private javax.swing.JButton personAddBackBtn;
     private javax.swing.JTextField personToAdd;
     private javax.swing.JButton removeButton;

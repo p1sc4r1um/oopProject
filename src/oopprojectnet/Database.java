@@ -105,8 +105,6 @@ public class Database {
                 }
             }
             else if (type.toLowerCase().equals("Places")) {
-                //Jose:Campos:Student:Profile:Password:StudentCourse
-                //Luis:Cordeiro:Teacher:Profile:Password:TeacherType
                 switch (parts[2].toLowerCase()) {
                     case "sportsfield":
                         newSportsField = new SportsField(parts[parts.length-2], getName(parts), parts[parts.length-1]);

@@ -157,7 +157,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(guestListJList);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 448, 219, 131));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 219, 131));
     }// </editor-fold>//GEN-END:initComponents
 
     private void eventListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eventListMouseClicked

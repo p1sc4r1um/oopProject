@@ -223,7 +223,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                         try{
                             int num = Integer.parseInt(additional1);
                             int num2 = Integer.parseInt(additional2);
-                            newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<>(), new ArrayList<>());
+                            newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<>());
                             bool = 1;
                             
                         } catch (NumberFormatException e) {

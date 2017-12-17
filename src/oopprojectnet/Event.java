@@ -35,6 +35,7 @@ public class Event {
     
     public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces) {
         PersonPlaces newPerson = new PersonPlaces(newP,wantedPlaces);
+        Person g;
         for (PersonPlaces currentPerson : invitedList) {
             if (currentPerson.getPerson().equals(newPerson.getPerson())) {
                 return null;
@@ -42,7 +43,10 @@ public class Event {
         }
         for(Places currentPlace:wantedPlaces) {
             if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
-                ((Pubs)currentPlace).addPersonGuestList(newP);
+                g = ((Pubs)currentPlace).addPerson(newP);
+                if(g == null) {
+                    return null;
+                }
             }
         }
         invitedList.add(newPerson);

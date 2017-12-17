@@ -82,8 +82,15 @@ public class EventsMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_createEventBtnActionPerformed
 
     private void infoEventBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoEventBtnActionPerformed
-        setContentPane(new InfoEventPanel());
-        revalidate();
+        if(Database.listEvents.size() > 0 && Database.listPeople.size() > 0) {
+            setContentPane(new InfoEventPanel());
+            revalidate();
+        }
+        else {
+            String message = "program has no events or people, create";
+            JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
+            JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_infoEventBtnActionPerformed
 
     /**

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 /*
-TODO: files, back button, places print ordenated mtuuer, gui places
+TODO: adding to event check if already added, adicionar acima da capacidade
 */
 package oopprojectnet;
 
@@ -21,12 +21,12 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        Pubs novo = new Pubs("ola","ola","4","2",new ArrayList<>(), new ArrayList<>());
-        Pubs adeus = new Pubs("adeus","re","30","10",new ArrayList<>(), new ArrayList<>());
-        Pubs adeus2 = new Pubs("adeus","NB","30","1",new ArrayList<>(), new ArrayList<>());
-        Pubs adeus3 = new Pubs("adeus","moelas","5","1",new ArrayList<>(), new ArrayList<>());
-        Pubs adeus4 = new Pubs("adeus","insonias","30","3",new ArrayList<>(), new ArrayList<>());
-        Pubs adeus5 = new Pubs("adeus","mandarim","30","0",new ArrayList<>(), new ArrayList<>());
+        Pubs novo = new Pubs("ola","ola","4","2", new ArrayList<>());
+        Pubs adeus = new Pubs("adeus","re","30","10", new ArrayList<>());
+        Pubs adeus2 = new Pubs("adeus","NB","30","1", new ArrayList<>());
+        Pubs adeus3 = new Pubs("adeus","moelas","1","1", new ArrayList<>());
+        Pubs adeus4 = new Pubs("adeus","insonias","30","3", new ArrayList<>());
+        Pubs adeus5 = new Pubs("adeus","mandarim","30","0", new ArrayList<>());
         Student ola1 = new Student("ze", "Sporty", "sporty", "LEI");
         Teacher ola2 = new Teacher("Josef", "Cultured", "sporty", "Assitant");
         Student ola3 = new Student("madalena", "bohemian", "sporty", "LEI");

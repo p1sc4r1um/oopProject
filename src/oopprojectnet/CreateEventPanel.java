@@ -199,51 +199,57 @@ public class CreateEventPanel extends javax.swing.JPanel {
         return false;
     }
     private void eventCreateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventCreateBtnActionPerformed
-        String name = eventName.getText();
-        if(!checkEventName(name)) {
-            Event newEvent = new Event(eventName.getText(), new ArrayList<PersonPlaces>(), chosenPlaces);
-            Database.listEvents.add(newEvent);
+        
+        if("".equals(eventName.getText())) {
+            JOptionPane.showMessageDialog(null, "you need to input the event's info", "error", JOptionPane.ERROR_MESSAGE);
+        }
+        else {        
+            String name = eventName.getText();
+            if(!checkEventName(name)) {
+                Event newEvent = new Event(eventName.getText(), new ArrayList<PersonPlaces>(), chosenPlaces);
+                Database.listEvents.add(newEvent);
 
-            Object[] options = {
-                "OK",
-                "CREATE ANOTHER"
-            };
-            Object optionSelected = JOptionPane.showOptionDialog(null, "event created, Click OK to come back to menu or create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-            switch (optionSelected.toString()) {
-                case "0":
-                    Component comp = SwingUtilities.getRoot(this);
-                    ((Window) comp).dispose();
-                    break;
-                case "1":
-                    eventName.setText("");
-                    chosenPlaces = new ArrayList<Places>();
-                    chosenPlacesList = new javax.swing.JList<>();
+                Object[] options = {
+                    "OK",
+                    "CREATE ANOTHER"
+                };
+                Object optionSelected = JOptionPane.showOptionDialog(null, "event created, Click OK to come back to menu or create another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                switch (optionSelected.toString()) {
+                    case "0":
+                        Component comp = SwingUtilities.getRoot(this);
+                        ((Window) comp).dispose();
+                        break;
+                    case "1":
+                        eventName.setText("");
+                        chosenPlaces = new ArrayList<Places>();
+                        chosenPlacesList = new javax.swing.JList<>();
 
-                    chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
-                        String[] strings = getChosenPlaces();
-                        public int getSize() { return strings.length; }
-                        public String getElementAt(int i) { return strings[i]; }
-                    });
+                        chosenPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
+                            String[] strings = getChosenPlaces();
+                            public int getSize() { return strings.length; }
+                            public String getElementAt(int i) { return strings[i]; }
+                        });
 
-                    jScrollPane3.setViewportView(chosenPlacesList);
+                        jScrollPane3.setViewportView(chosenPlacesList);
 
-                    availablePlaces = new javax.swing.JList<>();
+                        availablePlaces = new javax.swing.JList<>();
 
-                    availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
-                        String[] strings = getAvailablePlaces();
-                        public int getSize() { return strings.length; }
-                        public String getElementAt(int i) { return strings[i]; }
-                    });
+                        availablePlaces.setModel(new javax.swing.AbstractListModel<String>() {
+                            String[] strings = getAvailablePlaces();
+                            public int getSize() { return strings.length; }
+                            public String getElementAt(int i) { return strings[i]; }
+                        });
 
-                    jScrollPane2.setViewportView(availablePlaces);
-                    break;
-            }  
-       }
-       else {
-            String message = "name already exists, please change name";
-            JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
-            JOptionPane.WARNING_MESSAGE);
-            eventName.setText("");
+                        jScrollPane2.setViewportView(availablePlaces);
+                        break;
+                }  
+           }
+           else {
+                String message = "name already exists, please change name";
+                JOptionPane.showMessageDialog(new JFrame(), message, "Warning",
+                JOptionPane.WARNING_MESSAGE);
+                eventName.setText("");
+            }
         }
     }//GEN-LAST:event_eventCreateBtnActionPerformed
 

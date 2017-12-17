@@ -1,7 +1,15 @@
 package oopprojectnet;
+
+/**
+ *
+ * @author zmcdo
+ */
 public class Exhibitions extends Places {
     private String artisticForm, price;
 
+    /**
+     *
+     */
     public Exhibitions() {
         this.coords = "40.208995, -8.425555";
         this.name = "Machado de Castro";
@@ -24,25 +32,44 @@ public class Exhibitions extends Places {
     
     /**
      * Getters and setters of Exhibitions (places' subclass)
+     * @return 
      */
     @Override
     public String getArtisticForm() {
         return artisticForm;
     }
+
+    /**
+     *
+     * @param artisticForm
+     */
     @Override
     public void setArtisticForm(String artisticForm) {
         this.artisticForm = artisticForm;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getPrice() {
         return price;
     }
+
+    /**
+     *
+     * @param price
+     */
     @Override
     public void setPrice(String price) {
         this.price = price;
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Exhibitions{" +

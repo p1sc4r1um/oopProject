@@ -2,6 +2,10 @@ package oopprojectnet;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class PersonPlaces implements Serializable {
     private Person person;
     private ArrayList<Places> listPlaces;
@@ -52,20 +56,33 @@ public class PersonPlaces implements Serializable {
     
     /**
      * Getters and setters of PersonPlaces class
+     * @return 
      */
 
     public Person getPerson() {
         return person;
     }
 
+    /**
+     *
+     * @param person
+     */
     public void setPerson(Person person) {
         this.person = person;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Places> getListPlaces() {
         return listPlaces;
     }
 
+    /**
+     *
+     * @param listPlaces
+     */
     public void setListPlaces(ArrayList<Places> listPlaces) {
         this.listPlaces = listPlaces;
     }

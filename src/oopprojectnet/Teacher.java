@@ -1,6 +1,15 @@
 package oopprojectnet;
+
+/**
+ *
+ * @author zmcdo
+ */
 public class Teacher extends Person {
     private String teacherType;
+
+    /**
+     *
+     */
     public Teacher() {
         this.teacherType = "Full";
     }
@@ -18,45 +27,78 @@ public class Teacher extends Person {
     
         /**
      * Getters and setters to Teacher class (person's subclass)
+     * @return 
      */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getProfile() {
         return profile;
     }
 
+    /**
+     *
+     * @param name
+     */
     @Override
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @param profile
+     */
     @Override
     public void setProfile(String profile) {
         this.profile = profile;
     }
 
+    /**
+     *
+     * @param password
+     */
     @Override
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getPassword() {
         return password;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getTeacherType() {
         return teacherType;
     }
 
+    /**
+     *
+     * @param teacherType
+     */
     public void setTeacherType(String teacherType) {
         this.teacherType = teacherType;
     }
     
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Teacher{" +

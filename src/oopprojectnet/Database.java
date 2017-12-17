@@ -5,9 +5,25 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class Database {
+
+    /**
+     *
+     */
     public static ArrayList<Person> listPeople;
+
+    /**
+     *
+     */
     public static ArrayList<Places> listPlaces;
+
+    /**
+     *
+     */
     public static ArrayList<Event> listEvents;
 
     /**
@@ -22,7 +38,9 @@ public class Database {
 
     /**
      * Method to update the database when program starts up, receives no argument
+     * @throws java.lang.ClassNotFoundException
      * @throws IOException 
+     * @throws java.io.FileNotFoundException 
      */
     public static void startDatabase() throws ClassNotFoundException, IOException, FileNotFoundException {
         try{
@@ -156,6 +174,7 @@ public class Database {
      * Method to write the info to a text file receives a parameter with the type of information you want to write
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
+     * @throws java.io.FileNotFoundException
      * @throws IOException
      */
     public static int writeTxt(String type) throws FileNotFoundException, IOException {
@@ -253,6 +272,7 @@ public class Database {
      * Method to read object file and insert in database 
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
+     * @throws java.io.FileNotFoundException
      * @throws IOException 
      * @throws java.lang.ClassNotFoundException 
      */
@@ -349,10 +369,18 @@ public class Database {
         return listPeople;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Places> getListPlaces() {
         return listPlaces;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Event> getListEvents() {
         return listEvents;
     }

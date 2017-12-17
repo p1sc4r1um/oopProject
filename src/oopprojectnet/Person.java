@@ -1,10 +1,30 @@
 package oopprojectnet;
 import java.io.Serializable;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class Person implements Serializable {
+
+    /**
+     *
+     */
     protected String name;
+
+    /**
+     *
+     */
     protected String profile; //Culture,sporty,spared,bohemian
+
+    /**
+     *
+     */
     protected String password;
+
+    /**
+     *
+     */
     public Person() {
         this.name = "Josef";
         this.profile = "Sporty";
@@ -24,32 +44,57 @@ public class Person implements Serializable {
     
     /**
      * Getters and setters of Person class
+     * @return 
      */
 
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProfile() {
         return profile;
     }
 
+    /**
+     *
+     * @param profile
+     */
     public void setProfile(String profile) {
         this.profile = profile;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Person{" + "name=" + name + ", profile=" + profile + ", password=" + password + '}';

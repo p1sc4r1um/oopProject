@@ -1,6 +1,15 @@
 package oopprojectnet;
+
+/**
+ *
+ * @author zmcdo
+ */
 public class Gardens extends Parks {
     private String area;
+
+    /**
+     *
+     */
     public Gardens() {
         this.area = "520"; //in m^2
     }
@@ -18,11 +27,17 @@ public class Gardens extends Parks {
     
     /**
      * Getters and setters of Garden (parks' subclass)
+     * @return 
      */
     @Override
     public String getArea() {
         return area;
     }
+
+    /**
+     *
+     * @param area
+     */
     @Override
     public void setArea(String area) {
         this.area = area;
@@ -32,10 +47,20 @@ public class Gardens extends Parks {
     public String getCoords() {
         return coords;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return name;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Gardens{" +

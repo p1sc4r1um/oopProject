@@ -3,6 +3,10 @@ import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.*;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class Event implements Serializable {
     private ArrayList<PersonPlaces> invitedList;
     private ArrayList<Places> placesList;
@@ -30,7 +34,6 @@ public class Event implements Serializable {
      * Method to add person to the event
      * @param newP the person to add
      * @param wantedPlaces the places the person chose
-     * @param password password to register in the event
      * @return the person in success, null otherwise
      */
     
@@ -194,24 +197,41 @@ public class Event implements Serializable {
     
     /**
      * Getters and setters of Event
+     * @return 
      */
     
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<PersonPlaces> getInvitedList() {
         return invitedList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Places> getPlacesList() {
         return placesList;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Event{" + "invitedList=" + invitedList + ", placesList=" + placesList + ", name=" + name + '}';

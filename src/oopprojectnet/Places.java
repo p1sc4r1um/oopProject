@@ -2,8 +2,25 @@ package oopprojectnet;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class Places implements Serializable {
-    protected String coords, name;
+
+    /**
+     *
+     */
+    protected String coords,
+
+    /**
+     *
+     */
+    name;
+
+    /**
+     *
+     */
     public Places() {
         this.coords = "40.205776 -8.421398";
         this.name = "Lugar";
@@ -29,55 +46,125 @@ public class Places implements Serializable {
         return coords;
     }
 
+    /**
+     *
+     * @param coords
+     */
     public void setCoords(String coords) {
         this.coords = coords;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getArea() {
         return null;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getSport() {
         return null;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPrice() {
         return null;
     }
         
+    /**
+     *
+     * @return
+     */
     public String getArtisticForm() {
         return null;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getMinimumInput() {
         return null;
     }
+
+    /**
+     *
+     * @return
+     */
     public String getCapacity() {
         return null;
     }
     
+    /**
+     *
+     * @param a
+     */
     public void setArea(String a) {
     }
+
+    /**
+     *
+     * @param a
+     */
     public void setSport(String a) {
     }
+
+    /**
+     *
+     * @param a
+     */
     public void setPrice(String a) {
     }   
+
+    /**
+     *
+     * @param a
+     */
     public void setArtisticForm(String a) {
     }
+
+    /**
+     *
+     * @param a
+     */
     public void setMinimumInput(String a) {
     }
+
+    /**
+     *
+     * @param a
+     */
     public void setCapacity(String a) {
         
     }
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Places{" +

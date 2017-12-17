@@ -1,6 +1,15 @@
 package oopprojectnet;
+
+/**
+ *
+ * @author zmcdo
+ */
 public class Student extends Person {
     private String studentCourse;
+
+    /**
+     *
+     */
     public Student() {
         this.studentCourse = "LEI";
     }
@@ -16,12 +25,17 @@ public class Student extends Person {
         this.studentCourse = studentCourse;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStudentCourse() {
         return studentCourse;
     }
     
     /**
      * Getters and setters for Student class (person's subclass)
+     * @return 
      */
 
     @Override
@@ -29,17 +43,29 @@ public class Student extends Person {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
 
     public String getProfile() {
         return profile;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getPassword() {
         return password;
     }
 
+    /**
+     *
+     * @param name
+     */
     @Override
 
 
@@ -47,22 +73,36 @@ public class Student extends Person {
         this.name = name;
     }
 
+    /**
+     *
+     * @param profile
+     */
     @Override
     public void setProfile(String profile) {
         this.profile = profile;
     }
 
+    /**
+     *
+     * @param password
+     */
     @Override
     public void setPassword(String password) {
         this.password = password;
     }
 
-    
-
+    /**
+     *
+     * @param studentCourse
+     */
     public void setStudentCourse(String studentCourse) {
         this.studentCourse = studentCourse;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Student{" +

@@ -1,6 +1,15 @@
 package oopprojectnet;
+
+/**
+ *
+ * @author zmcdo
+ */
 public class SportsField extends Parks {
     private String sport;
+
+    /**
+     *
+     */
     public SportsField() {
         this.coords = "40.210482, -8.416530";
         this.name = "Campo Santa Cruz";
@@ -27,6 +36,11 @@ public class SportsField extends Parks {
     public String getSport() {
         return sport;
     }
+
+    /**
+     *
+     * @param sport
+     */
     @Override
     public void setSport(String sport) {
         this.sport = sport;
@@ -36,11 +50,20 @@ public class SportsField extends Parks {
     public String getCoords() {
         return coords;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "SportsField{" +

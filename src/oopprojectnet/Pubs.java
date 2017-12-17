@@ -1,10 +1,17 @@
 package oopprojectnet;
 import java.util.*;
 
+/**
+ *
+ * @author zmcdo
+ */
 public class Pubs extends Places {
     private String capacity, minimumInput;
     private ArrayList<Person> customersList;
 
+    /**
+     *
+     */
     public Pubs() {
         this.name = "Moelas";
         this.coords = "40.209188, -8.427604";
@@ -96,35 +103,63 @@ public class Pubs extends Places {
     
     /**
      * Getters and setters for Pubs class (places' subclass)
+     * @return 
      */
     
     @Override
     public String getCoords() {
         return coords;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return name;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getCapacity() {
         return capacity;
     }
+
+    /**
+     *
+     * @param capacity
+     */
     @Override
     public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
+
+    /**
+     *
+     * @return
+     */
     @Override
     public String getMinimumInput() {
         return minimumInput;
     }
+
+    /**
+     *
+     * @param minimumInput
+     */
     @Override
     public void setMinimumInput(String minimumInput) {
         this.minimumInput = minimumInput;
     }
     
-
-
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Pubs{" +

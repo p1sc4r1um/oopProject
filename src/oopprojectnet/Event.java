@@ -34,6 +34,11 @@ public class Event {
      */
     
     public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces) {
+        for(Places p:wantedPlaces) {
+            if(!this.placesList.contains(p)) {
+                wantedPlaces.remove(p);
+            }
+        }
         PersonPlaces newPerson = new PersonPlaces(newP,wantedPlaces);
         Person g;
         for (PersonPlaces currentPerson : invitedList) {

@@ -89,7 +89,7 @@ public class Database {
             //Estadio Universitario:SportsField:coords:sport
             //Jardim Botanico:Garden:coords:area
             //Museu Machado de Castro:Exhibition:coords:artisticForm.price
-            //Jose Martinho,Jose Donato,Luis Cordeiro:Moelas Moelinhas:Pub:coords:capacity.minimumInput
+            //Moelas Moelinhas:Pub:coords:capacity.minimumInput
             
             else if (type.toLowerCase().equals("places")) {
                 String[] parts2;
@@ -112,25 +112,42 @@ public class Database {
                         listPlaces.add(newExibition);
                         break;
                     case "pub":
-                        parts2 = parts[4].split(".");
-                        String[] people = parts[0].split(",");
-                        ArrayList<Person> customersList;
-                        newPub = new Pubs(parts[3], parts[1], parts2[0], parts2[1], null);
-                        for(int i = 0; i < people.length; i++) {
-                            a = getPersonFromName(people[i]);
-                            if(a!=null) {
-                                newPub.addPerson(a);
-                            }
-                        }
+                        parts2 = parts[3].split(".");
+                        newPub = new Pubs(parts[2], parts[0], parts2[0], parts2[1], null);
+                        listPlaces.add(newPub);
                         System.out.println(newPub);
                         break;
                 }
             }
-            else if (type.toLowerCase().equals("Events")) {
-                //EventName:EventPlaces(verificar cada um se esta na base de dados, separar por virgulas)
-                //Person,Places
-                //Person,Places
-                //...
+            else if (type.toLowerCase().equals("events")) {
+                int verifica = 0, i;
+                Event newE;
+                ArrayList<Places> places = new ArrayList();
+                //evento1:Moelas Moelinhas,Museu Machado de Castro
+                //Joao Alberto:Moelas Moelinhas,Museu Machado de Castro
+                //Jose Donato:Museu Machado de Castro
+                if(verifica == 0) {
+                    String[] parts2 = parts[1].split(",");
+                    for(i = 0; i<parts2.length; i++) {
+                        if(getPlaceFromName(parts2[i]) != null) {
+                            places.add(getPlaceFromName(parts2[i]));
+                        }
+                    }
+                    newE = new Event(parts[0], new ArrayList(), places);
+                    Database.listEvents.add(newE);
+                    verifica = 1;
+                }
+                else {
+                    places = new ArrayList();
+                    String[] parts2 = parts[1].split(",");
+                    Person person = getPersonFromName(parts[0]);
+                    for(i = 0; i<parts2.length; i++) {
+                        if(getPlaceFromName(parts2[i]) != null) {
+                            places.add(getPlaceFromName(parts2[i]));
+                        }
+                    }
+                    Database.listEvents.get(0).addPerson(person, places);
+                }
             }
         }
         br.close();

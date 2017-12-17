@@ -51,6 +51,8 @@ public class EditPersonPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         peopleList = new javax.swing.JList<>();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         personType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,18 +217,7 @@ public class EditPersonPanel extends javax.swing.JPanel {
                 .addGap(42, 42, 42))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void personPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personPasswordActionPerformed

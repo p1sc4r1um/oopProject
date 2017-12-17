@@ -54,6 +54,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setPreferredSize(new java.awt.Dimension(555, 500));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         placeToEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,8 +66,10 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 placeToEditKeyReleased(evt);
             }
         });
+        add(placeToEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 78, 113, -1));
 
         labelName.setText("Name:");
+        add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 81, -1, -1));
 
         additional1.setText("Garden's Area:");
 
@@ -144,12 +147,15 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 182, 525, -1));
+
         placeClearBtn.setText("Clear");
         placeClearBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 placeClearBtnMouseClicked(evt);
             }
         });
+        add(placeClearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(233, 455, -1, -1));
 
         placeEditBtn.setText("Edit");
         placeEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -157,6 +163,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 placeEditBtnMouseClicked(evt);
             }
         });
+        add(placeEditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 455, -1, -1));
 
         placeBackBtn.setText("Back");
         placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -164,6 +171,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 placeBackBtnMouseClicked(evt);
             }
         });
+        add(placeBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(347, 455, -1, -1));
 
         listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePlaces(placeToEdit.getText());    public int getSize() { return strings.length; }
@@ -176,53 +184,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(listPlacesList);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(labelName)
-                .addGap(34, 34, 34)
-                .addComponent(placeToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(placeEditBtn)
-                .addGap(50, 50, 50)
-                .addComponent(placeClearBtn)
-                .addGap(45, 45, 45)
-                .addComponent(placeBackBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelName)
-                            .addComponent(placeToEdit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(78, 78, 78))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeClearBtn)
-                    .addComponent(placeBackBtn)
-                    .addComponent(placeEditBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(258, 43, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void placeToEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeToEditActionPerformed

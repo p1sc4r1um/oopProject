@@ -32,13 +32,14 @@ public class MainMenu extends javax.swing.JFrame {
         eventsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(699, 699));
         setPreferredSize(new java.awt.Dimension(300, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         peopleBtn.setText("People");
         peopleBtn.addActionListener(new java.awt.event.ActionListener() {

@@ -18,14 +18,34 @@ public class Database {
         
     }
 
-    
-    private int startDatabase() {
-        File f = new File("Parks.java");
-        if(f.exists() && !f.isDirectory()) { 
-            
+    /**
+     * Method to update the database when program starts up, receives no argument
+     * @return 1 in success, 0 otherwise
+     * @throws IOException 
+     */
+    private int startDatabase() throws IOException {
+        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
+        File f = new File(workingDir+"People.ser");
+        if(f.exists()) { 
+            readObj("People");
         }
-        
-        
+        else {
+            readTxt("People");
+        }
+        f = new File(workingDir+"Places.ser");
+        if(f.exists()) { 
+            readObj("People");
+        }
+        else {
+            readTxt("Places");
+        }
+        f = new File(workingDir+"Events.ser");
+        if(f.exists()) { 
+            readObj("Events");
+        }
+        else {
+            readTxt("Events");
+        }
         return 1;
     }
     /**

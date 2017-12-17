@@ -40,7 +40,10 @@ public class DeletePersonPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         peopleList = new javax.swing.JList<>();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelName.setText("Name:");
+        add(labelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 57, -1, -1));
 
         personDeleteBtn.setText("Delete");
         personDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +51,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                 personDeleteBtnActionPerformed(evt);
             }
         });
+        add(personDeleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 280, -1, -1));
 
         personClearBtn.setText("Clear");
         personClearBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +59,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                 personClearBtnActionPerformed(evt);
             }
         });
+        add(personClearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(142, 280, -1, -1));
 
         personBackBtn.setText("Back");
         personBackBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +67,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                 personBackBtnActionPerformed(evt);
             }
         });
+        add(personBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 280, -1, -1));
 
         personToDelete.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -74,6 +80,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                 personToDeleteKeyReleased(evt);
             }
         });
+        add(personToDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 54, 138, -1));
 
         peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());
@@ -82,46 +89,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(peopleList);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(127, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(personDeleteBtn)
-                                .addGap(28, 28, 28)
-                                .addComponent(personClearBtn)
-                                .addGap(31, 31, 31)
-                                .addComponent(personBackBtn)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
-                    .addComponent(personToDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(personDeleteBtn)
-                    .addComponent(personClearBtn)
-                    .addComponent(personBackBtn))
-                .addContainerGap())
-        );
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 96, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void personToDeleteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_personToDeleteKeyTyped

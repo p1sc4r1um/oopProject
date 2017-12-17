@@ -32,12 +32,17 @@ public class PlacesMenu extends javax.swing.JFrame {
         editPlaceBtn = new javax.swing.JButton();
         deletePlaceBtn = new javax.swing.JButton();
 
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(699, 699));
+        getContentPane().setLayout(new java.awt.GridLayout());
+
         createPlaceBtn.setText("Create Place");
         createPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createPlaceBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(createPlaceBtn);
 
         editPlaceBtn.setText("Edit Place");
         editPlaceBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -45,6 +50,7 @@ public class PlacesMenu extends javax.swing.JFrame {
                 editPlaceBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(editPlaceBtn);
 
         deletePlaceBtn.setText("Delete Place");
         deletePlaceBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -52,34 +58,7 @@ public class PlacesMenu extends javax.swing.JFrame {
                 deletePlaceBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(editPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(deletePlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(createPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(editPlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(deletePlaceBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(deletePlaceBtn);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

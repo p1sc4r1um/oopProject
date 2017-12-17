@@ -144,11 +144,13 @@ public class Pubs extends Places {
             }
         }
         int i = 0;
-        while(guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity))) {
+        while(guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity)) && (i < customersList.size())) {
             if(!guestListPrint.contains(customersList.get(i).getName())) {
                 guestListPrint.add(customersList.get(i++).getName());
             }
         }
+                System.out.println(guestListPrint);
+
         String[] temp = new String[guestListPrint.size()];
         temp = guestListPrint.toArray(temp);
         return temp;

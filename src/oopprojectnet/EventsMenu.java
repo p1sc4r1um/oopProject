@@ -30,16 +30,12 @@ public class EventsMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addPersonToEventBtn = new javax.swing.JButton();
         createEventBtn = new javax.swing.JButton();
+        addPersonToEventBtn = new javax.swing.JButton();
         infoEventBtn = new javax.swing.JButton();
 
-        addPersonToEventBtn.setText("Add Person to Event");
-        addPersonToEventBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPersonToEventBtnActionPerformed(evt);
-            }
-        });
+        setMinimumSize(new java.awt.Dimension(699, 699));
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         createEventBtn.setText("Create Event");
         createEventBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +43,15 @@ public class EventsMenu extends javax.swing.JFrame {
                 createEventBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(createEventBtn);
+
+        addPersonToEventBtn.setText("Add Person to Event");
+        addPersonToEventBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPersonToEventBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(addPersonToEventBtn);
 
         infoEventBtn.setText("Info Event");
         infoEventBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -54,34 +59,7 @@ public class EventsMenu extends javax.swing.JFrame {
                 infoEventBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(createEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(addPersonToEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(infoEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(createEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addPersonToEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(infoEventBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(infoEventBtn);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

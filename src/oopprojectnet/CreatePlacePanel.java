@@ -54,13 +54,17 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         coordsLabel = new javax.swing.JLabel();
         placeCoords = new javax.swing.JTextField();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         labelPlace.setText("Name:");
+        add(labelPlace, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 43, -1, -1));
 
         placeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 placeNameActionPerformed(evt);
             }
         });
+        add(placeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, 137, -1));
 
         placeType.setModel(new javax.swing.DefaultComboBoxModel<>(placesType));
         placeType.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -73,131 +77,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                 placeTypeActionPerformed(evt);
             }
         });
-
-        labelPlaceType.setText("Type:");
-
-        placeCreateBtn.setText("Create");
-        placeCreateBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeCreateBtnActionPerformed(evt);
-            }
-        });
-
-        placeClearBtn.setText("Clear");
-        placeClearBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeClearBtnActionPerformed(evt);
-            }
-        });
-
-        placeBackBtn.setText("Back");
-        placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                placeBackBtnMouseClicked(evt);
-            }
-        });
-
-        additional1.setText("Garden Area:");
-
-        additionalText1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additionalText1ActionPerformed(evt);
-            }
-        });
-
-        additionalText2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                additionalText2ActionPerformed(evt);
-            }
-        });
-
-        coordsLabel.setText("Coords:");
-
-        placeCoords.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeCoordsActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(placeCreateBtn)
-                                .addGap(48, 48, 48)
-                                .addComponent(placeClearBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                .addComponent(placeBackBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelPlaceType)
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(placeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 211, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(additional1)
-                                            .addComponent(additional2))
-                                        .addGap(53, 53, 53)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(additionalText2)
-                                            .addComponent(additionalText1)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(coordsLabel)
-                            .addComponent(labelPlace))
-                        .addGap(119, 119, 119)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(placeName)
-                            .addComponent(placeCoords, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(47, 47, 47))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPlace)
-                    .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(coordsLabel)
-                    .addComponent(placeCoords, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelPlaceType)
-                    .addComponent(placeType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(additional1)
-                    .addComponent(additionalText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(additional2)
-                    .addComponent(additionalText2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeCreateBtn)
-                    .addComponent(placeClearBtn)
-                    .addComponent(placeBackBtn))
-                .addGap(33, 33, 33))
-        );
-
+        add(placeType, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 113, -1, -1));
         ItemListener itemListenerPlaceType = new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent evt) {
@@ -221,6 +101,62 @@ public class CreatePlacePanel extends javax.swing.JPanel {
             }
         };
         placeType.addItemListener(itemListenerPlaceType);
+
+        labelPlaceType.setText("Type:");
+        add(labelPlaceType, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 116, -1, -1));
+
+        placeCreateBtn.setText("Create");
+        placeCreateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeCreateBtnActionPerformed(evt);
+            }
+        });
+        add(placeCreateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 238, -1, -1));
+
+        placeClearBtn.setText("Clear");
+        placeClearBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeClearBtnActionPerformed(evt);
+            }
+        });
+        add(placeClearBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 238, -1, -1));
+
+        placeBackBtn.setText("Back");
+        placeBackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                placeBackBtnMouseClicked(evt);
+            }
+        });
+        add(placeBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 238, -1, -1));
+        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 10, -1, -1));
+
+        additional1.setText("Garden Area:");
+        add(additional1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 151, -1, -1));
+        add(additional2, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 192, -1, -1));
+
+        additionalText1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                additionalText1ActionPerformed(evt);
+            }
+        });
+        add(additionalText1, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 148, 99, -1));
+
+        additionalText2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                additionalText2ActionPerformed(evt);
+            }
+        });
+        add(additionalText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 192, 99, -1));
+
+        coordsLabel.setText("Coords:");
+        add(coordsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 81, -1, -1));
+
+        placeCoords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeCoordsActionPerformed(evt);
+            }
+        });
+        add(placeCoords, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 78, 137, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void placeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeNameActionPerformed

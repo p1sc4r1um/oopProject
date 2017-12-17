@@ -8,7 +8,6 @@ TODO: files, back button, places print ordenated mtuuer, gui places
 */
 package oopprojectnet;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -21,11 +20,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String workingDir = System.getProperty("user.dir");
-        File f = new File(workingDir+"\\src\\oopprojectnet\\"+"Parks.java");
-        if(f.exists()) { 
-            System.out.println("olaoldowaldwoa");
-        }
         Pubs novo = new Pubs("ola","ola","30","5",new ArrayList<>(), new ArrayList<>());
         Pubs adeus = new Pubs("adeus","re","30","10",new ArrayList<>(), new ArrayList<>());
         Pubs adeus2 = new Pubs("adeus","NB","30","1",new ArrayList<>(), new ArrayList<>());

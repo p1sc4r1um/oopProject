@@ -31,8 +31,9 @@ public class PeopleMenu extends javax.swing.JFrame {
         editPersonBtn = new javax.swing.JButton();
         deletePersonBtn = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(699, 699));
         setPreferredSize(new java.awt.Dimension(400, 600));
-        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
+        getContentPane().setLayout(new java.awt.GridLayout());
 
         createPersonBtn.setText("Create Person");
         createPersonBtn.addActionListener(new java.awt.event.ActionListener() {

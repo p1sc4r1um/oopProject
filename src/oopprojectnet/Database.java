@@ -39,30 +39,6 @@ public class Database {
             readTxt("Events");
         }
     }
-    
-
-    
-    /**
-     * Method do get the name readed in txt file, receives an array as parameter
-     * @param parts elements of one line separated by commas
-     * @return the name
-     */
-    private String getName(String parts[]) {
-        String res = "";
-        if(parts[2].toLowerCase().equals("sportsfield") || parts[2].toLowerCase().equals("garden")) {
-            for (int i = 0; i < parts.length - 3; i++) {
-                res += parts[i] + " ";
-            }
-        }
-        else {
-            for (int i = 0; i < parts.length - 4; i++) {
-                res += parts[i] + " ";
-            }
-        }
-
-        return res.substring(0, res.length() - 1);
-    }
-
 
     /**
      * Method to read the info receives a parameter with the type of information you want to read
@@ -86,55 +62,88 @@ public class Database {
         String[] parts;
         while ((strLine = br.readLine()) != null) {
             parts = strLine.split(":");
-            if (type.toLowerCase().equals("People")) {
-                //Jose:Campos:Student:Profile:Password:StudentCourse
-                //Luis:Cordeiro:Teacher:Profile:Password:TeacherType
-                switch (parts[2].toLowerCase()) {
-                    case "student":
-                        newStudent = new Student(getName(parts), parts[parts.length-3], parts[parts.length-2], parts[parts.length-1]);
+            if (type.toLowerCase().equals("people")) {
+                //Jose Campos:Student:Profile:Password:StudentCourse
+                //Luis Cordeiro:Teacher:Profile:Password:TeacherType
+                //Joao Alberto:Staff:Profile:Password:StaffType
+                switch (parts[parts.length-4].toLowerCase()) {
+                    case "student":  
+                        newStudent = new Student(parts[0], parts[2], parts[3], parts[4]);
                         listPeople.add(newStudent);
                         break;
                     case "teacher":
-                        newTeacher = new Teacher(getName(parts), parts[parts.length-3], parts[parts.length-2], parts[parts.length-1]);
+                        newTeacher = new Teacher(parts[0], parts[2], parts[3], parts[4]);
                         listPeople.add(newTeacher);
                         break;
                     case "staff":
-                        newStaff = new Staff(getName(parts), parts[parts.length-3], parts[parts.length-2], parts[parts.length-1]);
+                        newStaff = new Staff(parts[0], parts[2], parts[3], parts[4]);
                         listPeople.add(newStaff);
                         break;
                 }
             }
-            else if (type.toLowerCase().equals("Places")) {
-                switch (parts[2].toLowerCase()) {
+            //Estadio Universitario:SportsField:coords:sport
+            //Jardim Botanico:Garden:coords:area
+            //Museu Machado de Castro:Exhibition:coords:artisticForm.price
+            //Jose Martinho,Jose Donato,Luis Cordeiro:Moelas Moelinhas:Pub:coords:capacity.minimumInput
+            
+            else if (type.toLowerCase().equals("places")) {
+                String[] parts2;
+                switch (parts[parts.length-3].toLowerCase()) {
                     case "sportsfield":
-                        newSportsField = new SportsField(parts[parts.length-2], getName(parts), parts[parts.length-1]);
+                        newSportsField = new SportsField(parts[2], parts[0], parts[3]);
                         System.out.println(newSportsField);
                         listPlaces.add(newSportsField);
                         break;
                     case "garden":
-                        newGarden = new Gardens(parts[parts.length-2], getName(parts), parts[parts.length-1]);
+                        newGarden = new Gardens(parts[2], parts[0], parts[3]);
                         System.out.println(newGarden);
                         listPlaces.add(newGarden);
                         break;
                     case "exhibition":
-                        newExibition = new Exhibitions(parts[parts.length-3], getName(parts), parts[parts.length-2], parts[parts.length-1]);
+                        parts2 = parts[parts.length-1].split(".");
+                        newExibition = new Exhibitions(parts[2], parts[0], parts2[0], parts2[1]);
                         System.out.println(newExibition);
                         listPlaces.add(newExibition);
                         break;
                     case "pub":
-                        newPub = new Pubs(parts[parts.length-3], getName(parts), parts[parts.length-2], parts[parts.length-1], new ArrayList<>());
+                        parts2 = parts[4].split(".");
+                        String[] people = parts[0].split(",");
+                        ArrayList<Person> customersList;
+                        for(int i = 0; i < people.length; i++) {
+                            if(checkPersonDatabase(people[i])) {
+                                
+                            }
+                        }
+                        newPub = new Pubs(parts[3], parts[1], parts2[0], parts2[1], null);
                         System.out.println(newPub);
                         break;
                 }
             }
             else if (type.toLowerCase().equals("Events")) {
-
+                //EventPlaces(verificar cada um se esta na base de dados)
+                //Person,Places
+                //Person,Places
+                //...
             }
         }
         br.close();
         return 1;
     }
 
+    /**
+     * Check if person is in database
+     * @param PersonToAdd person to check
+     * @return true in success, false otherwise
+     */
+    private boolean checkPersonDatabase(String PersonToAdd) {
+        for(Person p : Database.listPeople) {
+            if(p.getName().toLowerCase().equals(PersonToAdd.toLowerCase())) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
 
 
     /**

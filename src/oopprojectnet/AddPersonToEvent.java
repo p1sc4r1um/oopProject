@@ -57,6 +57,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         capacity = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(900, 900));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AddPersonBtn.setText("Add");
@@ -65,7 +66,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
                 AddPersonBtnActionPerformed(evt);
             }
         });
-        add(AddPersonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 642, -1, -1));
+        add(AddPersonBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 600, -1, -1));
 
         personToAdd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -83,7 +84,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
                 personAddBackBtnActionPerformed(evt);
             }
         });
-        add(personAddBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 640, -1, -1));
+        add(personAddBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 600, -1, -1));
 
         jLabel1.setText("Select a maximum of 5 places:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 372, -1, -1));
@@ -373,6 +374,9 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(availablePlaces.getSelectedValue()) +"");
         if(Database.getPlaceFromName(availablePlaces.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
             capacity.setText(Database.getPlaceFromName(availablePlaces.getSelectedValue()).getCapacity() + "");
+        }
+        else {
+            capacity.setText("no limit");
         }
     }//GEN-LAST:event_availablePlacesMouseClicked
 

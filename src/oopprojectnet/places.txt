@@ -1,4 +1,10 @@
 Estadio Universitario:SportsField:40.206196, -8.435476:Football
-Jardim Botanico:Garden:40.205622, -8.421108:13,5
-Museu Machado de Castro:Exhibition:coords:artisticForm.price
-Jose Martinho,Jose Donato,Luis Cordeiro:Moelas Moelinhas:Pub:coords:capacity.minimumInput
+Jardim Botanico:Garden:98.205622, -2.4212313218:300
+Museu Machado de Castro:Exhibition:44.12312, -1.4123126:art.5
+Moelas Moelinhas:Pub:34.12312, -5.4123126:5.3
+NB:Pub:64.12312, -1.4123126:10.5
+Mandarim:Pub:44.12312, -33.4123126:15.1
+Sk8 Park:Garden:18.205622, -4.4212313218:100
+Parque Verde:Garden:2.205622, -12.4212313218:700
+Estadio de Coimbra:SportsField:8.205622, -29.4212313218:Football
+Biblioteca Joanina:Exhibition:40.12312, -10.4123126:Livros.9

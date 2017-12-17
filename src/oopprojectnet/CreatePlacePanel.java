@@ -236,7 +236,7 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                 }
                 if(newPlace != null && bool == 1) {
                     Database.listPlaces.add(newPlace);
-                    System.out.println(Database.listPlaces.get(0));
+                    //System.out.println(Database.listPlaces.get(0));
                 }
                 if(bool == 1) {
                     Object[] options = { "OK", "CREATE ANOTHER" };

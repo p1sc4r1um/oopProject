@@ -1,0 +1,14 @@
+Convivio do Dei:Estadio Universitario,Jardim Botanico,Museu Machado de Castro,Moelas Moelinhas,NB,Mandarim,Sk8 Park,Parque Verde,Estadio de Coimbra,Biblioteca Joanina
+Joao Alberto:Moelas Moelinhas,Museu Machado de Castro
+Jose Dunas:Museu Machado de Castro,NB,Jardim Botanico
+Jose Martinho:NB,Sk8 Park,,Biblioteca Joanina,Museu Machado de Castro
+Ines Amaro:NB,Biblioteca Joanina,Jardim Botanico,
+Luis Cordeiro:Biblioteca Joanina
+Marco Vieira:NB,Estadio de Coimbra,Parque Verde
+Antonio Sanches:NB,Sk8 Park,Estadio de Coimbra,Mandarim,Parque Verde
+Olegario Silva:Jardim Botanico,Parque Verde
+Carlos Americo:NB,Parque Verde
+Antonio Simoes:NB,Sk8 Park,Mandarim
+David Aletante:Estadio de Coimbra,Mandarim,Museu Machado de Castro
+Olga Azenhas:Estadio de Coimbra,Estadio Universitario
+Luisa Conceicao:NB,Mandarim,Estadio Universitario

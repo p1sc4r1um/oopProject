@@ -110,12 +110,12 @@ public class EditPlacePanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelPlace)
                                 .addGap(120, 120, 120)
-                                .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(placeName, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelCoords)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(placeCoords, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(182, Short.MAX_VALUE))
+                                .addGap(111, 111, 111)
+                                .addComponent(placeCoords)))))
+                .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(additional1)
@@ -147,7 +147,7 @@ public class EditPlacePanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 182, 525, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 525, -1));
 
         placeClearBtn.setText("Clear");
         placeClearBtn.addMouseListener(new java.awt.event.MouseAdapter() {

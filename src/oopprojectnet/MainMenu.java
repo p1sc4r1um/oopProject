@@ -5,6 +5,10 @@
  */
 package oopprojectnet;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author almof
@@ -39,7 +43,7 @@ public class MainMenu extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
-        getContentPane().setLayout(new java.awt.GridLayout());
+        getContentPane().setLayout(new java.awt.GridLayout(1, 0));
 
         peopleBtn.setText("People");
         peopleBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -82,7 +86,21 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         System.out.println("Exiting");
-        /**Write to file..............*/
+        try {
+            Database.writeObj("People");
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Database.writeObj("Places");
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            Database.writeObj("Events");
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 

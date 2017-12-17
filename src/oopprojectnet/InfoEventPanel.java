@@ -128,7 +128,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 343, -1, -1));
 
         numberOfPeople.setText("0");
-        add(numberOfPeople, new org.netbeans.lib.awtextra.AbsoluteConstraints(576, 372, 164, -1));
+        add(numberOfPeople, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 370, 164, -1));
 
         jLabel5.setText("Event's Profit:");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 59, -1, -1));
@@ -140,7 +140,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         add(placesProfitLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(451, 290, -1, -1));
 
         placesProfit.setText("0");
-        add(placesProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(646, 290, 78, -1));
+        add(placesProfit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 78, -1));
 
         showGuestListBtn.setText("Generate pub's Guest List!");
         showGuestListBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -249,7 +249,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         }
         String[] temp = new String[StringList.size()];
         temp = StringList.toArray(temp);
-        System.out.println(temp);
+        //System.out.println(temp);
         return temp;
     }
     private String getEventName() {
@@ -292,8 +292,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
     }
     
     private String[] getPlacesFromPerson(String person, String event) {
-        System.out.println(event);
-        System.out.println(person);
+        
         ArrayList<String> t = new ArrayList<String>();
         for(Event e : Database.listEvents) {
             if(e.getName().equals(event)) {
@@ -301,7 +300,6 @@ public class InfoEventPanel extends javax.swing.JPanel {
                     if(pp.getPerson().getName().equals(person)) {
                         for(Places p : pp.getListPlaces()) {
                             t.add(p.getName());
-                            System.out.println(p.getName());
                         }
                     }
                 }

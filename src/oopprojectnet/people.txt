@@ -11,3 +11,4 @@ David Aletante:Student:Sporty:32131:LEI
 Olga Azenhas:Teacher:Sporty:21321321:Associated
 Luisa Conceicao:Staff:Bohemian:32189321:Full-Time
 Salvador Marinha:Staff:Cultured:121111:Part-Time
+Joao Alberto:Student:Cultured:12345:LEI

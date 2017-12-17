@@ -24,24 +24,33 @@ public class Database {
      * Method to update the database when program starts up, receives no argument
      * @throws IOException 
      */
-    public static void startDatabase() throws ClassNotFoundException, IOException {
+    public static void startDatabase() throws ClassNotFoundException, IOException, FileNotFoundException {
         try{
             readObj("People");
             
         } catch (IOException e) {
             readTxt("People");
+            System.out.println("ola1");
         }
         try{
+                        System.out.println("ola2");
+
             readObj("Places");
             
         } catch (IOException e) {
             readTxt("Places");
+            System.out.println("ola2");
+
+
         }
         try{
             readObj("Events");
             
         } catch (IOException e) {
             readTxt("Events");
+                        System.out.println("ola3");
+
+
         }        
     }
 
@@ -52,6 +61,7 @@ public class Database {
      * @throws IOException
      */
     public static int readTxt(String type) throws IOException {
+        int verifica = 0;
         String path;
         Student newStudent = null;
         Teacher newTeacher = null;
@@ -97,38 +107,35 @@ public class Database {
                 switch (parts[parts.length-3].toLowerCase()) {
                     case "sportsfield":
                         newSportsField = new SportsField(parts[2], parts[0], parts[3]);
-                        System.out.println(newSportsField);
+                        //System.out.println(newSportsField);
                         listPlaces.add(newSportsField);
                         break;
                     case "garden":
                         newGarden = new Gardens(parts[2], parts[0], parts[3]);
-                        System.out.println(newGarden);
+                        //System.out.println(newGarden);
                         listPlaces.add(newGarden);
                         break;
                     case "exhibition":
-                        parts2 = parts[parts.length-1].split(".");
+                        parts2 = parts[3].split("\\.");
                         newExibition = new Exhibitions(parts[2], parts[0], parts2[0], parts2[1]);
-                        System.out.println(newExibition);
+                        //System.out.println(newExibition);
                         listPlaces.add(newExibition);
                         break;
                     case "pub":
-                        parts2 = parts[3].split(".");
-                        newPub = new Pubs(parts[2], parts[0], parts2[0], parts2[1], null);
+                        parts2 = parts[3].split("\\.");
+                        newPub = new Pubs(parts[2], parts[0], parts2[0], parts2[1], new ArrayList());
                         listPlaces.add(newPub);
-                        System.out.println(newPub);
+                        //System.out.println(newPub);
                         break;
                 }
             }
             else if (type.toLowerCase().equals("events")) {
-                int verifica = 0, i;
-                Event newE;
+                int i;
+                Event newE = null;
                 ArrayList<Places> places = new ArrayList();
-                //evento1:Moelas Moelinhas,Museu Machado de Castro
-                //Joao Alberto:Moelas Moelinhas,Museu Machado de Castro
-                //Jose Donato:Museu Machado de Castro
                 if(verifica == 0) {
                     String[] parts2 = parts[1].split(",");
-                    for(i = 0; i<parts2.length; i++) {
+                    for(i = 0; i < parts2.length; i++) {
                         if(getPlaceFromName(parts2[i]) != null) {
                             places.add(getPlaceFromName(parts2[i]));
                         }
@@ -148,12 +155,96 @@ public class Database {
                     }
                     Database.listEvents.get(0).addPerson(person, places);
                 }
+                
             }
         }
         br.close();
         return 1;
     }
 
+
+    public static int writeTxt(String type) throws FileNotFoundException, IOException {
+        int verifica = 0;
+        String path;
+        Student newStudent = null;
+        Teacher newTeacher = null;
+        Staff newStaff = null;
+        Exhibitions newExibition;
+        SportsField newSportsField;
+        Gardens newGarden;
+        Pubs newPub;
+        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
+        path = workingDir + type + ".txt";
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(path, true)));
+        if (type.toLowerCase().equals("people")) {
+            //Jose Campos:Student:Profile:Password:StudentCourse
+            //Luis Cordeiro:Teacher:Profile:Password:TeacherType
+            //Joao Alberto:Staff:Profile:Password:StaffType
+            for(Person p : listPeople) {
+                if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.student")) { 
+                    out.println(p.getName()+":Student:"+p.getProfile()+":"+p.getPassword()+":"+((Student)p).getStudentCourse());
+                }
+                else if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
+                    out.println(p.getName()+":Teacher:"+p.getProfile()+":"+p.getPassword()+":"+((Teacher)p).getTeacherType());
+                }
+                else if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
+                    out.println(p.getName()+":Student:"+p.getProfile()+":"+p.getPassword()+":"+((Staff)p).getEmployment());
+                }
+            }
+        }
+        //Estadio Universitario:SportsField:coords:sport
+        //Jardim Botanico:Garden:coords:area
+        //Museu Machado de Castro:Exhibition:coords:artisticForm.price
+        //Moelas Moelinhas:Pub:coords:capacity.minimumInput
+
+        else if (type.toLowerCase().equals("places")) {
+            Person a;
+            
+            for(Places p : listPlaces) {
+                if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.gardens")) { 
+                    out.println(p.getName()+":Garden:"+p.getCoords()+":"+((Gardens)p).getArea());
+                }
+                else if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.sportsfield")) {
+                    out.println(p.getName()+":SportsField:"+p.getCoords()+":"+((SportsField)p).getSport());
+                }
+                else if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.exhibitions")) {
+                    out.println(p.getName()+":Exhibition:"+p.getCoords()+":"+((Exhibitions)p).getArtisticForm()+"."+((Exhibitions)p).getPrice());
+                }
+                else if(p.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
+                    out.println(p.getName()+":Pub:"+p.getCoords()+":"+((Pubs)p).getCapacity()+"."+((Pubs)p).getMinimumInput());
+                }
+            }
+            
+        }
+        else if (type.toLowerCase().equals("events")) {
+           /* int i;
+            String[listPlaces.size()] arrayPlaces = new String();
+            if(verifica == 0) {
+                for(Places p : listPlaces) {
+                    if(getPlaceFromName(parts2[i]) != null) {
+                        places.add(getPlaceFromName(parts2[i]));
+                    }
+                }
+                newE = new Event(parts[0], new ArrayList(), places);
+                Database.listEvents.add(newE);
+                verifica = 1;
+            }
+            else {
+                places = new ArrayList();
+                String[] parts2 = parts[1].split(",");
+                Person person = getPersonFromName(parts[0]);
+                for(i = 0; i<parts2.length; i++) {
+                    if(getPlaceFromName(parts2[i]) != null) {
+                        places.add(getPlaceFromName(parts2[i]));
+                    }
+                }
+                Database.listEvents.get(0).addPerson(person, places);
+            }*/
+
+        }
+        out.close();
+        return 1;
+    }
     /**
      * Check if person is in database
      * @param PersonToAdd person to check
@@ -175,10 +266,11 @@ public class Database {
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
      * @throws IOException 
+     * @throws java.lang.ClassNotFoundException 
      */
-    public static int readObj(String type) throws IOException, ClassNotFoundException {
+    public static int readObj(String type) throws FileNotFoundException, IOException, ClassNotFoundException {
         String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
-        String path = workingDir + type + ".ser";
+        String path = workingDir + type.toLowerCase() + ".ser";
         FileInputStream is = new FileInputStream(new File(path));
         ObjectInputStream ois = new ObjectInputStream(is);
 
@@ -197,19 +289,19 @@ public class Database {
         return 1;
 
     }
+    
     /**
      * Method to write objects to file
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
      * @throws IOException 
      */
-    public int writeObj(String type) throws IOException {
+    public static int writeObj(String type) throws IOException {
         String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
-        String path = workingDir + type + ".ser";
+        String path = workingDir + type.toLowerCase() + ".ser";
         try {
             FileOutputStream os = new FileOutputStream(new File(path));
             ObjectOutputStream oos = new ObjectOutputStream(os);
-
             //ou ObjectInputStream iS = new ObjectInputStream(newFileInputStream(path));
 
             switch(type.toLowerCase()) {

@@ -132,7 +132,7 @@ public class Event {
      * @return an integer, the receipt calculated in euros
      */
     public int calculatePlaceReceipt(String place) {
-        int receipt=0;
+        float receipt=0;
         for(Places p : placesList) {
             if(p.getName().equals(place)) {
                 for(PersonPlaces c : invitedList) {
@@ -145,6 +145,7 @@ public class Event {
                                 else {
                                     receipt += Integer.parseInt(((Exhibitions) currentPlace).getPrice());
                                 }
+
                             }
                             else if(currentPlace.getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
                                 receipt +=  Integer.parseInt(((Pubs) currentPlace).getMinimumInput());
@@ -154,7 +155,8 @@ public class Event {
                 }
             }
         }
-        return receipt;
+        int intReceipt = (int) Math.round(receipt);
+        return intReceipt;
     }
     
     /**
@@ -208,4 +210,11 @@ public class Event {
     public ArrayList<Places> getPlacesList() {
         return placesList;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" + "invitedList=" + invitedList + ", placesList=" + placesList + ", name=" + name + '}';
+    }
+    
+   
 }

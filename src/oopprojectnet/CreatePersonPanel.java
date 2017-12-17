@@ -227,7 +227,7 @@ public class CreatePersonPanel extends javax.swing.JPanel {
                     switch (each.toLowerCase()) {
                             case "teacher":
                                 newPerson = new Teacher(name, profile, pass, type);
-                                System.out.println(newPerson);
+                                //System.out.println(newPerson);
                                 Database.listPeople.add(newPerson);
                                 break;
                             case "student":

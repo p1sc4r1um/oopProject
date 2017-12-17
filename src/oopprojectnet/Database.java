@@ -33,8 +33,6 @@ public class Database {
             System.out.println("ola1");
         }
         try{
-                        System.out.println("ola2");
-
             readObj("Places");
             
         } catch (IOException e) {
@@ -48,7 +46,7 @@ public class Database {
             
         } catch (IOException e) {
             readTxt("Events");
-                        System.out.println("ola3");
+             System.out.println("ola3");
 
 
         }        
@@ -278,12 +276,15 @@ public class Database {
         switch(type.toLowerCase()) {
             case "people":
                 listPeople = (ArrayList<Person>) ois.readObject();
+                System.out.println("xuxa1");
                 break;
             case "places":
                 listPlaces = (ArrayList<Places>) ois.readObject();
+                System.out.println("xuxa2");
                 break;
             case "events":
                 listEvents = (ArrayList<Event>) ois.readObject();
+                System.out.println("xuxa3");
                 break;
         }
         return 1;
@@ -299,6 +300,7 @@ public class Database {
     public static int writeObj(String type) throws IOException {
         String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
         String path = workingDir + type.toLowerCase() + ".ser";
+        System.out.println("vou escrever " + type);
         try {
             FileOutputStream os = new FileOutputStream(new File(path));
             ObjectOutputStream oos = new ObjectOutputStream(os);
@@ -318,6 +320,7 @@ public class Database {
             return 1;
         }
         catch (IOException e) {
+            System.out.println("exception");
             return 0;
         }
     }

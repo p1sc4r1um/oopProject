@@ -1,7 +1,8 @@
 package oopprojectnet;
+import java.io.Serializable;
 import java.util.*;
 
-public class PersonPlaces {
+public class PersonPlaces implements Serializable {
     private Person person;
     private ArrayList<Places> listPlaces;
 

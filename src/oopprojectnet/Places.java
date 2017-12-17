@@ -1,5 +1,8 @@
 package oopprojectnet;
-public class Places {
+
+import java.io.Serializable;
+
+public class Places implements Serializable {
     protected String coords, name;
     public Places() {
         this.coords = "40.205776 -8.421398";

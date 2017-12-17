@@ -1,8 +1,9 @@
 package oopprojectnet;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class Event {
+public class Event implements Serializable {
     private ArrayList<PersonPlaces> invitedList;
     private ArrayList<Places> placesList;
     private String name;

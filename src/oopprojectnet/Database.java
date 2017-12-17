@@ -121,10 +121,10 @@ public class Database {
                         System.out.println(newExibition);
                         listPlaces.add(newExibition);
                         break;
-                    /*case "pub":
-                        newPub = new Pubs(parts[0] + " " + parts[1], parts[3], parts[4], parts[5]);
-                        System.out.println(newStaff);
-                        break;*/
+                    case "pub":
+                        newPub = new Pubs(parts[parts.length-3], getName(parts), parts[parts.length-2], parts[parts.length-1], new ArrayList<>());
+                        System.out.println(newPub);
+                        break;
                 }
             }
             else if (type.toLowerCase().equals("Events")) {

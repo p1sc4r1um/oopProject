@@ -24,7 +24,7 @@ public class PersonPlaces implements Serializable {
      * @param placeToAdd the place you want to add
      * @return return the place in success, null otherwise
      */
-    /*public Places addPlaces(Places placeToAdd) {
+    public Places addPlaces(Places placeToAdd) {
         for(Places place : listPlaces) {
             if(place.equals(placeToAdd)) {
                 return null;
@@ -36,13 +36,13 @@ public class PersonPlaces implements Serializable {
         }
         return null;
     }
-    */
+    
     /**
      * Method to remove one place from listPlaces, receives one place as argument
      * @param placeToRemove the place you want to remove
      * @return return the place removed in success, null otherwise
      */
-    /*
+    
     public Places removePlaces(Places placeToRemove) {
         for(Places place : listPlaces) {
             if(place.equals(placeToRemove)) {
@@ -52,7 +52,7 @@ public class PersonPlaces implements Serializable {
         }
         return null;
     }
-    */
+    
     
     /**
      * Getters and setters of PersonPlaces class

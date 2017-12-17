@@ -38,7 +38,7 @@ public class Event implements Serializable {
      */
     
     public PersonPlaces addPerson (Person newP, ArrayList<Places> wantedPlaces) {
-        for(Places p:wantedPlaces) {
+        for(Places p : wantedPlaces) {
             if(!this.placesList.contains(p)) {
                 wantedPlaces.remove(p);
             }

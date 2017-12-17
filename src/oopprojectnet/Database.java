@@ -89,7 +89,7 @@ public class Database {
                 //Jose Campos:Student:Profile:Password:StudentCourse
                 //Luis Cordeiro:Teacher:Profile:Password:TeacherType
                 //Joao Alberto:Staff:Profile:Password:StaffType
-                switch (parts[parts.length-4].toLowerCase()) {
+                switch (parts[1].toLowerCase()) {
                     case "student":  
                         newStudent = new Student(parts[0], parts[2], parts[3], parts[4]);
                         listPeople.add(newStudent);
@@ -112,7 +112,7 @@ public class Database {
             else if (type.toLowerCase().equals("places")) {
                 String[] parts2;
                 Person a;
-                switch (parts[parts.length-3].toLowerCase()) {
+                switch (parts[1].toLowerCase()) {
                     case "sportsfield":
                         newSportsField = new SportsField(parts[2], parts[0], parts[3]);
                         //System.out.println(newSportsField);

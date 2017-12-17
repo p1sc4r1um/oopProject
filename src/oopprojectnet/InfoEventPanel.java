@@ -175,9 +175,15 @@ public class InfoEventPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_eventListMouseClicked
 
     private void placesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placesListMouseClicked
-        numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(placesList.getSelectedValue()) +"");
-        placesProfit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculatePlaceReceipt(placesList.getSelectedValue()) +" euros");
-
+        if(eventList.getSelectedIndex() != -1) {
+            numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(placesList.getSelectedValue()) +"");
+            placesProfit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculatePlaceReceipt(placesList.getSelectedValue()) +" euros");
+        }
+        else {
+            numberOfPeople.setText(Database.listEvents.get(0).countLocal(placesList.getSelectedValue()) +"");
+            placesProfit.setText(Database.listEvents.get(0).calculatePlaceReceipt(placesList.getSelectedValue()) +" euros");
+   
+        }
     }//GEN-LAST:event_placesListMouseClicked
 
     private void peopleListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleListMouseClicked

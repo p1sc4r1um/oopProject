@@ -88,16 +88,19 @@ public class MainMenu extends javax.swing.JFrame {
         System.out.println("Exiting");
         try {
             Database.writeObj("People");
+            //Database.writeTxt("People");
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             Database.writeObj("Places");
+            //Database.writeTxt("Places");
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             Database.writeObj("Events");
+            //Database.writeTxt("Events");
         } catch (IOException ex) {
             Logger.getLogger(MainMenu.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,8 +5,8 @@ Luis Cordeiro:Teacher:Cultured:5453453:Assistant
 Marco Vieira:Teacher:Bohemian:21321321:Full
 Antonio Sanches:Student:Bohemian:1234:LDM
 Olegario Silva:Student:Spared:1234:MDM
-Carlos Americo:Staff:Spared:Part-Time
-Antonio Simoes:Staff:Cultured:Full-Time
+Carlos Americo:Staff:Spared:12312:Part-Time
+Antonio Simoes:Staff:Cultured:321321:Full-Time
 David Aletante:Student:Sporty:32131:LEI
 Olga Azenhas:Teacher:Sporty:21321321:Associated
 Luisa Conceicao:Staff:Bohemian:32189321:Full-Time

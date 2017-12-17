@@ -11,4 +11,9 @@ Carlos Americo:NB,Parque Verde
 Antonio Simoes:NB,Sk8 Park,Mandarim
 David Aletante:Estadio de Coimbra,Mandarim,Museu Machado de Castro
 Olga Azenhas:Estadio de Coimbra,Estadio Universitario
-Luisa Conceicao:NB,Mandarim,Estadio Universitario
+Luisa Conceicao:NB,Mandarim,Estadio UniversitarioConvivio do Dei:Estadio Universitario,Jardim Botanico,Museu Machado de Castro,Moelas Moelinhas,NB,Mandarim,Sk8 Park,Parque Verde,Estadio de Coimbra,Biblioteca Joanina
+Joao Alberto:Moelas Moelinhas,Museu Machado de Castro
+Luis Cordeiro:Biblioteca Joanina
+Olegario Silva:Jardim Botanico,Parque Verde
+David Aletante:Estadio de Coimbra,Mandarim,Museu Machado de Castro
+Olga Azenhas:Estadio de Coimbra,Estadio Universitario

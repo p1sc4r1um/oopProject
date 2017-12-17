@@ -8,3 +8,4 @@ Sk8 Park:Garden:18.205622, -4.4212313218:100
 Parque Verde:Garden:2.205622, -12.4212313218:700
 Estadio de Coimbra:SportsField:8.205622, -29.4212313218:Football
 Biblioteca Joanina:Exhibition:40.12312, -10.4123126:Livros.9
+RS:Pub:42.00000, -9.992193921:4.4

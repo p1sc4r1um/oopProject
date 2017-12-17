@@ -334,19 +334,19 @@ public class EditPersonPanel extends javax.swing.JPanel {
                 labelPersonType.setText("Course");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LEI", "LDM", "MEI", "MDM" }));
                 personType.setSelectedItem(((Student)current).getStudentCourse());
-                personType.setSelectedItem(((Student)current).getProfile());
+                personProfile.setSelectedItem(((Student)current).getProfile());
             }
             else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.teacher")) {
                 labelPersonType.setText("Type");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full", "Assistant", "Associated" }));
                 personType.setSelectedItem(((Teacher)current).getTeacherType());
-                personType.setSelectedItem(((Teacher)current).getProfile());
+                personProfile.setSelectedItem(((Teacher)current).getProfile());
             }
             else if (current.getClass().toString().toLowerCase().equals("class oopprojectnet.staff")) {
                 labelPersonType.setText("Type");
                 personType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full-Time", "Part-Time"}));
                 personType.setSelectedItem(((Staff)current).getEmployment());
-                personType.setSelectedItem(((Staff)current).getProfile());
+                personProfile.setSelectedItem(((Staff)current).getProfile());
             }
         }
     }//GEN-LAST:event_peopleListMouseClicked

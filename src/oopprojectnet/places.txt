@@ -1,0 +1,4 @@
+Estadio Universitario:SportsField:40.206196, -8.435476:Football
+Jardim Botanico:Garden:40.205622, -8.421108:13,5
+Museu Machado de Castro:Exhibition:coords:artisticForm.price
+Jose Martinho,Jose Donato,Luis Cordeiro:Moelas Moelinhas:Pub:coords:capacity.minimumInput

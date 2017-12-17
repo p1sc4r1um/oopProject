@@ -2,6 +2,8 @@ package oopprojectnet;
 
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Database {
     public static ArrayList<Person> listPeople;
@@ -22,22 +24,25 @@ public class Database {
      * Method to update the database when program starts up, receives no argument
      * @throws IOException 
      */
-    private void startDatabase() throws IOException {
+    public static void startDatabase() throws ClassNotFoundException, IOException {
         try{
             readObj("People");
-        } catch(Exception FileNotFoundException) {
+            
+        } catch (IOException e) {
             readTxt("People");
         }
         try{
             readObj("Places");
-        } catch(Exception FileNotFoundException) {
+            
+        } catch (IOException e) {
             readTxt("Places");
         }
         try{
             readObj("Events");
-        } catch(Exception FileNotFoundException) {
+            
+        } catch (IOException e) {
             readTxt("Events");
-        }
+        }        
     }
 
     /**
@@ -46,7 +51,7 @@ public class Database {
      * @return 1 in success, 0 otherwise
      * @throws IOException
      */
-    public int readTxt(String type) throws IOException {
+    public static int readTxt(String type) throws IOException {
         String path;
         Student newStudent = null;
         Teacher newTeacher = null;
@@ -88,6 +93,7 @@ public class Database {
             
             else if (type.toLowerCase().equals("places")) {
                 String[] parts2;
+                Person a;
                 switch (parts[parts.length-3].toLowerCase()) {
                     case "sportsfield":
                         newSportsField = new SportsField(parts[2], parts[0], parts[3]);
@@ -109,18 +115,19 @@ public class Database {
                         parts2 = parts[4].split(".");
                         String[] people = parts[0].split(",");
                         ArrayList<Person> customersList;
+                        newPub = new Pubs(parts[3], parts[1], parts2[0], parts2[1], null);
                         for(int i = 0; i < people.length; i++) {
-                            if(checkPersonDatabase(people[i])) {
-                                
+                            a = getPersonFromName(people[i]);
+                            if(a!=null) {
+                                newPub.addPerson(a);
                             }
                         }
-                        newPub = new Pubs(parts[3], parts[1], parts2[0], parts2[1], null);
                         System.out.println(newPub);
                         break;
                 }
             }
             else if (type.toLowerCase().equals("Events")) {
-                //EventPlaces(verificar cada um se esta na base de dados)
+                //EventName:EventPlaces(verificar cada um se esta na base de dados, separar por virgulas)
                 //Person,Places
                 //Person,Places
                 //...
@@ -135,7 +142,7 @@ public class Database {
      * @param PersonToAdd person to check
      * @return true in success, false otherwise
      */
-    private boolean checkPersonDatabase(String PersonToAdd) {
+    private static boolean checkPersonDatabase(String PersonToAdd) {
         for(Person p : Database.listPeople) {
             if(p.getName().toLowerCase().equals(PersonToAdd.toLowerCase())) {
                 return true;
@@ -152,33 +159,26 @@ public class Database {
      * @return 1 in success, 0 otherwise
      * @throws IOException 
      */
-    public int readObj(String type) throws IOException {
+    public static int readObj(String type) throws IOException, ClassNotFoundException {
         String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
         String path = workingDir + type + ".ser";
-        try {
-            FileInputStream is = new FileInputStream(new File(path));
-            ObjectInputStream ois = new ObjectInputStream(is);
+        FileInputStream is = new FileInputStream(new File(path));
+        ObjectInputStream ois = new ObjectInputStream(is);
 
-            //ou ObjectInputStream iS = new ObjectInputStream(newFileInputStream(path));
-            switch(type.toLowerCase()) {
-                case "people":
-                    listPeople = (ArrayList<Person>) ois.readObject();
-                    break;
-                case "places":
-                    listPlaces = (ArrayList<Places>) ois.readObject();
-                    break;
-                case "events":
-                    listEvents = (ArrayList<Event>) ois.readObject();
-                    break;
-            }
-            return 1;
+        //ou ObjectInputStream iS = new ObjectInputStream(newFileInputStream(path));
+        switch(type.toLowerCase()) {
+            case "people":
+                listPeople = (ArrayList<Person>) ois.readObject();
+                break;
+            case "places":
+                listPlaces = (ArrayList<Places>) ois.readObject();
+                break;
+            case "events":
+                listEvents = (ArrayList<Event>) ois.readObject();
+                break;
         }
-        catch (IOException e) {
-            return 0;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return 0;
-        }
+        return 1;
+
     }
     /**
      * Method to write objects to file

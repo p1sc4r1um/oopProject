@@ -1,0 +1,13 @@
+Jose Dunas:Student:Cultured:12345:LEI
+Jose Martinho:Student:Cultured:123678799:LEI
+Ines Amaro:Student:Sporty:88238:MEI
+Luis Cordeiro:Teacher:Cultured:5453453:Assistant
+Marco Vieira:Teacher:Bohemian:21321321:Full
+Antonio Sanches:Student:Bohemian:1234:LDM
+Olegario Silva:Student:Spared:1234:MDM
+Carlos Americo:Staff:Spared:Part-Time
+Antonio Simoes:Staff:Cultured:Full-Time
+David Aletante:Student:Sporty:32131:LEI
+Olga Azenhas:Teacher:Sporty:21321321:Associated
+Luisa Conceicao:Staff:Bohemian:32189321:Full-Time
+Salvador Marinha:Staff:Cultured:121111:Part-Time

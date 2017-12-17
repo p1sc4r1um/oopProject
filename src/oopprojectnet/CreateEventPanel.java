@@ -190,6 +190,12 @@ public class CreateEventPanel extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+    
+    /**
+     * Method to check if one event's name exists in list of events
+     * @param name you want to check
+     * @return true in success, false otherwise
+     */
     private boolean checkEventName(String name) {
         for (Event current : Database.listEvents) {
             if (current.getName().toLowerCase().equals(name.toLowerCase())) {
@@ -286,6 +292,8 @@ public class CreateEventPanel extends javax.swing.JPanel {
     private void eventNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eventNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_eventNameActionPerformed
+    
+
     private int getIndexOfName (String name) {
         for(Places p:Database.listPlaces) {
             if(p.getName().equals(name)) {

@@ -160,7 +160,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
         }
         return res;
     }
-    
+
     private String[] getListNamePeople(String search) {
         ArrayList < String > list;
         list = new ArrayList <> ();

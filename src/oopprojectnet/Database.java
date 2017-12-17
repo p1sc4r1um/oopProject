@@ -27,28 +27,20 @@ public class Database {
     public static void startDatabase() throws ClassNotFoundException, IOException, FileNotFoundException {
         try{
             readObj("People");
-            
         } catch (IOException e) {
             readTxt("People");
-            System.out.println("ola1");
         }
         try{
             readObj("Places");
             
         } catch (IOException e) {
             readTxt("Places");
-            System.out.println("ola2");
-
-
         }
         try{
             readObj("Events");
             
         } catch (IOException e) {
             readTxt("Events");
-             System.out.println("ola3");
-
-
         }        
     }
 
@@ -160,7 +152,12 @@ public class Database {
         return 1;
     }
 
-
+    /**
+     * Method to write the info to a text file receives a parameter with the type of information you want to write
+     * @param type the type of the info (events, places, people)
+     * @return 1 in success, 0 otherwise
+     * @throws IOException
+     */
     public static int writeTxt(String type) throws FileNotFoundException, IOException {
         int verifica = 0;
         String path;
@@ -215,30 +212,23 @@ public class Database {
             
         }
         else if (type.toLowerCase().equals("events")) {
-           /* int i;
-            String[listPlaces.size()] arrayPlaces = new String();
-            if(verifica == 0) {
-                for(Places p : listPlaces) {
-                    if(getPlaceFromName(parts2[i]) != null) {
-                        places.add(getPlaceFromName(parts2[i]));
-                    }
+            for(Event e : listEvents) {
+                int i = 0;
+                String[] arrayPlaces = new String[listPlaces.size()];
+                for(Places p : e.getPlacesList()) {
+                    arrayPlaces[i++] = p.getName();
                 }
-                newE = new Event(parts[0], new ArrayList(), places);
-                Database.listEvents.add(newE);
-                verifica = 1;
+                out.println(e.getName()+":"+String.join(",", arrayPlaces));
+                for(PersonPlaces pp : e.getInvitedList()) {
+                    arrayPlaces = new String[pp.getListPlaces().size()];
+                    i = 0;
+                    for(Places p : pp.getListPlaces()) {
+                        arrayPlaces[i++] = p.getName();
+                    }
+                    out.println(pp.getPerson().getName()+":"+String.join(",", arrayPlaces));
+                }
+                
             }
-            else {
-                places = new ArrayList();
-                String[] parts2 = parts[1].split(",");
-                Person person = getPersonFromName(parts[0]);
-                for(i = 0; i<parts2.length; i++) {
-                    if(getPlaceFromName(parts2[i]) != null) {
-                        places.add(getPlaceFromName(parts2[i]));
-                    }
-                }
-                Database.listEvents.get(0).addPerson(person, places);
-            }*/
-
         }
         out.close();
         return 1;
@@ -276,15 +266,12 @@ public class Database {
         switch(type.toLowerCase()) {
             case "people":
                 listPeople = (ArrayList<Person>) ois.readObject();
-                System.out.println("xuxa1");
                 break;
             case "places":
                 listPlaces = (ArrayList<Places>) ois.readObject();
-                System.out.println("xuxa2");
                 break;
             case "events":
                 listEvents = (ArrayList<Event>) ois.readObject();
-                System.out.println("xuxa3");
                 break;
         }
         return 1;
@@ -292,7 +279,7 @@ public class Database {
     }
     
     /**
-     * Method to write objects to file
+     * Method to write objects to objects file, receives one string as argument
      * @param type the type of the info (events, places, people)
      * @return 1 in success, 0 otherwise
      * @throws IOException 
@@ -300,7 +287,6 @@ public class Database {
     public static int writeObj(String type) throws IOException {
         String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
         String path = workingDir + type.toLowerCase() + ".ser";
-        System.out.println("vou escrever " + type);
         try {
             FileOutputStream os = new FileOutputStream(new File(path));
             ObjectOutputStream oos = new ObjectOutputStream(os);

@@ -181,7 +181,10 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         add(capacity, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 560, 110, 20));
     }// </editor-fold>//GEN-END:initComponents
     ArrayList<Places> chosenPlaces = new ArrayList<>();
-    
+    /**
+     * Method to get all chosen places from one person to update information in "chosenPlacesList" in GUI
+     * @return one array of strings with all chosen places
+     */
     private String[] getChosenPlaces() {
         ArrayList<String> places = new ArrayList<>();
         for(Places p : chosenPlaces) {
@@ -191,6 +194,10 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         temp = places.toArray(temp);
         return temp;
     }
+    /**
+     * Method to get all available places from one person to update information in "availablePlaces" in GUI
+     * @return one array of strings will all available places
+     */
     private String[] getAvailablePlaces() {
         ArrayList<String> places = new ArrayList<>();
         for(Places p : Database.listEvents.get(eventList.getSelectedIndex()).sortByBooked()) {
@@ -202,6 +209,12 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         temp = places.toArray(temp);
         return temp;
     }
+    
+    /**
+     * Method to get the index of one person, receives the person name as parameter
+     * @param name of the person you want to search index
+     * @return one integer (the index)
+     */
     private int getIndexOfName (String name) {
         for(Places p:Database.listPlaces) {
             if(p.getName().equals(name)) {
@@ -211,6 +224,12 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         return -1;
     } 
     
+    
+    /**
+     * Method to get the list of events' names to use in "eventList" in GUI, receives one string as parameter
+     * @param search, normally search="" to search all events
+     * @return an array of strings with all names
+     */
     
     private String[] getListNameEvents(String search) {
         ArrayList < String > list;
@@ -380,7 +399,13 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_availablePlacesMouseClicked
 
-    
+    /**
+     * Method to slice one string, identically to substring
+     * @param a begin position
+     * @param b end posicion
+     * @param s string you want to slice
+     * @return return the string sliced
+     */
     
     private String stringSlice(int a, int b, String s) {
         String res= "";
@@ -389,7 +414,11 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         }
         return res;
     }
-   
+    /**
+     * Method to get the list of people names to make "listPeopleList" (in GUI) responsive when you type in "personToAdd", receives one string as parameter
+     * @param search, normally search="" to search all people, can be someones person name initials to narrow the extense list in "listPeopleList"
+     * @return an array of strings with all names
+     */   
     private String[] getListNamePeople(String search) {
         ArrayList < String > list;
         list = new ArrayList <> ();
@@ -408,6 +437,10 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         return temp;
     }
     
+    /**
+     * Method to get all places from one event, receives no string as argument
+     * @return one array of strings with all places
+     */
     private String[] getEventPlaces() {
         ArrayList<String> t = new ArrayList<String>();
         if((eventList.getSelectedIndex()) > -1) {

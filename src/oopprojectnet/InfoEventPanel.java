@@ -177,17 +177,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
     private void placesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placesListMouseClicked
         numberOfPeople.setText(Database.listEvents.get(eventList.getSelectedIndex()).countLocal(placesList.getSelectedValue()) +"");
         placesProfit.setText(Database.listEvents.get(eventList.getSelectedIndex()).calculatePlaceReceipt(placesList.getSelectedValue()) +" euros");
-       /* if(Database.getPlaceFromName(placesList.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
-            jList5.setModel(new javax.swing.AbstractListModel<String>() {
-                String[] strings = personToString(((Pubs)Database.getPlaceFromName(placesList.getSelectedValue())).getGuestList());
-                @Override
-                public int getSize() { return strings.length; }
-                @Override
-                public String getElementAt(int i) { return strings[i]; }
-            });
 
-            jScrollPane5.setViewportView(jList5);
-        }*/
     }//GEN-LAST:event_placesListMouseClicked
 
     private void peopleListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peopleListMouseClicked
@@ -241,17 +231,11 @@ public class InfoEventPanel extends javax.swing.JPanel {
         }
         return res;
     }
-   
-    private String[] personToString(ArrayList<Person> list) {
-        ArrayList<String> StringList = new ArrayList<>();
-        for(Person current:list) {
-            StringList.add(current.getName());
-        }
-        String[] temp = new String[StringList.size()];
-        temp = StringList.toArray(temp);
-        //System.out.println(temp);
-        return temp;
-    }
+    
+    /**
+     * Method to get name of the event selected in "eventList" in GUI
+     * @return one string with the name of the event
+     */
     private String getEventName() {
         if(eventList.getSelectedIndex() != -1 ) {
             return Database.listEvents.get(eventList.getSelectedIndex()).getName();
@@ -277,6 +261,12 @@ public class InfoEventPanel extends javax.swing.JPanel {
         temp = list.toArray(temp);
         return temp;
     }
+    
+    /**
+     * Method to get all people from one event, receive one string as parameter
+     * @param event name of the event you want to pick people
+     * @return one array with strings containing the event's people
+     */
     private String[] getPeopleFromEvent(String event) {
         ArrayList<String> t = new ArrayList<String>();
         for(Event e : Database.listEvents) {
@@ -290,7 +280,12 @@ public class InfoEventPanel extends javax.swing.JPanel {
         temp = t.toArray(temp);
         return temp;
     }
-    
+    /**
+     * Method to get the places selected from one person in one event
+     * @param person the person you want to pick the places
+     * @param event the event desired
+     * @return one array of strings containing all places from one person in one event
+     */
     private String[] getPlacesFromPerson(String person, String event) {
         
         ArrayList<String> t = new ArrayList<String>();

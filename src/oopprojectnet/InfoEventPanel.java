@@ -216,7 +216,7 @@ public class InfoEventPanel extends javax.swing.JPanel {
         ((Window) comp).dispose();    }//GEN-LAST:event_infoEventBackBtnActionPerformed
 
     private void showGuestListBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showGuestListBtnActionPerformed
-        if(placesList.getSelectedIndex() != -1) {
+        if(placesList.getSelectedIndex() != -1 && eventList.getSelectedIndex() != -1) {
             if(!Database.getPlaceFromName(placesList.getSelectedValue()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")) {
                     String message = "Place selected isn't a pub!";
                     JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);

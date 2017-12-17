@@ -171,7 +171,7 @@ public class AddPersonToEvent extends javax.swing.JPanel {
     }
     private String[] getAvailablePlaces() {
         ArrayList<String> places = new ArrayList<>();
-        for(Places p : Database.listEvents.get(eventList.getSelectedIndex()).getPlacesList()) {
+        for(Places p : Database.listEvents.get(eventList.getSelectedIndex()).sortByBooked()) {
             if(!chosenPlaces.contains(p)) {
                 places.add(p.getName());
             }
@@ -189,7 +189,8 @@ public class AddPersonToEvent extends javax.swing.JPanel {
         return -1;
     } 
     
-        private String[] getListNameEvents(String search) {
+    
+    private String[] getListNameEvents(String search) {
         ArrayList < String > list;
         list = new ArrayList <> ();
         for (Event p: Database.listEvents) {

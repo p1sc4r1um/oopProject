@@ -20,7 +20,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Pubs novo = new Pubs("ola","ola","30","5",new ArrayList<>(), new ArrayList<>());
+
+        Pubs novo = new Pubs("ola","ola","4","2",new ArrayList<>(), new ArrayList<>());
         Pubs adeus = new Pubs("adeus","re","30","10",new ArrayList<>(), new ArrayList<>());
         Pubs adeus2 = new Pubs("adeus","NB","30","1",new ArrayList<>(), new ArrayList<>());
         Pubs adeus3 = new Pubs("adeus","moelas","5","1",new ArrayList<>(), new ArrayList<>());

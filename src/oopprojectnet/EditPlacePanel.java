@@ -115,14 +115,14 @@ public class EditPlacePanel extends javax.swing.JPanel {
                                 .addComponent(labelCoords)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(placeCoords, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(additional1)
                 .addGap(57, 57, 57)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(placeEach, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(placeEach2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(placeEach2)
+                    .addComponent(placeEach, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
                 .addGap(138, 138, 138))
         );
         jPanel1Layout.setVerticalGroup(
@@ -161,6 +161,11 @@ public class EditPlacePanel extends javax.swing.JPanel {
         placeEditBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 placeEditBtnMouseClicked(evt);
+            }
+        });
+        placeEditBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                placeEditBtnActionPerformed(evt);
             }
         });
         add(placeEditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 455, -1, -1));
@@ -209,10 +214,20 @@ public class EditPlacePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_placeEach2ActionPerformed
 
     private void placeEditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_placeEditBtnMouseClicked
+        int bool = 0, bool2 = 0;
         if(listPlacesList.getSelectedIndex() != -1){
             if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.gardens")){
                 if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getArea())) {
-                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setArea(placeEach.getText());
+                    try{
+                            int num = Integer.parseInt(placeEach.getText());
+                            Database.listPlaces.get(listPlacesList.getSelectedIndex()).setArea(placeEach.getText());
+                            bool = 1;
+
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "garden area must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            placeEach.setText(null);
+                    }
+                    
                 }
                 if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
                     Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
@@ -237,7 +252,16 @@ public class EditPlacePanel extends javax.swing.JPanel {
                     Database.listPlaces.get(listPlacesList.getSelectedIndex()).setArtisticForm(placeEach.getText());
                 }
                 if(!placeEach2.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getPrice())) {
-                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setPrice(placeEach2.getText());
+                    try{
+                            int num = Integer.parseInt(placeEach2.getText());
+                            Database.listPlaces.get(listPlacesList.getSelectedIndex()).setPrice(placeEach2.getText());
+                            bool = 1;
+
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "exhibition price must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            placeEach2.setText(null);
+                    }                    
+                    
                 }
                 if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
                     Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
@@ -248,10 +272,29 @@ public class EditPlacePanel extends javax.swing.JPanel {
             }
             else if(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getClass().toString().toLowerCase().equals("class oopprojectnet.pubs")){
                 if(!placeEach.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getMinimumInput())) {
-                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setMinimumInput(placeEach.getText());
+                    try{
+                            int num = Integer.parseInt(placeEach.getText());
+                            Database.listPlaces.get(listPlacesList.getSelectedIndex()).setMinimumInput(placeEach.getText());
+                            bool = 1;
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "pub's minimum input and capacity must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            placeEach.setText(null);
+                            bool2 = 1;
+                    }  
+                    
                 }
                 if(!placeEach2.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getCapacity())) {
-                    Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCapacity(placeEach2.getText());
+                    try{
+                            int num = Integer.parseInt(placeEach2.getText());
+                            Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCapacity(placeEach2.getText());
+                            bool = 1;
+                        } catch (NumberFormatException e) {
+                            if(bool2 == 0) { 
+                                JOptionPane.showMessageDialog(null, "pub's minimum input and capacity must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            placeEach2.setText(null);
+                    } 
+                    
                 }
                 if(!placeName.getText().equals(Database.listPlaces.get(listPlacesList.getSelectedIndex()).getName())) {
                     Database.listPlaces.get(listPlacesList.getSelectedIndex()).setName(placeName.getText());
@@ -260,7 +303,6 @@ public class EditPlacePanel extends javax.swing.JPanel {
                     Database.listPlaces.get(listPlacesList.getSelectedIndex()).setCoords(placeCoords.getText());
                 }
             }
-            System.out.println(Database.listPlaces.get(listPlacesList.getSelectedIndex()));
         }
         listPlacesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePlaces(placeToEdit.getText());
@@ -268,24 +310,25 @@ public class EditPlacePanel extends javax.swing.JPanel {
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(listPlacesList);
-        
-        Object[] options = {
-                    "OK",
-                    "EDIT ANOTHER"
-                };
-                Object optionSelected = JOptionPane.showOptionDialog(null, "place edited, Click OK to come back to menu or edit another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                switch (optionSelected.toString()) {
-                    case "0":
-                        Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
-                        break;
-                    case "1":
-                        placeEach.setText("");
-                        placeCoords.setText("");
-                        placeName.setText("");
-                        placeEach2.setText("");
-                        placeToEdit.setText("");
-                        break;
-                }    
+        if(bool == 1) {
+            Object[] options = {
+                        "OK",
+                        "EDIT ANOTHER"
+                    };
+                    Object optionSelected = JOptionPane.showOptionDialog(null, "place edited, Click OK to come back to menu or edit another", "success", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    switch (optionSelected.toString()) {
+                        case "0":
+                            Component comp = SwingUtilities.getRoot(this); ((Window) comp).dispose();
+                            break;
+                        case "1":
+                            placeEach.setText("");
+                            placeCoords.setText("");
+                            placeName.setText("");
+                            placeEach2.setText("");
+                            placeToEdit.setText("");
+                            break;
+                    }
+        }
     }//GEN-LAST:event_placeEditBtnMouseClicked
 
     private void listPlacesListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listPlacesListMouseClicked
@@ -340,6 +383,10 @@ public class EditPlacePanel extends javax.swing.JPanel {
         Component comp = SwingUtilities.getRoot(this);
         ((Window) comp).dispose();
     }//GEN-LAST:event_placeBackBtnMouseClicked
+
+    private void placeEditBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeEditBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_placeEditBtnActionPerformed
 
     private String stringSlice(int a, int b, String s) {
         String res= "";

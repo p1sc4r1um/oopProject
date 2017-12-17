@@ -80,7 +80,7 @@ public class DeletePersonPanel extends javax.swing.JPanel {
                 personToDeleteKeyReleased(evt);
             }
         });
-        add(personToDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 54, 138, -1));
+        add(personToDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 138, -1));
 
         peopleList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = getListNamePeople(personToDelete.getText());

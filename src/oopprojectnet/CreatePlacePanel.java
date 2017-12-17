@@ -46,7 +46,6 @@ public class CreatePlacePanel extends javax.swing.JPanel {
         placeCreateBtn = new javax.swing.JButton();
         placeClearBtn = new javax.swing.JButton();
         placeBackBtn = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
         additional1 = new javax.swing.JLabel();
         additional2 = new javax.swing.JLabel();
         additionalText1 = new javax.swing.JTextField();
@@ -128,7 +127,6 @@ public class CreatePlacePanel extends javax.swing.JPanel {
             }
         });
         add(placeBackBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(288, 238, -1, -1));
-        add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 10, -1, -1));
 
         additional1.setText("Garden Area:");
         add(additional1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 151, -1, -1));
@@ -188,46 +186,76 @@ public class CreatePlacePanel extends javax.swing.JPanel {
                 String coords = placeCoords.getText();
                 String additional1, additional2;
                 Places newPlace = null;
+                int bool = 0;
                 switch (type) {
                     case "garden": 
                         additional1 = additionalText1.getText();
-                        newPlace = new Gardens(coords, name, additional1);
+                        try{
+                            int num = Integer.parseInt(additional1);
+                            newPlace = new Gardens(coords, name, additional1);
+                            bool = 1;
+
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "garden area must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            additionalText1.setText(null);
+                        }
                         break;
                     case "sportsfield": 
                         additional1 = additionalText1.getText();
                         newPlace = new SportsField(coords, name, additional1);
+                        bool = 1;
                         break;
                     case "exhibitions": 
                         additional1 = additionalText1.getText();
                         additional2 = additionalText2.getText();
-                        newPlace = new Exhibitions(coords, name, additional1, additional2);
+                        try{
+                            int num = Integer.parseInt(additional2);
+                            newPlace = new Exhibitions(coords, name, additional1, additional2);
+                            bool = 1;                                                        
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "exhibition price must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            additionalText2.setText(null);
+                        }                        
                         break;
                     case "pubs":
                         additional1 = additionalText1.getText();
                         additional2 = additionalText2.getText();
-                        newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<>(), new ArrayList<>());
+                        try{
+                            int num = Integer.parseInt(additional1);
+                            int num2 = Integer.parseInt(additional2);
+                            newPlace = new Pubs(coords, name, additional1, additional2, new ArrayList<>(), new ArrayList<>());
+                            bool = 1;
+                            
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "pub's minimum input and capacity must be a number!", "error", JOptionPane.ERROR_MESSAGE);
+                            additionalText1.setText(null);
+                            additionalText2.setText(null);
+                            
+                        }                          
                         break;
                 }
-                if(newPlace != null) {
+                if(newPlace != null && bool == 1) {
                     Database.listPlaces.add(newPlace);
                     System.out.println(Database.listPlaces.get(0));
                 }
-                Object[] options = { "OK", "CREATE ANOTHER" };
-                Object optionSelected = JOptionPane.showOptionDialog(null, type + " created, Click OK to go back to program's menu or create another", "success",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
-                        null, options, options[0]);
+                if(bool == 1) {
+                    Object[] options = { "OK", "CREATE ANOTHER" };
+                    Object optionSelected = JOptionPane.showOptionDialog(null, type + " created, Click OK to go back to program's menu or create another", "success",
+                            JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
+                            null, options, options[0]);
 
-                switch (optionSelected.toString()){
-                    case "0":
-                        Component comp = SwingUtilities.getRoot(this);
-                        ((Window) comp).dispose();
-                        break;
-                    case "1":
-                        placeName.setText(null);
-                        placeCoords.setText(null);
-                        additionalText1.setText(null);
-                        additionalText2.setText(null);
-                        break;
+                    switch (optionSelected.toString()){
+                        case "0":
+                            Component comp = SwingUtilities.getRoot(this);
+                            ((Window) comp).dispose();
+                            break;
+                        case "1":
+                            placeName.setText(null);
+                            placeCoords.setText(null);
+                            additionalText1.setText(null);
+                            additionalText2.setText(null);
+                            break;
+                    }
                 }
             }
 
@@ -265,7 +293,6 @@ public class CreatePlacePanel extends javax.swing.JPanel {
     private javax.swing.JTextField additionalText1;
     private javax.swing.JTextField additionalText2;
     private javax.swing.JLabel coordsLabel;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel labelPlace;
     private javax.swing.JLabel labelPlaceType;
     private javax.swing.JButton placeBackBtn;

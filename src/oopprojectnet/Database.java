@@ -20,34 +20,28 @@ public class Database {
 
     /**
      * Method to update the database when program starts up, receives no argument
-     * @return 1 in success, 0 otherwise
      * @throws IOException 
      */
-    private int startDatabase() throws IOException {
-        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
-        File f = new File(workingDir+"People.ser");
-        if(f.exists()) { 
+    private void startDatabase() throws IOException {
+        try{
             readObj("People");
-        }
-        else {
+        } catch(Exception FileNotFoundException) {
             readTxt("People");
         }
-        f = new File(workingDir+"Places.ser");
-        if(f.exists()) { 
-            readObj("People");
-        }
-        else {
+        try{
+            readObj("Places");
+        } catch(Exception FileNotFoundException) {
             readTxt("Places");
         }
-        f = new File(workingDir+"Events.ser");
-        if(f.exists()) { 
+        try{
             readObj("Events");
-        }
-        else {
+        } catch(Exception FileNotFoundException) {
             readTxt("Events");
         }
-        return 1;
     }
+    
+
+    
     /**
      * Method do get the name readed in txt file, receives an array as parameter
      * @param parts elements of one line separated by commas
@@ -85,7 +79,8 @@ public class Database {
         SportsField newSportsField;
         Gardens newGarden;
         Pubs newPub;
-        path = "/home/jmartinhoj/Documents/lei/poo/project/oopProject/src/com/company/info" + type + ".txt";
+        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
+        path = workingDir + type + ".txt";
         BufferedReader br = new BufferedReader(new FileReader(path));
         String strLine;
         String[] parts;
@@ -151,7 +146,8 @@ public class Database {
      * @throws IOException 
      */
     public int readObj(String type) throws IOException {
-        String path = "/home/jmartinhoj/Documents/lei/poo/project/oopProject/src/com/company/info" + type + ".ser";
+        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
+        String path = workingDir + type + ".ser";
         try {
             FileInputStream is = new FileInputStream(new File(path));
             ObjectInputStream ois = new ObjectInputStream(is);
@@ -184,7 +180,8 @@ public class Database {
      * @throws IOException 
      */
     public int writeObj(String type) throws IOException {
-        String path = "/home/jmartinhoj/Documents/lei/poo/project/oopProject/src/com/company/info" + type + ".ser";
+        String workingDir = System.getProperty("user.dir") + "\\src\\oopprojectnet\\";
+        String path = workingDir + type + ".ser";
         try {
             FileOutputStream os = new FileOutputStream(new File(path));
             ObjectOutputStream oos = new ObjectOutputStream(os);

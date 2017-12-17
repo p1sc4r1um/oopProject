@@ -143,14 +143,12 @@ public class Pubs extends Places {
                 guestListPrint.add(p.getName());
             }
         }
-        int i = 0;
-        while(guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity)) && (i < customersList.size())) {
-            if(!guestListPrint.contains(customersList.get(i).getName())) {
-                guestListPrint.add(customersList.get(i++).getName());
+        for(Person p : customersList) {
+            if(guestListPrint.size() < (int) (0.5 * Integer.parseInt(this.capacity)) && !p.getProfile().toLowerCase().equals("bohemian")) {
+                guestListPrint.add(p.getName());
             }
         }
-                System.out.println(guestListPrint);
-
+       
         String[] temp = new String[guestListPrint.size()];
         temp = guestListPrint.toArray(temp);
         return temp;
